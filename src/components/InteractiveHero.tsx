@@ -1,48 +1,18 @@
-import { useEffect, useState } from 'react';
-
 export default function InteractiveHero() {
-  const [animationPhase, setAnimationPhase] = useState(0);
-
-  useEffect(() => {
-    const phases = [
-      { duration: 2000, phase: 0 },
-      { duration: 1500, phase: 1 },
-      { duration: 1000, phase: 2 },
-      { duration: 1500, phase: 3 },
-      { duration: 1000, phase: 4 },
-    ];
-
-    let currentIndex = 0;
-
-    const runPhase = () => {
-      setAnimationPhase(phases[currentIndex].phase);
-      currentIndex = (currentIndex + 1) % phases.length;
-    };
-
-    const intervalId = setInterval(() => {
-      runPhase();
-    }, phases.reduce((acc, p) => acc + p.duration, 0) / phases.length);
-
-    return () => clearInterval(intervalId);
-  }, []);
-
   return (
     <section
-      className="min-h-screen flex flex-col items-center justify-center py-20 text-center relative overflow-hidden"
+      className="min-h-screen flex flex-col items-center justify-center py-20 text-center relative overflow-hidden hero-section"
       aria-labelledby="hero-heading"
     >
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/6069057/pexels-photo-6069057.jpeg?auto=compress&cs=tinysrgb&w=1600')] bg-cover bg-center opacity-20 backdrop-blur-sm" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1C2526]/80 via-[#1C2526]/60 to-[#1C2526]" />
-      </div>
+      <div className="absolute inset-0 pointer-events-none gradient-background" />
 
-      <div className="relative z-10 mb-16 core-lock-on">
-        <div className={`relative ${animationPhase >= 3 ? 'animate-brand-pulse' : ''}`}>
+      <div className="relative z-10 mb-16 lock-on-container">
+        <div className="relative">
           <svg
             width="200"
             height="200"
             viewBox="0 0 200 200"
-            className="mx-auto crosshair-container"
+            className="mx-auto"
           >
             <circle
               cx="100"
@@ -51,48 +21,64 @@ export default function InteractiveHero() {
               fill="none"
               stroke="#FFFFFF"
               strokeWidth="2"
-              opacity="0.4"
+              opacity="0"
               className="crosshair-circle"
             />
 
             <line
-              x1="20"
+              x1="100"
               y1="100"
-              x2="80"
+              x2="100"
               y2="100"
               stroke="#FFFFFF"
               strokeWidth="3"
               className="crosshair-line crosshair-left"
+              data-start-x="20"
+              data-start-y="100"
+              data-end-x="80"
+              data-end-y="100"
             />
             <line
-              x1="120"
+              x1="100"
               y1="100"
-              x2="180"
+              x2="100"
               y2="100"
               stroke="#FFFFFF"
               strokeWidth="3"
               className="crosshair-line crosshair-right"
+              data-start-x="120"
+              data-start-y="100"
+              data-end-x="180"
+              data-end-y="100"
             />
             <line
               x1="100"
-              y1="20"
+              y1="100"
               x2="100"
-              y2="80"
+              y2="100"
               stroke="#FFFFFF"
               strokeWidth="3"
               className="crosshair-line crosshair-top"
+              data-start-x="100"
+              data-start-y="20"
+              data-end-x="100"
+              data-end-y="80"
             />
             <line
               x1="100"
-              y1="120"
+              y1="100"
               x2="100"
-              y2="180"
+              y2="100"
               stroke="#FFFFFF"
               strokeWidth="3"
               className="crosshair-line crosshair-bottom"
+              data-start-x="100"
+              data-start-y="120"
+              data-end-x="100"
+              data-end-y="180"
             />
 
-            <circle cx="100" cy="100" r="5" fill="#FFFFFF" className="crosshair-center" />
+            <circle cx="100" cy="100" r="5" fill="#FFFFFF" opacity="0" className="crosshair-center" />
 
             <path
               d="M 100 180 Q 120 140, 100 100"
@@ -106,26 +92,30 @@ export default function InteractiveHero() {
             <circle
               cx="100"
               cy="100"
-              r="30"
-              fill="url(#redGradient)"
+              r="15"
+              fill="#FFFFFF"
               opacity="0"
-              className="impact-glow"
+              className="impact-flash"
             />
 
             <defs>
-              <radialGradient id="redGradient">
-                <stop offset="0%" stopColor="#E11D48" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#E11D48" stopOpacity="0" />
+              <radialGradient id="whiteFlash">
+                <stop offset="0%" stopColor="#FFFFFF" stopOpacity="1" />
+                <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
               </radialGradient>
             </defs>
           </svg>
 
           <div className="logo-text">
-            <span className="text-6xl sm:text-7xl lg:text-8xl font-black tracking-tight">
-              <span className="text-[#E11D48]">C</span>
-              <span className="text-white">ore</span>
-              <span className="text-[#E11D48]">S</span>
-              <span className="text-white">hot</span>
+            <span className="text-6xl sm:text-7xl lg:text-8xl font-black tracking-tighter" style={{ fontFamily: 'Montserrat, sans-serif', fontStretch: 'condensed' }}>
+              <span className="text-[#E11D48] letter-c">C</span>
+              <span className="text-white letter-o">o</span>
+              <span className="text-white letter-r">r</span>
+              <span className="text-white letter-e">e</span>
+              <span className="text-[#E11D48] letter-s">S</span>
+              <span className="text-white letter-h">h</span>
+              <span className="text-white letter-o2">o</span>
+              <span className="text-white letter-t">t</span>
             </span>
           </div>
         </div>
@@ -134,21 +124,21 @@ export default function InteractiveHero() {
       <h1
         id="hero-heading"
         className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight animate-fade-in-up relative z-10"
-        style={{ animationDelay: '0.1s' }}
+        style={{ animationDelay: '6.5s' }}
       >
         Precision at Your Core
       </h1>
 
       <p
         className="text-xl sm:text-2xl text-[#9CA3AF] mb-12 max-w-3xl leading-relaxed animate-fade-in-up relative z-10"
-        style={{ animationDelay: '0.2s' }}
+        style={{ animationDelay: '6.7s' }}
       >
         Premium accessories. Smart software.
       </p>
 
       <div
         className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up relative z-10"
-        style={{ animationDelay: '0.3s' }}
+        style={{ animationDelay: '6.9s' }}
       >
         <a
           href="#products"

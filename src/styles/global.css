@@ -90,21 +90,246 @@
   opacity: 0;
 }
 
-@keyframes lock-on {
+.gradient-background {
+  background: linear-gradient(135deg, #1C2526 0%, #6B7280 100%);
+  animation: gradient-rotate 60s linear infinite;
+}
+
+@keyframes gradient-rotate {
   0% {
-    transform: scale(1);
+    background: linear-gradient(135deg, #1C2526 0%, #6B7280 100%);
+  }
+  25% {
+    background: linear-gradient(225deg, #1C2526 0%, #6B7280 100%);
   }
   50% {
-    transform: scale(0.8);
+    background: linear-gradient(315deg, #1C2526 0%, #6B7280 100%);
+  }
+  75% {
+    background: linear-gradient(45deg, #1C2526 0%, #6B7280 100%);
   }
   100% {
-    transform: scale(1);
+    background: linear-gradient(135deg, #1C2526 0%, #6B7280 100%);
   }
+}
+
+.crosshair-circle {
+  animation: crosshair-appear 1.5s ease-out forwards, crosshair-breathe 4s ease-in-out 6s infinite;
+}
+
+@keyframes crosshair-appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes crosshair-breathe {
+  0%, 100% {
+    r: 80;
+    opacity: 0.4;
+  }
+  50% {
+    r: 82.4;
+    opacity: 0.5;
+  }
+}
+
+.crosshair-line {
+  animation: line-grow 1.5s ease-out forwards, line-breathe 4s ease-in-out 6s infinite;
+}
+
+@keyframes line-grow {
+  0% {
+    stroke-dasharray: 0, 100;
+    opacity: 0;
+  }
+  100% {
+    stroke-dasharray: 60, 0;
+    opacity: 1;
+  }
+}
+
+.crosshair-left {
+  animation: line-grow-left 1.5s ease-out forwards, line-lock-left 1.5s ease-in-out 1.5s forwards, line-breathe-left 4s ease-in-out 6s infinite;
+}
+
+@keyframes line-grow-left {
+  from {
+    x1: 100;
+    x2: 100;
+    opacity: 0;
+  }
+  to {
+    x1: 20;
+    x2: 80;
+    opacity: 1;
+  }
+}
+
+@keyframes line-lock-left {
+  from {
+    x1: 20;
+    x2: 80;
+  }
+  to {
+    x1: 85;
+    x2: 95;
+  }
+}
+
+@keyframes line-breathe-left {
+  0%, 100% {
+    x1: 85;
+    x2: 95;
+  }
+  50% {
+    x1: 82;
+    x2: 92;
+  }
+}
+
+.crosshair-right {
+  animation: line-grow-right 1.5s ease-out forwards, line-lock-right 1.5s ease-in-out 1.5s forwards, line-breathe-right 4s ease-in-out 6s infinite;
+}
+
+@keyframes line-grow-right {
+  from {
+    x1: 100;
+    x2: 100;
+    opacity: 0;
+  }
+  to {
+    x1: 120;
+    x2: 180;
+    opacity: 1;
+  }
+}
+
+@keyframes line-lock-right {
+  from {
+    x1: 120;
+    x2: 180;
+  }
+  to {
+    x1: 105;
+    x2: 115;
+  }
+}
+
+@keyframes line-breathe-right {
+  0%, 100% {
+    x1: 105;
+    x2: 115;
+  }
+  50% {
+    x1: 108;
+    x2: 118;
+  }
+}
+
+.crosshair-top {
+  animation: line-grow-top 1.5s ease-out forwards, line-lock-top 1.5s ease-in-out 1.5s forwards, line-breathe-top 4s ease-in-out 6s infinite;
+}
+
+@keyframes line-grow-top {
+  from {
+    y1: 100;
+    y2: 100;
+    opacity: 0;
+  }
+  to {
+    y1: 20;
+    y2: 80;
+    opacity: 1;
+  }
+}
+
+@keyframes line-lock-top {
+  from {
+    y1: 20;
+    y2: 80;
+  }
+  to {
+    y1: 85;
+    y2: 95;
+  }
+}
+
+@keyframes line-breathe-top {
+  0%, 100% {
+    y1: 85;
+    y2: 95;
+  }
+  50% {
+    y1: 82;
+    y2: 92;
+  }
+}
+
+.crosshair-bottom {
+  animation: line-grow-bottom 1.5s ease-out forwards, line-lock-bottom 1.5s ease-in-out 1.5s forwards, line-breathe-bottom 4s ease-in-out 6s infinite;
+}
+
+@keyframes line-grow-bottom {
+  from {
+    y1: 100;
+    y2: 100;
+    opacity: 0;
+  }
+  to {
+    y1: 120;
+    y2: 180;
+    opacity: 1;
+  }
+}
+
+@keyframes line-lock-bottom {
+  from {
+    y1: 120;
+    y2: 180;
+  }
+  to {
+    y1: 105;
+    y2: 115;
+  }
+}
+
+@keyframes line-breathe-bottom {
+  0%, 100% {
+    y1: 105;
+    y2: 115;
+  }
+  50% {
+    y1: 108;
+    y2: 118;
+  }
+}
+
+.crosshair-center {
+  animation: center-appear 1.5s ease-out forwards;
+}
+
+@keyframes center-appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.trajectory-line {
+  stroke-dasharray: 150;
+  stroke-dashoffset: 150;
+  animation: trajectory-shoot 0.8s ease-out 3s forwards, trajectory-loop 1s ease-out 8s infinite;
 }
 
 @keyframes trajectory-shoot {
   0% {
-    stroke-dashoffset: 200;
+    stroke-dashoffset: 150;
     opacity: 0;
   }
   50% {
@@ -116,25 +341,89 @@
   }
 }
 
-@keyframes impact-pulse {
+@keyframes trajectory-loop {
   0% {
+    stroke-dashoffset: 150;
     opacity: 0;
-    transform: scale(0.5);
   }
   50% {
+    stroke-dashoffset: 0;
     opacity: 1;
-    transform: scale(1.2);
   }
   100% {
+    stroke-dashoffset: 0;
     opacity: 0;
-    transform: scale(1.5);
   }
 }
 
-@keyframes logo-slide-up {
+.impact-flash {
+  animation: flash-impact 0.4s ease-out 3.8s forwards;
+}
+
+@keyframes flash-impact {
   0% {
     opacity: 0;
-    transform: translateY(50px);
+    r: 5;
+  }
+  50% {
+    opacity: 1;
+    r: 20;
+  }
+  100% {
+    opacity: 0;
+    r: 30;
+  }
+}
+
+.logo-text {
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.logo-text span span {
+  display: inline-block;
+  opacity: 0;
+}
+
+.letter-c {
+  animation: letter-appear 0.15s ease-out 3.8s forwards;
+}
+
+.letter-o {
+  animation: letter-appear 0.15s ease-out 3.95s forwards;
+}
+
+.letter-r {
+  animation: letter-appear 0.15s ease-out 4.1s forwards;
+}
+
+.letter-e {
+  animation: letter-appear 0.15s ease-out 4.25s forwards;
+}
+
+.letter-s {
+  animation: letter-appear 0.15s ease-out 4.4s forwards;
+}
+
+.letter-h {
+  animation: letter-appear 0.15s ease-out 4.55s forwards;
+}
+
+.letter-o2 {
+  animation: letter-appear 0.15s ease-out 4.7s forwards;
+}
+
+.letter-t {
+  animation: letter-appear 0.15s ease-out 4.85s forwards;
+}
+
+@keyframes letter-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
   }
   100% {
     opacity: 1;
@@ -142,42 +431,27 @@
   }
 }
 
-@keyframes brand-pulse {
+.lock-on-container {
+  animation: logo-pulse 2s ease-in-out 5s forwards, logo-micro-pulse 2s ease-in-out 12s infinite;
+}
+
+@keyframes logo-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes logo-micro-pulse {
   0%, 100% {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.05);
+    transform: scale(1.03);
   }
-}
-
-.core-lock-on {
-  animation: lock-on 8s ease-in-out infinite;
-}
-
-.crosshair-line {
-  animation: lock-on 4s ease-in-out infinite;
-}
-
-.trajectory-line {
-  stroke-dasharray: 200;
-  stroke-dashoffset: 200;
-  animation: trajectory-shoot 2s ease-out 2s infinite;
-}
-
-.impact-glow {
-  animation: impact-pulse 1s ease-out 3.5s infinite;
-}
-
-.logo-text {
-  position: absolute;
-  bottom: -80px;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: logo-slide-up 1.5s ease-out 4s forwards;
-  opacity: 0;
-}
-
-.animate-brand-pulse {
-  animation: brand-pulse 2s ease-in-out 6s infinite;
 }
