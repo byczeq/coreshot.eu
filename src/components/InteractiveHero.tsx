@@ -1,142 +1,153 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function InteractiveHero() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const heroRef = useRef<HTMLDivElement>(null);
-  const targetRef = useRef<SVGSVGElement>(null);
+  const [animationPhase, setAnimationPhase] = useState(0);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (heroRef.current) {
-        const rect = heroRef.current.getBoundingClientRect();
-        setMousePosition({
-          x: e.clientX - rect.left,
-          y: e.clientY - rect.top,
-        });
-      }
+    const phases = [
+      { duration: 2000, phase: 0 },
+      { duration: 1500, phase: 1 },
+      { duration: 1000, phase: 2 },
+      { duration: 1500, phase: 3 },
+      { duration: 1000, phase: 4 },
+    ];
+
+    let currentIndex = 0;
+
+    const runPhase = () => {
+      setAnimationPhase(phases[currentIndex].phase);
+      currentIndex = (currentIndex + 1) % phases.length;
     };
 
-    const heroElement = heroRef.current;
-    if (heroElement) {
-      heroElement.addEventListener('mousemove', handleMouseMove);
-      return () => heroElement.removeEventListener('mousemove', handleMouseMove);
-    }
+    const intervalId = setInterval(() => {
+      runPhase();
+    }, phases.reduce((acc, p) => acc + p.duration, 0) / phases.length);
+
+    return () => clearInterval(intervalId);
   }, []);
-
-  const calculateTransform = (speed: number) => {
-    if (!heroRef.current) return {};
-    const rect = heroRef.current.getBoundingClientRect();
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const deltaX = (mousePosition.x - centerX) / centerX;
-    const deltaY = (mousePosition.y - centerY) / centerY;
-
-    return {
-      transform: `translate(${deltaX * speed}px, ${deltaY * speed}px)`,
-      transition: 'transform 0.3s ease-out',
-    };
-  };
 
   return (
     <section
-      ref={heroRef}
       className="min-h-screen flex flex-col items-center justify-center py-20 text-center relative overflow-hidden"
       aria-labelledby="hero-heading"
     >
       <div className="absolute inset-0 pointer-events-none">
-        <div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#E11D48]/10 rounded-full blur-3xl"
-          style={calculateTransform(15)}
-        />
-        <div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#E11D48]/5 rounded-full blur-3xl"
-          style={calculateTransform(-20)}
-        />
+        <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/6069057/pexels-photo-6069057.jpeg?auto=compress&cs=tinysrgb&w=1600')] bg-cover bg-center opacity-20 backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1C2526]/80 via-[#1C2526]/60 to-[#1C2526]" />
       </div>
 
-      <div className="mb-12 relative z-10 animate-float" role="img" aria-label="Precision target icon">
-        <svg
-          ref={targetRef}
-          width="120"
-          height="120"
-          viewBox="0 0 120 120"
-          className="mx-auto"
-          style={calculateTransform(10)}
-        >
-          <circle
-            cx="60"
-            cy="60"
-            r="54"
-            fill="none"
-            stroke="#FFFFFF"
-            strokeWidth="2"
-            opacity="0.3"
-            className="animate-pulse-slow"
-          />
-          <circle cx="60" cy="60" r="3" fill="#FFFFFF" />
-          <line
-            x1="30"
-            y1="60"
-            x2="52"
-            y2="60"
-            stroke="#FFFFFF"
-            strokeWidth="2"
-            className="animate-pulse-slow"
-          />
-          <line
-            x1="68"
-            y1="60"
-            x2="90"
-            y2="60"
-            stroke="#FFFFFF"
-            strokeWidth="2"
-            className="animate-pulse-slow"
-          />
-          <line
-            x1="60"
-            y1="30"
-            x2="60"
-            y2="52"
-            stroke="#FFFFFF"
-            strokeWidth="2"
-            className="animate-pulse-slow"
-          />
-          <line
-            x1="60"
-            y1="68"
-            x2="60"
-            y2="90"
-            stroke="#FFFFFF"
-            strokeWidth="2"
-            className="animate-pulse-slow"
-          />
-          <path
-            d="M 75 60 L 105 45"
-            stroke="#E11D48"
-            strokeWidth="3"
-            strokeLinecap="round"
-            className="animate-glow"
-          />
-        </svg>
+      <div className="relative z-10 mb-16 core-lock-on">
+        <div className={`relative ${animationPhase >= 3 ? 'animate-brand-pulse' : ''}`}>
+          <svg
+            width="200"
+            height="200"
+            viewBox="0 0 200 200"
+            className="mx-auto crosshair-container"
+          >
+            <circle
+              cx="100"
+              cy="100"
+              r="80"
+              fill="none"
+              stroke="#FFFFFF"
+              strokeWidth="2"
+              opacity="0.4"
+              className="crosshair-circle"
+            />
+
+            <line
+              x1="20"
+              y1="100"
+              x2="80"
+              y2="100"
+              stroke="#FFFFFF"
+              strokeWidth="3"
+              className="crosshair-line crosshair-left"
+            />
+            <line
+              x1="120"
+              y1="100"
+              x2="180"
+              y2="100"
+              stroke="#FFFFFF"
+              strokeWidth="3"
+              className="crosshair-line crosshair-right"
+            />
+            <line
+              x1="100"
+              y1="20"
+              x2="100"
+              y2="80"
+              stroke="#FFFFFF"
+              strokeWidth="3"
+              className="crosshair-line crosshair-top"
+            />
+            <line
+              x1="100"
+              y1="120"
+              x2="100"
+              y2="180"
+              stroke="#FFFFFF"
+              strokeWidth="3"
+              className="crosshair-line crosshair-bottom"
+            />
+
+            <circle cx="100" cy="100" r="5" fill="#FFFFFF" className="crosshair-center" />
+
+            <path
+              d="M 100 180 Q 120 140, 100 100"
+              stroke="#E11D48"
+              strokeWidth="4"
+              fill="none"
+              strokeLinecap="round"
+              className="trajectory-line"
+            />
+
+            <circle
+              cx="100"
+              cy="100"
+              r="30"
+              fill="url(#redGradient)"
+              opacity="0"
+              className="impact-glow"
+            />
+
+            <defs>
+              <radialGradient id="redGradient">
+                <stop offset="0%" stopColor="#E11D48" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#E11D48" stopOpacity="0" />
+              </radialGradient>
+            </defs>
+          </svg>
+
+          <div className="logo-text">
+            <span className="text-6xl sm:text-7xl lg:text-8xl font-black tracking-tight">
+              <span className="text-[#E11D48]">C</span>
+              <span className="text-white">ore</span>
+              <span className="text-[#E11D48]">S</span>
+              <span className="text-white">hot</span>
+            </span>
+          </div>
+        </div>
       </div>
 
       <h1
         id="hero-heading"
-        className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight animate-fade-in-up"
+        className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight animate-fade-in-up relative z-10"
         style={{ animationDelay: '0.1s' }}
       >
-        CoreShot: Precision at Your Core
+        Precision at Your Core
       </h1>
 
       <p
-        className="text-xl sm:text-2xl text-[#9CA3AF] mb-12 max-w-3xl leading-relaxed animate-fade-in-up"
+        className="text-xl sm:text-2xl text-[#9CA3AF] mb-12 max-w-3xl leading-relaxed animate-fade-in-up relative z-10"
         style={{ animationDelay: '0.2s' }}
       >
         Premium accessories. Smart software.
       </p>
 
       <div
-        className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up"
+        className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up relative z-10"
         style={{ animationDelay: '0.3s' }}
       >
         <a
