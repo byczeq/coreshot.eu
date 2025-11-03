@@ -1,141 +1,157 @@
+import { useEffect, useRef, useState } from 'react';
+
 export default function InteractiveHero() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const heroRef = useRef<HTMLDivElement>(null);
+  const targetRef = useRef<SVGSVGElement>(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (heroRef.current) {
+        const rect = heroRef.current.getBoundingClientRect();
+        setMousePosition({
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top,
+        });
+      }
+    };
+
+    const heroElement = heroRef.current;
+    if (heroElement) {
+      heroElement.addEventListener('mousemove', handleMouseMove);
+      return () => heroElement.removeEventListener('mousemove', handleMouseMove);
+    }
+  }, []);
+
+  const calculateTransform = (speed: number) => {
+    if (!heroRef.current) return {};
+    const rect = heroRef.current.getBoundingClientRect();
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const deltaX = (mousePosition.x - centerX) / centerX;
+    const deltaY = (mousePosition.y - centerY) / centerY;
+
+    return {
+      transform: `translate(${deltaX * speed}px, ${deltaY * speed}px)`,
+      transition: 'transform 0.3s ease-out',
+    };
+  };
+
   return (
     <section
-      className="min-h-screen flex items-center py-20 relative overflow-hidden hero-section"
+      ref={heroRef}
+      className="min-h-screen flex flex-col items-center justify-center py-20 text-center relative overflow-hidden"
       aria-labelledby="hero-heading"
     >
-      <div className="absolute inset-0 pointer-events-none gradient-background" />
+      <div className="absolute inset-0 pointer-events-none">
+        <div
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#E11D48]/10 rounded-full blur-3xl"
+          style={calculateTransform(15)}
+        />
+        <div
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#E11D48]/5 rounded-full blur-3xl"
+          style={calculateTransform(-20)}
+        />
+      </div>
 
-      <div className="container mx-auto px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-12 lg:gap-20">
-          <div className="lock-on-container flex-shrink-0">
-            <div className="relative">
-              <svg
-                width="200"
-                height="200"
-                viewBox="0 0 200 200"
-                className="crosshair-svg"
-              >
-                <circle
-                  cx="100"
-                  cy="100"
-                  r="80"
-                  fill="none"
-                  stroke="#FFFFFF"
-                  strokeWidth="2"
-                  opacity="0"
-                  className="crosshair-circle"
-                />
+      <div className="mb-12 relative z-10 animate-float" role="img" aria-label="Precision target icon">
+        <svg
+          ref={targetRef}
+          width="120"
+          height="120"
+          viewBox="0 0 120 120"
+          className="mx-auto"
+          style={calculateTransform(10)}
+        >
+          <circle
+            cx="60"
+            cy="60"
+            r="54"
+            fill="none"
+            stroke="#FFFFFF"
+            strokeWidth="2"
+            opacity="0.3"
+            className="animate-pulse-slow"
+          />
+          <circle cx="60" cy="60" r="3" fill="#FFFFFF" />
+          <line
+            x1="30"
+            y1="60"
+            x2="52"
+            y2="60"
+            stroke="#FFFFFF"
+            strokeWidth="2"
+            className="animate-pulse-slow"
+          />
+          <line
+            x1="68"
+            y1="60"
+            x2="90"
+            y2="60"
+            stroke="#FFFFFF"
+            strokeWidth="2"
+            className="animate-pulse-slow"
+          />
+          <line
+            x1="60"
+            y1="30"
+            x2="60"
+            y2="52"
+            stroke="#FFFFFF"
+            strokeWidth="2"
+            className="animate-pulse-slow"
+          />
+          <line
+            x1="60"
+            y1="68"
+            x2="60"
+            y2="90"
+            stroke="#FFFFFF"
+            strokeWidth="2"
+            className="animate-pulse-slow"
+          />
+          <path
+            d="M 75 60 L 105 45"
+            stroke="#E11D48"
+            strokeWidth="3"
+            strokeLinecap="round"
+            className="animate-glow"
+          />
+        </svg>
+      </div>
 
-                <line
-                  x1="100"
-                  y1="100"
-                  x2="100"
-                  y2="100"
-                  stroke="#FFFFFF"
-                  strokeWidth="3"
-                  className="crosshair-line crosshair-left"
-                />
-                <line
-                  x1="100"
-                  y1="100"
-                  x2="100"
-                  y2="100"
-                  stroke="#FFFFFF"
-                  strokeWidth="3"
-                  className="crosshair-line crosshair-right"
-                />
-                <line
-                  x1="100"
-                  y1="100"
-                  x2="100"
-                  y2="100"
-                  stroke="#FFFFFF"
-                  strokeWidth="3"
-                  className="crosshair-line crosshair-top"
-                />
-                <line
-                  x1="100"
-                  y1="100"
-                  x2="100"
-                  y2="100"
-                  stroke="#FFFFFF"
-                  strokeWidth="3"
-                  className="crosshair-line crosshair-bottom"
-                />
+      <h1
+        id="hero-heading"
+        className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight animate-fade-in-up"
+        style={{ animationDelay: '0.1s' }}
+      >
+        CoreShot: Precision at Your Core
+      </h1>
 
-                <circle cx="100" cy="100" r="5" fill="#FFFFFF" opacity="0" className="crosshair-center" />
+      <p
+        className="text-xl sm:text-2xl text-[#9CA3AF] mb-12 max-w-3xl leading-relaxed animate-fade-in-up"
+        style={{ animationDelay: '0.2s' }}
+      >
+        Premium accessories. Smart software.
+      </p>
 
-                <path
-                  d="M 250 100 Q 150 80, 100 100"
-                  stroke="#E11D48"
-                  strokeWidth="4"
-                  fill="none"
-                  strokeLinecap="round"
-                  className="trajectory-line"
-                />
-
-                <circle
-                  cx="100"
-                  cy="100"
-                  r="15"
-                  fill="#FFFFFF"
-                  opacity="0"
-                  className="impact-flash"
-                />
-              </svg>
-
-              <div className="logo-text">
-                <span className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tighter" style={{ fontFamily: 'Montserrat, sans-serif', fontStretch: 'condensed' }}>
-                  <span className="text-[#E11D48] letter-c">C</span>
-                  <span className="text-white letter-o">o</span>
-                  <span className="text-white letter-r">r</span>
-                  <span className="text-white letter-e">e</span>
-                  <span className="text-[#E11D48] letter-s">S</span>
-                  <span className="text-white letter-h">h</span>
-                  <span className="text-white letter-o2">o</span>
-                  <span className="text-white letter-t">t</span>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex-1 text-left lg:text-left">
-            <h1
-              id="hero-heading"
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight animate-fade-in-up"
-              style={{ animationDelay: '7.5s' }}
-            >
-              Precision at Your Core
-            </h1>
-
-            <p
-              className="text-lg sm:text-xl text-[#9CA3AF] mb-8 leading-relaxed animate-fade-in-up"
-              style={{ animationDelay: '7.7s' }}
-            >
-              Premium accessories. Smart software.
-            </p>
-
-            <div
-              className="flex flex-col sm:flex-row gap-4 animate-fade-in-up"
-              style={{ animationDelay: '7.9s' }}
-            >
-              <a
-                href="#products"
-                className="group px-10 py-4 bg-[#E11D48] text-white rounded-sm font-semibold hover:bg-[#BE123C] transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-[#E11D48]/50 transform hover:-translate-y-1 relative overflow-hidden text-center"
-              >
-                <span className="relative z-10">Explore Products</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
-              </a>
-              <a
-                href="#contact"
-                className="px-10 py-4 bg-transparent text-white rounded-sm font-semibold hover:bg-white/10 transition-all duration-300 border-2 border-white/30 hover:border-[#E11D48]/50 transform hover:-translate-y-1 text-center"
-              >
-                Book a Demo
-              </a>
-            </div>
-          </div>
-        </div>
+      <div
+        className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up"
+        style={{ animationDelay: '0.3s' }}
+      >
+        <a
+          href="#products"
+          className="group px-10 py-4 bg-[#E11D48] text-white rounded-sm font-semibold hover:bg-[#BE123C] transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-[#E11D48]/50 transform hover:-translate-y-1 relative overflow-hidden"
+        >
+          <span className="relative z-10">Explore Products</span>
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
+        </a>
+        <a
+          href="#contact"
+          className="px-10 py-4 bg-transparent text-white rounded-sm font-semibold hover:bg-white/10 transition-all duration-300 border-2 border-white/30 hover:border-[#E11D48]/50 transform hover:-translate-y-1"
+        >
+          Book a Demo
+        </a>
       </div>
 
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
