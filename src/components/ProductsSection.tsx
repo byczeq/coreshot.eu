@@ -1,166 +1,102 @@
 export default function ProductsSection() {
   return (
-    <section id="products" className="py-24 relative" aria-labelledby="products-heading">
-      <div className="max-w-7xl mx-auto">
-        <h2 id="products-heading" className="text-4xl sm:text-5xl font-bold text-white mb-16 text-center animate-fade-in-up">
-          Products & Solutions
-        </h2>
+    <section id="products" className="py-24 relative bg-[#F9FAFB]" aria-labelledby="products-heading">
+      <div className="max-w-7xl mx-auto px-8">
+        <div className="border-l-[8px] border-[#111827] pl-6 mb-16">
+          <h2 id="products-heading" className="text-5xl sm:text-6xl font-black text-[#111827] uppercase tracking-tight" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+            PRODUCTS &<br />SOLUTIONS
+          </h2>
+        </div>
 
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
-          <article
-            className="group bg-white/5 backdrop-blur-sm rounded-sm border border-white/10 overflow-hidden hover:border-[#E11D48]/50 transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#E11D48]/20"
-          >
-            <div className="aspect-video bg-gradient-to-br from-[#E11D48]/20 to-[#E11D48]/5 flex items-center justify-center relative overflow-hidden" role="img" aria-label="Shooting accessories product showcase">
-              <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/6069057/pexels-photo-6069057.jpeg?auto=compress&cs=tinysrgb&w=800')] bg-cover bg-center opacity-30" role="presentation" />
+        <div className="grid md:grid-cols-2 gap-8">
+          <article className="group border-[6px] border-[#111827] bg-[#F9FAFB] overflow-hidden hover:bg-[#111827] transition-colors duration-300">
+            <div className="aspect-video bg-[#111827] border-b-[6px] border-[#111827] flex items-center justify-center relative overflow-hidden" role="img" aria-label="Shooting accessories product showcase">
               <svg
-                className="w-32 h-32 text-white/80 relative z-10"
+                className="w-32 h-32 text-[#F9FAFB] relative z-10"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                strokeWidth={2}
               >
                 <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
+                  strokeLinecap="square"
+                  strokeLinejoin="miter"
                   d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
                 />
               </svg>
             </div>
 
             <div className="p-8">
-              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#E11D48] transition-colors duration-300">
-                Gear That Hits the Mark
+              <h3 className="text-3xl font-black text-[#111827] mb-6 uppercase tracking-tight group-hover:text-[#F9FAFB] transition-colors duration-300">
+                GEAR THAT<br />HITS THE MARK
               </h3>
 
-              <ul className="space-y-3 mb-6 text-[#9CA3AF]">
+              <ul className="space-y-4 mb-8 text-[#4B5563] group-hover:text-[#F9FAFB] transition-colors duration-300">
                 <li className="flex items-start">
-                  <svg
-                    className="w-5 h-5 text-[#E11D48] mr-3 mt-0.5 flex-shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>Premium materials engineered for durability and precision</span>
+                  <div className="w-2 h-2 bg-[#DC2626] mt-2 mr-4 flex-shrink-0"></div>
+                  <span className="font-bold uppercase text-sm tracking-wide">Premium materials engineered for durability and precision</span>
                 </li>
                 <li className="flex items-start">
-                  <svg
-                    className="w-5 h-5 text-[#E11D48] mr-3 mt-0.5 flex-shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>Ergonomic designs tested by competitive shooters</span>
+                  <div className="w-2 h-2 bg-[#DC2626] mt-2 mr-4 flex-shrink-0"></div>
+                  <span className="font-bold uppercase text-sm tracking-wide">Ergonomic designs tested by competitive shooters</span>
                 </li>
                 <li className="flex items-start">
-                  <svg
-                    className="w-5 h-5 text-[#E11D48] mr-3 mt-0.5 flex-shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>Compliant with European shooting sports regulations</span>
+                  <div className="w-2 h-2 bg-[#DC2626] mt-2 mr-4 flex-shrink-0"></div>
+                  <span className="font-bold uppercase text-sm tracking-wide">Compliant with European shooting sports regulations</span>
                 </li>
               </ul>
 
               <a
                 href="#contact"
-                className="inline-block px-8 py-3 bg-[#E11D48] text-white rounded-sm font-semibold hover:bg-[#BE123C] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                className="inline-block border-[4px] border-[#111827] bg-[#DC2626] text-[#111827] px-8 py-4 font-black uppercase text-sm tracking-wide hover:bg-[#F9FAFB] transition-colors duration-200 group-hover:border-[#F9FAFB]"
               >
-                View Range
+                VIEW RANGE
               </a>
             </div>
           </article>
 
-          <article
-            className="group bg-white/5 backdrop-blur-sm rounded-sm border border-white/10 overflow-hidden hover:border-[#E11D48]/50 transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#E11D48]/20"
-          >
-            <div className="aspect-video bg-gradient-to-br from-[#E11D48]/20 to-[#E11D48]/5 flex items-center justify-center relative overflow-hidden" role="img" aria-label="Range management software interface">
-              <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800')] bg-cover bg-center opacity-20" role="presentation" />
+          <article className="group border-[6px] border-[#111827] bg-[#F9FAFB] overflow-hidden hover:bg-[#111827] transition-colors duration-300">
+            <div className="aspect-video bg-[#111827] border-b-[6px] border-[#111827] flex items-center justify-center relative overflow-hidden" role="img" aria-label="Range management software interface">
               <svg
-                className="w-32 h-32 text-white/80 relative z-10"
+                className="w-32 h-32 text-[#F9FAFB] relative z-10"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                strokeWidth={2}
               >
                 <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
+                  strokeLinecap="square"
+                  strokeLinejoin="miter"
                   d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                 />
               </svg>
             </div>
 
             <div className="p-8">
-              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#E11D48] transition-colors duration-300">
-                Manage Your Range Smarter
+              <h3 className="text-3xl font-black text-[#111827] mb-6 uppercase tracking-tight group-hover:text-[#F9FAFB] transition-colors duration-300">
+                MANAGE YOUR<br />RANGE SMARTER
               </h3>
 
-              <ul className="space-y-3 mb-6 text-[#9CA3AF]">
+              <ul className="space-y-4 mb-8 text-[#4B5563] group-hover:text-[#F9FAFB] transition-colors duration-300">
                 <li className="flex items-start">
-                  <svg
-                    className="w-5 h-5 text-[#E11D48] mr-3 mt-0.5 flex-shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>Real-time booking and lane management system</span>
+                  <div className="w-2 h-2 bg-[#DC2626] mt-2 mr-4 flex-shrink-0"></div>
+                  <span className="font-bold uppercase text-sm tracking-wide">Real-time booking and lane management system</span>
                 </li>
                 <li className="flex items-start">
-                  <svg
-                    className="w-5 h-5 text-[#E11D48] mr-3 mt-0.5 flex-shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>Member tracking, scoring, and performance analytics</span>
+                  <div className="w-2 h-2 bg-[#DC2626] mt-2 mr-4 flex-shrink-0"></div>
+                  <span className="font-bold uppercase text-sm tracking-wide">Member tracking, scoring, and performance analytics</span>
                 </li>
                 <li className="flex items-start">
-                  <svg
-                    className="w-5 h-5 text-[#E11D48] mr-3 mt-0.5 flex-shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>Multi-language support and cloud-based accessibility</span>
+                  <div className="w-2 h-2 bg-[#DC2626] mt-2 mr-4 flex-shrink-0"></div>
+                  <span className="font-bold uppercase text-sm tracking-wide">Multi-language support and cloud-based accessibility</span>
                 </li>
               </ul>
 
               <a
                 href="#contact"
-                className="inline-block px-8 py-3 bg-[#E11D48] text-white rounded-sm font-semibold hover:bg-[#BE123C] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                className="inline-block border-[4px] border-[#111827] bg-[#DC2626] text-[#111827] px-8 py-4 font-black uppercase text-sm tracking-wide hover:bg-[#F9FAFB] transition-colors duration-200 group-hover:border-[#F9FAFB]"
               >
-                See Demo
+                SEE DEMO
               </a>
             </div>
           </article>

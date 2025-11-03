@@ -20,60 +20,59 @@ export default function StickyHeader() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#1C2526]/95 backdrop-blur-md border-b border-white/10 shadow-lg'
-          : 'bg-transparent'
+          ? 'bg-[#F9FAFB] border-b-[6px] border-[#111827]'
+          : 'bg-[#F9FAFB]'
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <a
             href="/"
-            className="text-2xl font-bold text-white hover:text-[#E11D48] transition-colors duration-300"
+            className="text-2xl font-black text-[#111827] hover:text-[#DC2626] transition-colors duration-200 uppercase tracking-wider"
+            style={{ fontFamily: 'JetBrains Mono, monospace' }}
           >
-            <span className="font-extrabold">C</span>ore<span className="font-extrabold">S</span>hot
+            <span className="text-[#111827]">CORE</span>
+            <span className="text-[#DC2626]">S</span>
+            <span className="text-[#111827]">HOT</span>
           </a>
 
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6">
             <a
               href="#products"
-              className="text-white hover:text-[#E11D48] transition-colors duration-300 font-medium relative group"
+              className="text-[#111827] hover:text-[#DC2626] transition-colors duration-200 font-black uppercase tracking-wide text-sm border-b-[4px] border-transparent hover:border-[#DC2626]"
             >
               Products
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#E11D48] group-hover:w-full transition-all duration-300" />
             </a>
             <a
               href="#solutions"
-              className="text-white hover:text-[#E11D48] transition-colors duration-300 font-medium relative group"
+              className="text-[#111827] hover:text-[#DC2626] transition-colors duration-200 font-black uppercase tracking-wide text-sm border-b-[4px] border-transparent hover:border-[#DC2626]"
             >
               Solutions
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#E11D48] group-hover:w-full transition-all duration-300" />
             </a>
             <a
               href="#about"
-              className="text-white hover:text-[#E11D48] transition-colors duration-300 font-medium relative group"
+              className="text-[#111827] hover:text-[#DC2626] transition-colors duration-200 font-black uppercase tracking-wide text-sm border-b-[4px] border-transparent hover:border-[#DC2626]"
             >
               About
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#E11D48] group-hover:w-full transition-all duration-300" />
             </a>
             <a
               href="#contact"
-              className="text-white hover:text-[#E11D48] transition-colors duration-300 font-medium relative group"
+              className="text-[#111827] hover:text-[#DC2626] transition-colors duration-200 font-black uppercase tracking-wide text-sm border-b-[4px] border-transparent hover:border-[#DC2626]"
             >
               Contact
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#E11D48] group-hover:w-full transition-all duration-300" />
             </a>
           </nav>
 
           <div className="flex items-center space-x-4">
-            <div className="hidden md:flex items-center space-x-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-sm p-1">
+            <div className="hidden md:flex items-center space-x-2 border-[4px] border-[#111827]">
               {languages.map((lang) => (
                 <button
                   key={lang}
                   onClick={() => setCurrentLang(lang)}
-                  className={`px-3 py-1 text-sm font-medium transition-all duration-300 rounded-sm ${
+                  className={`px-4 py-2 text-sm font-black transition-all duration-200 uppercase ${
                     currentLang === lang
-                      ? 'bg-[#E11D48] text-white'
-                      : 'text-white/70 hover:text-white hover:bg-white/10'
+                      ? 'bg-[#111827] text-[#F9FAFB]'
+                      : 'text-[#111827] hover:bg-[#4B5563] hover:text-[#F9FAFB]'
                   }`}
                 >
                   {lang}
@@ -83,7 +82,7 @@ export default function StickyHeader() {
 
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-white p-2 hover:bg-white/10 rounded-sm transition-colors duration-300"
+              className="md:hidden text-[#111827] p-2 border-[4px] border-[#111827] hover:bg-[#111827] hover:text-[#F9FAFB] transition-colors duration-200"
               aria-label="Toggle menu"
             >
               <svg
@@ -91,19 +90,18 @@ export default function StickyHeader() {
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                strokeWidth={3}
               >
                 {isMobileMenuOpen ? (
                   <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
+                    strokeLinecap="square"
+                    strokeLinejoin="miter"
                     d="M6 18L18 6M6 6l12 12"
                   />
                 ) : (
                   <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
+                    strokeLinecap="square"
+                    strokeLinejoin="miter"
                     d="M4 6h16M4 12h16M4 18h16"
                   />
                 )}
@@ -117,31 +115,31 @@ export default function StickyHeader() {
             isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
-          <nav className="py-4 space-y-4 border-t border-white/10">
+          <nav className="py-4 space-y-4 border-t-[4px] border-[#111827]">
             <a
               href="#products"
-              className="block text-white hover:text-[#E11D48] transition-colors duration-300 font-medium py-2"
+              className="block text-[#111827] hover:text-[#DC2626] transition-colors duration-200 font-black uppercase py-2"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Products
             </a>
             <a
               href="#solutions"
-              className="block text-white hover:text-[#E11D48] transition-colors duration-300 font-medium py-2"
+              className="block text-[#111827] hover:text-[#DC2626] transition-colors duration-200 font-black uppercase py-2"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Solutions
             </a>
             <a
               href="#about"
-              className="block text-white hover:text-[#E11D48] transition-colors duration-300 font-medium py-2"
+              className="block text-[#111827] hover:text-[#DC2626] transition-colors duration-200 font-black uppercase py-2"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               About
             </a>
             <a
               href="#contact"
-              className="block text-white hover:text-[#E11D48] transition-colors duration-300 font-medium py-2"
+              className="block text-[#111827] hover:text-[#DC2626] transition-colors duration-200 font-black uppercase py-2"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Contact
@@ -154,10 +152,10 @@ export default function StickyHeader() {
                     setCurrentLang(lang);
                     setIsMobileMenuOpen(false);
                   }}
-                  className={`px-4 py-2 text-sm font-medium transition-all duration-300 rounded-sm ${
+                  className={`px-4 py-2 text-sm font-black transition-all duration-200 uppercase border-[4px] border-[#111827] ${
                     currentLang === lang
-                      ? 'bg-[#E11D48] text-white'
-                      : 'text-white/70 hover:text-white bg-white/5 hover:bg-white/10'
+                      ? 'bg-[#111827] text-[#F9FAFB]'
+                      : 'text-[#111827] hover:bg-[#111827] hover:text-[#F9FAFB]'
                   }`}
                 >
                   {lang}

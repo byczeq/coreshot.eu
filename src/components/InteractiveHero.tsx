@@ -1,173 +1,140 @@
-import { useEffect, useRef, useState } from 'react';
-
 export default function InteractiveHero() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const heroRef = useRef<HTMLDivElement>(null);
-  const targetRef = useRef<SVGSVGElement>(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (heroRef.current) {
-        const rect = heroRef.current.getBoundingClientRect();
-        setMousePosition({
-          x: e.clientX - rect.left,
-          y: e.clientY - rect.top,
-        });
-      }
-    };
-
-    const heroElement = heroRef.current;
-    if (heroElement) {
-      heroElement.addEventListener('mousemove', handleMouseMove);
-      return () => heroElement.removeEventListener('mousemove', handleMouseMove);
-    }
-  }, []);
-
-  const calculateTransform = (speed: number) => {
-    if (!heroRef.current) return {};
-    const rect = heroRef.current.getBoundingClientRect();
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const deltaX = (mousePosition.x - centerX) / centerX;
-    const deltaY = (mousePosition.y - centerY) / centerY;
-
-    return {
-      transform: `translate(${deltaX * speed}px, ${deltaY * speed}px)`,
-      transition: 'transform 0.3s ease-out',
-    };
-  };
-
   return (
     <section
-      ref={heroRef}
-      className="min-h-screen flex flex-col items-center justify-center py-20 text-center relative overflow-hidden"
+      className="min-h-screen flex items-center py-20 relative overflow-hidden bg-[#F9FAFB]"
       aria-labelledby="hero-heading"
+      style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.02' /%3E%3C/svg%3E")`
+      }}
     >
-      <div className="absolute inset-0 pointer-events-none">
-        <div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#E11D48]/10 rounded-full blur-3xl"
-          style={calculateTransform(15)}
-        />
-        <div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#E11D48]/5 rounded-full blur-3xl"
-          style={calculateTransform(-20)}
-        />
+      <div className="container mx-auto px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <div className="flex justify-start pt-12">
+            <div className="relative">
+              <div className="w-64 h-64 border-[8px] border-[#111827] bg-[#F9FAFB] relative">
+                <svg
+                  width="100%"
+                  height="100%"
+                  viewBox="0 0 200 200"
+                  className="absolute inset-0"
+                >
+                  <circle
+                    cx="100"
+                    cy="100"
+                    r="70"
+                    fill="none"
+                    stroke="#111827"
+                    strokeWidth="3"
+                  />
+                  <line
+                    x1="30"
+                    y1="100"
+                    x2="80"
+                    y2="100"
+                    stroke="#111827"
+                    strokeWidth="4"
+                  />
+                  <line
+                    x1="120"
+                    y1="100"
+                    x2="170"
+                    y2="100"
+                    stroke="#111827"
+                    strokeWidth="4"
+                  />
+                  <line
+                    x1="100"
+                    y1="30"
+                    x2="100"
+                    y2="80"
+                    stroke="#111827"
+                    strokeWidth="4"
+                  />
+                  <line
+                    x1="100"
+                    y1="120"
+                    x2="100"
+                    y2="170"
+                    stroke="#111827"
+                    strokeWidth="4"
+                  />
+                  <circle cx="100" cy="100" r="6" fill="#111827" />
+
+                  <path
+                    d="M 100 100 L 160 60"
+                    stroke="#DC2626"
+                    strokeWidth="5"
+                    strokeLinecap="square"
+                  />
+                </svg>
+              </div>
+
+              <div className="mt-8 border-[6px] border-[#111827] bg-[#F9FAFB] px-6 py-4 inline-block">
+                <h2 className="text-4xl font-black tracking-[0.2em] uppercase" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+                  <span className="text-[#111827]">CORE</span>
+                  <span className="text-[#DC2626]">S</span>
+                  <span className="text-[#111827]">HOT</span>
+                  <span className="text-[#4B5563] text-2xl align-super">™</span>
+                </h2>
+              </div>
+            </div>
+          </div>
+
+          <div className="lg:mt-32 space-y-8">
+            <div className="border-l-[8px] border-[#111827] pl-6">
+              <h1
+                id="hero-heading"
+                className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight text-[#111827] leading-none uppercase mb-6"
+                style={{ fontFamily: 'JetBrains Mono, monospace' }}
+              >
+                PRECISION<br />
+                IN EVERY<br />
+                SHOT
+              </h1>
+
+              <div className="w-24 h-1 bg-[#DC2626] mb-6"></div>
+
+              <p className="text-xl text-[#4B5563] font-bold leading-relaxed uppercase tracking-wide">
+                Premium accessories.<br />
+                Smart software.<br />
+                Pure performance.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 pt-8">
+              <a
+                href="#products"
+                className="border-[6px] border-[#111827] bg-[#DC2626] text-[#111827] px-10 py-5 font-black text-lg uppercase tracking-wide hover:bg-[#111827] hover:text-[#F9FAFB] transition-colors duration-200"
+              >
+                EXPLORE PRODUCTS
+              </a>
+              <a
+                href="#contact"
+                className="border-[6px] border-[#111827] bg-[#F9FAFB] text-[#111827] px-10 py-5 font-black text-lg uppercase tracking-wide hover:bg-[#111827] hover:text-[#F9FAFB] transition-colors duration-200"
+              >
+                BOOK A DEMO
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="mb-12 relative z-10 animate-float" role="img" aria-label="Precision target icon">
-        <svg
-          ref={targetRef}
-          width="120"
-          height="120"
-          viewBox="0 0 120 120"
-          className="mx-auto"
-          style={calculateTransform(10)}
-        >
-          <circle
-            cx="60"
-            cy="60"
-            r="54"
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+        <div className="w-12 h-12 border-[4px] border-[#111827] flex items-center justify-center">
+          <svg
+            className="w-6 h-6 text-[#111827]"
             fill="none"
-            stroke="#FFFFFF"
-            strokeWidth="2"
-            opacity="0.3"
-            className="animate-pulse-slow"
-          />
-          <circle cx="60" cy="60" r="3" fill="#FFFFFF" />
-          <line
-            x1="30"
-            y1="60"
-            x2="52"
-            y2="60"
-            stroke="#FFFFFF"
-            strokeWidth="2"
-            className="animate-pulse-slow"
-          />
-          <line
-            x1="68"
-            y1="60"
-            x2="90"
-            y2="60"
-            stroke="#FFFFFF"
-            strokeWidth="2"
-            className="animate-pulse-slow"
-          />
-          <line
-            x1="60"
-            y1="30"
-            x2="60"
-            y2="52"
-            stroke="#FFFFFF"
-            strokeWidth="2"
-            className="animate-pulse-slow"
-          />
-          <line
-            x1="60"
-            y1="68"
-            x2="60"
-            y2="90"
-            stroke="#FFFFFF"
-            strokeWidth="2"
-            className="animate-pulse-slow"
-          />
-          <path
-            d="M 75 60 L 105 45"
-            stroke="#E11D48"
-            strokeWidth="3"
-            strokeLinecap="round"
-            className="animate-glow"
-          />
-        </svg>
-      </div>
-
-      <h1
-        id="hero-heading"
-        className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight animate-fade-in-up"
-        style={{ animationDelay: '0.1s' }}
-      >
-        CoreShot: Precision at Your Core
-      </h1>
-
-      <p
-        className="text-xl sm:text-2xl text-[#9CA3AF] mb-12 max-w-3xl leading-relaxed animate-fade-in-up"
-        style={{ animationDelay: '0.2s' }}
-      >
-        Premium accessories. Smart software.
-      </p>
-
-      <div
-        className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up"
-        style={{ animationDelay: '0.3s' }}
-      >
-        <a
-          href="#products"
-          className="group px-10 py-4 bg-[#E11D48] text-white rounded-sm font-semibold hover:bg-[#BE123C] transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-[#E11D48]/50 transform hover:-translate-y-1 relative overflow-hidden"
-        >
-          <span className="relative z-10">Explore Products</span>
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
-        </a>
-        <a
-          href="#contact"
-          className="px-10 py-4 bg-transparent text-white rounded-sm font-semibold hover:bg-white/10 transition-all duration-300 border-2 border-white/30 hover:border-[#E11D48]/50 transform hover:-translate-y-1"
-        >
-          Book a Demo
-        </a>
-      </div>
-
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <svg
-          className="w-6 h-6 text-white/50"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 14l-7 7m0 0l-7-7m7 7V3"
-          />
-        </svg>
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            strokeWidth={3}
+          >
+            <path
+              strokeLinecap="square"
+              strokeLinejoin="miter"
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            />
+          </svg>
+        </div>
       </div>
     </section>
   );
