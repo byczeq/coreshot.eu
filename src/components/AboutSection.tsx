@@ -1,8 +1,8 @@
 export default function AboutSection() {
   return (
-    <section id="about" className="py-24 relative">
+    <section id="about" className="py-24 relative" aria-labelledby="about-heading">
       <div className="max-w-4xl mx-auto text-center">
-        <div className="mb-8 flex justify-center animate-fade-in-up">
+        <div className="mb-8 flex justify-center animate-fade-in-up" role="img" aria-label="Precision target icon">
           <div className="w-24 h-24 bg-white/5 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/10">
             <svg width="48" height="48" viewBox="0 0 120 120" className="mx-auto">
               <circle
@@ -24,6 +24,7 @@ export default function AboutSection() {
         </div>
 
         <h2
+          id="about-heading"
           className="text-4xl sm:text-5xl font-bold text-white mb-8 animate-fade-in-up"
           style={{ animationDelay: '0.1s' }}
         >

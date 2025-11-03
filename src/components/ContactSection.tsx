@@ -20,9 +20,9 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 relative">
+    <section id="contact" className="py-24 relative" aria-labelledby="contact-heading">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 text-center animate-fade-in-up">
+        <h2 id="contact-heading" className="text-4xl sm:text-5xl font-bold text-white mb-4 text-center animate-fade-in-up">
           Ready to Elevate Your Range?
         </h2>
         <p className="text-xl text-[#9CA3AF] mb-12 text-center animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
@@ -35,7 +35,7 @@ export default function ContactSection() {
             style={{ animationDelay: '0.2s' }}
           >
             <h3 className="text-2xl font-bold text-white mb-6">Send a Message</h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6" aria-label="Contact form">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-[#9CA3AF] mb-2">
                   Name
@@ -115,7 +115,7 @@ export default function ContactSection() {
               offers delivered straight to your inbox.
             </p>
 
-            <form onSubmit={handleNewsletterSubmit} className="space-y-4">
+            <form onSubmit={handleNewsletterSubmit} className="space-y-4" aria-label="Newsletter signup form">
               <div>
                 <label htmlFor="newsletterEmail" className="block text-sm font-medium text-[#9CA3AF] mb-2">
                   Email Address

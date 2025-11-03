@@ -40,13 +40,13 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-24 relative overflow-hidden" aria-labelledby="testimonials-heading">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#E11D48]/5 rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-5xl mx-auto relative z-10">
-        <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 text-center animate-fade-in-up">
+        <h2 id="testimonials-heading" className="text-4xl sm:text-5xl font-bold text-white mb-4 text-center animate-fade-in-up">
           Trusted Across Europe
         </h2>
         <p className="text-xl text-[#9CA3AF] mb-16 text-center animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
@@ -54,7 +54,7 @@ export default function Testimonials() {
         </p>
 
         <div className="relative">
-          <div className="bg-white/5 backdrop-blur-sm rounded-sm border border-white/10 p-8 md:p-12">
+          <div className="bg-white/5 backdrop-blur-sm rounded-sm border border-white/10 p-8 md:p-12" role="region" aria-live="polite" aria-atomic="true">
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}

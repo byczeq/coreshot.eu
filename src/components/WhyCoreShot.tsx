@@ -92,9 +92,9 @@ export default function WhyCoreShot() {
   }, []);
 
   return (
-    <section id="solutions" className="py-24 bg-white/[0.02]" ref={sectionRef}>
+    <section id="solutions" className="py-24 bg-white/[0.02]" ref={sectionRef} aria-labelledby="solutions-heading">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 text-center animate-fade-in-up">
+        <h2 id="solutions-heading" className="text-4xl sm:text-5xl font-bold text-white mb-4 text-center animate-fade-in-up">
           Why CoreShot?
         </h2>
         <p className="text-xl text-[#9CA3AF] mb-16 text-center max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.1s' }}>

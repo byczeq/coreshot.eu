@@ -41,6 +41,7 @@ export default function InteractiveHero() {
     <section
       ref={heroRef}
       className="min-h-screen flex flex-col items-center justify-center py-20 text-center relative overflow-hidden"
+      aria-labelledby="hero-heading"
     >
       <div className="absolute inset-0 pointer-events-none">
         <div
@@ -53,7 +54,7 @@ export default function InteractiveHero() {
         />
       </div>
 
-      <div className="mb-12 relative z-10 animate-float">
+      <div className="mb-12 relative z-10 animate-float" role="img" aria-label="Precision target icon">
         <svg
           ref={targetRef}
           width="120"
@@ -120,6 +121,7 @@ export default function InteractiveHero() {
       </div>
 
       <h1
+        id="hero-heading"
         className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight animate-fade-in-up"
         style={{ animationDelay: '0.1s' }}
       >
