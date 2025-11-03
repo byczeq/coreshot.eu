@@ -114,7 +114,7 @@
 }
 
 .crosshair-circle {
-  animation: crosshair-appear 1.5s ease-out forwards, crosshair-breathe 4s ease-in-out 6s infinite;
+  animation: crosshair-appear 2s ease-out forwards, crosshair-breathe 4s ease-in-out 7s infinite;
 }
 
 @keyframes crosshair-appear {
@@ -137,23 +137,8 @@
   }
 }
 
-.crosshair-line {
-  animation: line-grow 1.5s ease-out forwards, line-breathe 4s ease-in-out 6s infinite;
-}
-
-@keyframes line-grow {
-  0% {
-    stroke-dasharray: 0, 100;
-    opacity: 0;
-  }
-  100% {
-    stroke-dasharray: 60, 0;
-    opacity: 1;
-  }
-}
-
 .crosshair-left {
-  animation: line-grow-left 1.5s ease-out forwards, line-lock-left 1.5s ease-in-out 1.5s forwards, line-breathe-left 4s ease-in-out 6s infinite;
+  animation: line-grow-left 2s ease-out forwards, line-lock-left 2s ease-in-out 2s forwards, line-breathe-left 4s ease-in-out 7s infinite;
 }
 
 @keyframes line-grow-left {
@@ -192,7 +177,7 @@
 }
 
 .crosshair-right {
-  animation: line-grow-right 1.5s ease-out forwards, line-lock-right 1.5s ease-in-out 1.5s forwards, line-breathe-right 4s ease-in-out 6s infinite;
+  animation: line-grow-right 2s ease-out forwards, line-lock-right 2s ease-in-out 2s forwards, line-breathe-right 4s ease-in-out 7s infinite;
 }
 
 @keyframes line-grow-right {
@@ -231,7 +216,7 @@
 }
 
 .crosshair-top {
-  animation: line-grow-top 1.5s ease-out forwards, line-lock-top 1.5s ease-in-out 1.5s forwards, line-breathe-top 4s ease-in-out 6s infinite;
+  animation: line-grow-top 2s ease-out forwards, line-lock-top 2s ease-in-out 2s forwards, line-breathe-top 4s ease-in-out 7s infinite;
 }
 
 @keyframes line-grow-top {
@@ -270,7 +255,7 @@
 }
 
 .crosshair-bottom {
-  animation: line-grow-bottom 1.5s ease-out forwards, line-lock-bottom 1.5s ease-in-out 1.5s forwards, line-breathe-bottom 4s ease-in-out 6s infinite;
+  animation: line-grow-bottom 2s ease-out forwards, line-lock-bottom 2s ease-in-out 2s forwards, line-breathe-bottom 4s ease-in-out 7s infinite;
 }
 
 @keyframes line-grow-bottom {
@@ -322,14 +307,14 @@
 }
 
 .trajectory-line {
-  stroke-dasharray: 150;
-  stroke-dashoffset: 150;
-  animation: trajectory-shoot 0.8s ease-out 3s forwards, trajectory-loop 1s ease-out 8s infinite;
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: trajectory-shoot 0.8s ease-out 4s forwards, trajectory-loop 1s ease-out 10s infinite;
 }
 
 @keyframes trajectory-shoot {
   0% {
-    stroke-dashoffset: 150;
+    stroke-dashoffset: 200;
     opacity: 0;
   }
   50% {
@@ -343,10 +328,13 @@
 
 @keyframes trajectory-loop {
   0% {
-    stroke-dashoffset: 150;
+    stroke-dashoffset: 200;
     opacity: 0;
   }
-  50% {
+  40% {
+    opacity: 1;
+  }
+  60% {
     stroke-dashoffset: 0;
     opacity: 1;
   }
@@ -357,7 +345,7 @@
 }
 
 .impact-flash {
-  animation: flash-impact 0.4s ease-out 3.8s forwards;
+  animation: flash-impact 0.4s ease-out 4.8s forwards;
 }
 
 @keyframes flash-impact {
@@ -389,35 +377,35 @@
 }
 
 .letter-c {
-  animation: letter-appear 0.15s ease-out 3.8s forwards;
+  animation: letter-appear 0.2s ease-out 4.8s forwards;
 }
 
 .letter-o {
-  animation: letter-appear 0.15s ease-out 3.95s forwards;
+  animation: letter-appear 0.2s ease-out 5s forwards;
 }
 
 .letter-r {
-  animation: letter-appear 0.15s ease-out 4.1s forwards;
+  animation: letter-appear 0.2s ease-out 5.2s forwards;
 }
 
 .letter-e {
-  animation: letter-appear 0.15s ease-out 4.25s forwards;
+  animation: letter-appear 0.2s ease-out 5.4s forwards;
 }
 
 .letter-s {
-  animation: letter-appear 0.15s ease-out 4.4s forwards;
+  animation: letter-appear 0.2s ease-out 5.6s forwards;
 }
 
 .letter-h {
-  animation: letter-appear 0.15s ease-out 4.55s forwards;
+  animation: letter-appear 0.2s ease-out 5.8s forwards;
 }
 
 .letter-o2 {
-  animation: letter-appear 0.15s ease-out 4.7s forwards;
+  animation: letter-appear 0.2s ease-out 6s forwards;
 }
 
 .letter-t {
-  animation: letter-appear 0.15s ease-out 4.85s forwards;
+  animation: letter-appear 0.2s ease-out 6.2s forwards;
 }
 
 @keyframes letter-appear {
@@ -432,7 +420,7 @@
 }
 
 .lock-on-container {
-  animation: logo-pulse 2s ease-in-out 5s forwards, logo-micro-pulse 2s ease-in-out 12s infinite;
+  animation: logo-pulse 1s ease-in-out 6.5s forwards, logo-micro-pulse 2s ease-in-out 14s infinite;
 }
 
 @keyframes logo-pulse {
