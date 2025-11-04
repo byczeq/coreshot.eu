@@ -40,7 +40,7 @@ export default function StickyHeader({ locale = 'en' }: StickyHeaderProps) {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? 'bg-[#1C2526]/95 backdrop-blur-md shadow-lg'
-          : 'bg-[#1C2526]/80 backdrop-blur-sm'
+          : 'bg-transparent'
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,25 +55,25 @@ export default function StickyHeader({ locale = 'en' }: StickyHeaderProps) {
           <nav className="hidden md:flex items-center space-x-8">
             <a
               href="#products"
-              className="text-white hover:text-[#E11D48] transition-colors duration-300 font-medium"
+              className="text-white font-medium px-4 py-2 border-2 border-transparent hover:border-[#E11D48] hover:bg-[#E11D48] hover:text-white hover:shadow-[4px_4px_0px_0px_rgba(225,29,72,0.8)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200"
             >
               {t('nav.products')}
             </a>
             <a
               href="#solutions"
-              className="text-white hover:text-[#E11D48] transition-colors duration-300 font-medium"
+              className="text-white font-medium px-4 py-2 border-2 border-transparent hover:border-[#E11D48] hover:bg-[#E11D48] hover:text-white hover:shadow-[4px_4px_0px_0px_rgba(225,29,72,0.8)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200"
             >
               {t('nav.solutions')}
             </a>
             <a
               href="#about"
-              className="text-white hover:text-[#E11D48] transition-colors duration-300 font-medium"
+              className="text-white font-medium px-4 py-2 border-2 border-transparent hover:border-[#E11D48] hover:bg-[#E11D48] hover:text-white hover:shadow-[4px_4px_0px_0px_rgba(225,29,72,0.8)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200"
             >
               {t('nav.about')}
             </a>
             <a
               href="#contact"
-              className="text-white hover:text-[#E11D48] transition-colors duration-300 font-medium"
+              className="text-white font-medium px-4 py-2 border-2 border-transparent hover:border-[#E11D48] hover:bg-[#E11D48] hover:text-white hover:shadow-[4px_4px_0px_0px_rgba(225,29,72,0.8)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200"
             >
               {t('nav.contact')}
             </a>
