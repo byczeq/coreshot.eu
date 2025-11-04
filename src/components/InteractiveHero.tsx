@@ -50,6 +50,13 @@ export default function InteractiveHero({ locale = 'en' }: InteractiveHeroProps)
       className="min-h-screen flex flex-col items-center justify-center py-20 text-center relative overflow-hidden"
       aria-labelledby="hero-heading"
     >
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: 'url(/image copy.png)' }}
+      >
+        <div className="absolute inset-0 bg-[#1C2526]/70" />
+      </div>
+
       <div className="absolute inset-0 pointer-events-none">
         <div
           className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#E11D48]/10 rounded-full blur-3xl"
