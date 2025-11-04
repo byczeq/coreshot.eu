@@ -1,17 +1,14 @@
 export default function InteractiveHero() {
   return (
     <section
-      className="min-h-screen flex items-center py-20 relative overflow-hidden bg-[#F9FAFB]"
+      className="min-h-screen flex items-center py-32 relative overflow-hidden bg-[#F9FAFB]"
       aria-labelledby="hero-heading"
-      style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.02' /%3E%3C/svg%3E")`
-      }}
     >
       <div className="container mx-auto px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          <div className="flex justify-start pt-12">
+        <div className="flex flex-col items-center text-center max-w-5xl mx-auto space-y-12">
+          <div className="flex justify-center">
             <div className="relative">
-              <div className="w-64 h-64 border-[8px] border-[#111827] bg-[#F9FAFB] relative">
+              <div className="w-56 h-56 rounded-[8px] border-[3px] border-[#111827] bg-[#F9FAFB] relative shadow-[8px_8px_0px_0px_rgba(17,24,39,1)]">
                 <svg
                   width="100%"
                   height="100%"
@@ -24,7 +21,7 @@ export default function InteractiveHero() {
                     r="70"
                     fill="none"
                     stroke="#111827"
-                    strokeWidth="3"
+                    strokeWidth="2"
                   />
                   <line
                     x1="30"
@@ -32,7 +29,7 @@ export default function InteractiveHero() {
                     x2="80"
                     y2="100"
                     stroke="#111827"
-                    strokeWidth="4"
+                    strokeWidth="3"
                   />
                   <line
                     x1="120"
@@ -40,7 +37,7 @@ export default function InteractiveHero() {
                     x2="170"
                     y2="100"
                     stroke="#111827"
-                    strokeWidth="4"
+                    strokeWidth="3"
                   />
                   <line
                     x1="100"
@@ -48,7 +45,7 @@ export default function InteractiveHero() {
                     x2="100"
                     y2="80"
                     stroke="#111827"
-                    strokeWidth="4"
+                    strokeWidth="3"
                   />
                   <line
                     x1="100"
@@ -56,81 +53,76 @@ export default function InteractiveHero() {
                     x2="100"
                     y2="170"
                     stroke="#111827"
-                    strokeWidth="4"
+                    strokeWidth="3"
                   />
-                  <circle cx="100" cy="100" r="6" fill="#111827" />
+                  <circle cx="100" cy="100" r="5" fill="#111827" />
 
                   <path
                     d="M 100 100 L 160 60"
                     stroke="#DC2626"
-                    strokeWidth="5"
-                    strokeLinecap="square"
+                    strokeWidth="3"
+                    strokeLinecap="round"
                   />
                 </svg>
               </div>
 
-              <div className="mt-8 border-[6px] border-[#111827] bg-[#F9FAFB] px-6 py-4 inline-block">
-                <h2 className="text-4xl font-black tracking-[0.2em] uppercase" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+              <div className="mt-8 rounded-[6px] border-[3px] border-[#111827] bg-[#F9FAFB] px-8 py-4 inline-block shadow-[6px_6px_0px_0px_rgba(17,24,39,1)]">
+                <h2 className="text-3xl font-black tracking-wide" style={{ fontFamily: 'Montserrat, sans-serif', fontStretch: 'condensed' }}>
                   <span className="text-[#111827]">CORE</span>
                   <span className="text-[#DC2626]">S</span>
                   <span className="text-[#111827]">HOT</span>
-                  <span className="text-[#4B5563] text-2xl align-super">™</span>
+                  <span className="text-[#4B5563] text-xl align-super">™</span>
                 </h2>
               </div>
             </div>
           </div>
 
-          <div className="lg:mt-32 space-y-8">
-            <div className="border-l-[8px] border-[#111827] pl-6">
-              <h1
-                id="hero-heading"
-                className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight text-[#111827] leading-none uppercase mb-6"
-                style={{ fontFamily: 'JetBrains Mono, monospace' }}
-              >
-                PRECISION<br />
-                IN EVERY<br />
-                SHOT
-              </h1>
+          <div className="space-y-8 max-w-3xl">
+            <h1
+              id="hero-heading"
+              className="text-5xl sm:text-6xl lg:text-7xl font-black text-[#111827] leading-tight"
+              style={{ fontFamily: 'Montserrat, sans-serif', fontStretch: 'condensed' }}
+            >
+              Precision at Your Core
+            </h1>
 
-              <div className="w-24 h-1 bg-[#DC2626] mb-6"></div>
+            <div className="w-24 h-1 bg-[#DC2626] mx-auto rounded-full"></div>
 
-              <p className="text-xl text-[#4B5563] font-bold leading-relaxed uppercase tracking-wide">
-                Premium accessories.<br />
-                Smart software.<br />
-                Pure performance.
-              </p>
-            </div>
+            <p className="text-xl text-[#4B5563] font-semibold leading-relaxed">
+              Premium accessories. Smart software.<br />
+              Pure performance.
+            </p>
+          </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-8">
-              <a
-                href="#products"
-                className="border-[6px] border-[#111827] bg-[#DC2626] text-[#111827] px-10 py-5 font-black text-lg uppercase tracking-wide hover:bg-[#111827] hover:text-[#F9FAFB] transition-colors duration-200"
-              >
-                EXPLORE PRODUCTS
-              </a>
-              <a
-                href="#contact"
-                className="border-[6px] border-[#111827] bg-[#F9FAFB] text-[#111827] px-10 py-5 font-black text-lg uppercase tracking-wide hover:bg-[#111827] hover:text-[#F9FAFB] transition-colors duration-200"
-              >
-                BOOK A DEMO
-              </a>
-            </div>
+          <div className="flex flex-col sm:flex-row gap-6 pt-8">
+            <a
+              href="#products"
+              className="rounded-[8px] border-[3px] border-[#111827] bg-[#DC2626] text-[#111827] px-12 py-5 font-black text-base tracking-wide hover:bg-[#111827] hover:text-[#F9FAFB] hover:border-[#DC2626] transition-all duration-300 shadow-[6px_6px_0px_0px_rgba(17,24,39,1)] hover:shadow-[8px_8px_0px_0px_rgba(220,38,38,1)] hover:translate-x-[-2px] hover:translate-y-[-2px]"
+            >
+              Explore Products
+            </a>
+            <a
+              href="#contact"
+              className="rounded-[8px] border-[3px] border-[#111827] bg-[#F9FAFB] text-[#111827] px-12 py-5 font-black text-base tracking-wide hover:bg-[#111827] hover:text-[#F9FAFB] transition-all duration-300 shadow-[6px_6px_0px_0px_rgba(17,24,39,1)] hover:shadow-[8px_8px_0px_0px_rgba(17,24,39,1)] hover:translate-x-[-2px] hover:translate-y-[-2px]"
+            >
+              Book a Demo
+            </a>
           </div>
         </div>
       </div>
 
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
-        <div className="w-12 h-12 border-[4px] border-[#111827] flex items-center justify-center">
+        <div className="w-12 h-12 rounded-[6px] border-[2px] border-[#4B5563] flex items-center justify-center">
           <svg
-            className="w-6 h-6 text-[#111827]"
+            className="w-6 h-6 text-[#4B5563]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
-            strokeWidth={3}
+            strokeWidth={2}
           >
             <path
-              strokeLinecap="square"
-              strokeLinejoin="miter"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M19 14l-7 7m0 0l-7-7m7 7V3"
             />
           </svg>
