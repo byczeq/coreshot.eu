@@ -10,23 +10,28 @@
 @layer base {
   body {
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    cursor: none;
   }
 
   html {
     scroll-behavior: smooth;
   }
 
+  * {
+    cursor: none;
+  }
+
   *:focus-visible {
-    outline: 4px solid #DC2626;
-    outline-offset: 0px;
+    outline: 2px solid var(--red);
+    outline-offset: 2px;
   }
 
   button:focus-visible,
   a:focus-visible,
   input:focus-visible,
   textarea:focus-visible {
-    outline: 4px solid #DC2626;
-    outline-offset: 0px;
+    outline: 2px solid var(--red);
+    outline-offset: 2px;
   }
 }
 
