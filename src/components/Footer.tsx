@@ -1,4 +1,8 @@
-export default function Footer() {
+interface FooterProps {
+  t?: (key: string) => string;
+}
+
+export default function Footer({ t = (key) => key }: FooterProps) {
   return (
     <footer className="border-t border-white/10 bg-white/[0.02]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -8,7 +12,7 @@ export default function Footer() {
               <span className="font-extrabold">C</span>ore<span className="font-extrabold">S</span>hot
             </a>
             <p className="text-[#9CA3AF] mb-4 max-w-md">
-              Premium accessories and smart software for precision shooting management across Europe.
+              {t('footer.description')}
             </p>
             <div className="flex space-x-4">
               <a
@@ -60,14 +64,14 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-semibold mb-4">Quick Links</h4>
+            <h4 className="text-white font-semibold mb-4">{t('footer.quickLinks')}</h4>
             <ul className="space-y-2">
               <li>
                 <a
                   href="#products"
                   className="text-[#9CA3AF] hover:text-[#E11D48] transition-colors duration-300"
                 >
-                  Products
+                  {t('footer.products')}
                 </a>
               </li>
               <li>
@@ -75,7 +79,7 @@ export default function Footer() {
                   href="#solutions"
                   className="text-[#9CA3AF] hover:text-[#E11D48] transition-colors duration-300"
                 >
-                  Software
+                  {t('footer.software')}
                 </a>
               </li>
               <li>
@@ -83,21 +87,21 @@ export default function Footer() {
                   href="#about"
                   className="text-[#9CA3AF] hover:text-[#E11D48] transition-colors duration-300"
                 >
-                  About
+                  {t('footer.about')}
                 </a>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-white font-semibold mb-4">Legal</h4>
+            <h4 className="text-white font-semibold mb-4">{t('footer.legal')}</h4>
             <ul className="space-y-2">
               <li>
                 <a
                   href="#privacy"
                   className="text-[#9CA3AF] hover:text-[#E11D48] transition-colors duration-300"
                 >
-                  Privacy Policy
+                  {t('footer.privacy')}
                 </a>
               </li>
               <li>
@@ -105,7 +109,7 @@ export default function Footer() {
                   href="#terms"
                   className="text-[#9CA3AF] hover:text-[#E11D48] transition-colors duration-300"
                 >
-                  Terms of Service
+                  {t('footer.terms')}
                 </a>
               </li>
             </ul>
@@ -115,7 +119,7 @@ export default function Footer() {
         <div className="pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-[#6B7280] text-sm text-center md:text-left">
-              &copy; 2025 CoreShot. All rights reserved.
+              {t('footer.copyright')}
             </p>
             <a
               href="mailto:hello@coreshot.eu"

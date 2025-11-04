@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 
-export default function InteractiveHero() {
+interface InteractiveHeroProps {
+  t?: (key: string) => string;
+}
+
+export default function InteractiveHero({ t = (key) => key }: InteractiveHeroProps) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef<HTMLDivElement>(null);
   const targetRef = useRef<SVGSVGElement>(null);
@@ -125,14 +129,14 @@ export default function InteractiveHero() {
         className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight animate-fade-in-up"
         style={{ animationDelay: '0.1s' }}
       >
-        CoreShot: Precision at Your Core
+        {t('hero.title')}
       </h1>
 
       <p
         className="text-xl sm:text-2xl text-[#9CA3AF] mb-12 max-w-3xl leading-relaxed animate-fade-in-up"
         style={{ animationDelay: '0.2s' }}
       >
-        Premium accessories. Smart software.
+        {t('hero.subtitle')}
       </p>
 
       <div
@@ -143,14 +147,14 @@ export default function InteractiveHero() {
           href="#products"
           className="group px-10 py-4 bg-[#E11D48] text-white rounded-sm font-semibold hover:bg-[#BE123C] transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-[#E11D48]/50 transform hover:-translate-y-1 relative overflow-hidden"
         >
-          <span className="relative z-10">Explore Products</span>
+          <span className="relative z-10">{t('hero.ctaPrimary')}</span>
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
         </a>
         <a
           href="#contact"
           className="px-10 py-4 bg-transparent text-white rounded-sm font-semibold hover:bg-white/10 transition-all duration-300 border-2 border-white/30 hover:border-[#E11D48]/50 transform hover:-translate-y-1"
         >
-          Book a Demo
+          {t('hero.ctaSecondary')}
         </a>
       </div>
 

@@ -1,9 +1,13 @@
-export default function ProductsSection() {
+interface ProductsSectionProps {
+  t?: (key: string) => string;
+}
+
+export default function ProductsSection({ t = (key) => key }: ProductsSectionProps) {
   return (
     <section id="products" className="py-24 relative" aria-labelledby="products-heading">
       <div className="max-w-7xl mx-auto">
         <h2 id="products-heading" className="text-4xl sm:text-5xl font-bold text-white mb-16 text-center animate-fade-in-up">
-          Products & Solutions
+          {t('products.title')}
         </h2>
 
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
@@ -29,7 +33,7 @@ export default function ProductsSection() {
 
             <div className="p-8">
               <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#E11D48] transition-colors duration-300">
-                Gear That Hits the Mark
+                {t('products.gear.title')}
               </h3>
 
               <ul className="space-y-3 mb-6 text-[#9CA3AF]">
@@ -45,7 +49,7 @@ export default function ProductsSection() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <span>Premium materials engineered for durability and precision</span>
+                  <span>{t('products.gear.feature1')}</span>
                 </li>
                 <li className="flex items-start">
                   <svg
@@ -59,7 +63,7 @@ export default function ProductsSection() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <span>Ergonomic designs tested by competitive shooters</span>
+                  <span>{t('products.gear.feature2')}</span>
                 </li>
                 <li className="flex items-start">
                   <svg
@@ -73,7 +77,7 @@ export default function ProductsSection() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <span>Compliant with European shooting sports regulations</span>
+                  <span>{t('products.gear.feature3')}</span>
                 </li>
               </ul>
 
@@ -81,7 +85,7 @@ export default function ProductsSection() {
                 href="#contact"
                 className="inline-block px-8 py-3 bg-[#E11D48] text-white rounded-sm font-semibold hover:bg-[#BE123C] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
-                View Range
+                {t('products.gear.cta')}
               </a>
             </div>
           </article>
@@ -108,7 +112,7 @@ export default function ProductsSection() {
 
             <div className="p-8">
               <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#E11D48] transition-colors duration-300">
-                Manage Your Range Smarter
+                {t('products.software.title')}
               </h3>
 
               <ul className="space-y-3 mb-6 text-[#9CA3AF]">
@@ -124,7 +128,7 @@ export default function ProductsSection() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <span>Real-time booking and lane management system</span>
+                  <span>{t('products.software.feature1')}</span>
                 </li>
                 <li className="flex items-start">
                   <svg
@@ -138,7 +142,7 @@ export default function ProductsSection() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <span>Member tracking, scoring, and performance analytics</span>
+                  <span>{t('products.software.feature2')}</span>
                 </li>
                 <li className="flex items-start">
                   <svg
@@ -152,7 +156,7 @@ export default function ProductsSection() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <span>Multi-language support and cloud-based accessibility</span>
+                  <span>{t('products.software.feature3')}</span>
                 </li>
               </ul>
 
@@ -160,7 +164,7 @@ export default function ProductsSection() {
                 href="#contact"
                 className="inline-block px-8 py-3 bg-[#E11D48] text-white rounded-sm font-semibold hover:bg-[#BE123C] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
-                See Demo
+                {t('products.software.cta')}
               </a>
             </div>
           </article>

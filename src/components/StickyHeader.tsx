@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
 
-export default function StickyHeader() {
+interface StickyHeaderProps {
+  locale?: string;
+  t?: (key: string) => string;
+}
+
+export default function StickyHeader({ locale = 'en', t = (key) => key }: StickyHeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [currentLang, setCurrentLang] = useState('EN');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -14,7 +18,18 @@ export default function StickyHeader() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const languages = ['EN', 'DE', 'PL'];
+  const languages = [
+    { code: 'en', label: 'EN' },
+    { code: 'de', label: 'DE' },
+    { code: 'pl', label: 'PL' }
+  ];
+
+  const handleLanguageChange = (langCode: string) => {
+    const currentPath = window.location.pathname;
+    const pathWithoutLang = currentPath.replace(/^\/(en|de|pl)/, '');
+    const newPath = langCode === 'en' ? pathWithoutLang || '/' : `/${langCode}${pathWithoutLang || '/'}`;
+    window.location.href = newPath;
+  };
 
   return (
     <header
@@ -27,7 +42,7 @@ export default function StickyHeader() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <a
-            href="/"
+            href={locale === 'en' ? '/' : `/${locale}`}
             className="text-2xl font-bold text-white hover:text-[#E11D48] transition-colors duration-300"
           >
             <span className="font-extrabold">C</span>ore<span className="font-extrabold">S</span>hot
@@ -38,28 +53,28 @@ export default function StickyHeader() {
               href="#products"
               className="text-white hover:text-[#E11D48] transition-colors duration-300 font-medium relative group"
             >
-              Products
+              {t('nav.products')}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#E11D48] group-hover:w-full transition-all duration-300" />
             </a>
             <a
               href="#solutions"
               className="text-white hover:text-[#E11D48] transition-colors duration-300 font-medium relative group"
             >
-              Solutions
+              {t('nav.solutions')}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#E11D48] group-hover:w-full transition-all duration-300" />
             </a>
             <a
               href="#about"
               className="text-white hover:text-[#E11D48] transition-colors duration-300 font-medium relative group"
             >
-              About
+              {t('nav.about')}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#E11D48] group-hover:w-full transition-all duration-300" />
             </a>
             <a
               href="#contact"
               className="text-white hover:text-[#E11D48] transition-colors duration-300 font-medium relative group"
             >
-              Contact
+              {t('nav.contact')}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#E11D48] group-hover:w-full transition-all duration-300" />
             </a>
           </nav>
@@ -68,15 +83,15 @@ export default function StickyHeader() {
             <div className="hidden md:flex items-center space-x-2 bg-white/5 backdrop-blur-sm border border-white/10 rounded-sm p-1">
               {languages.map((lang) => (
                 <button
-                  key={lang}
-                  onClick={() => setCurrentLang(lang)}
+                  key={lang.code}
+                  onClick={() => handleLanguageChange(lang.code)}
                   className={`px-3 py-1 text-sm font-medium transition-all duration-300 rounded-sm ${
-                    currentLang === lang
+                    locale === lang.code
                       ? 'bg-[#E11D48] text-white'
                       : 'text-white/70 hover:text-white hover:bg-white/10'
                   }`}
                 >
-                  {lang}
+                  {lang.label}
                 </button>
               ))}
             </div>
@@ -122,44 +137,44 @@ export default function StickyHeader() {
               className="block text-white hover:text-[#E11D48] transition-colors duration-300 font-medium py-2"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Products
+              {t('nav.products')}
             </a>
             <a
               href="#solutions"
               className="block text-white hover:text-[#E11D48] transition-colors duration-300 font-medium py-2"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Solutions
+              {t('nav.solutions')}
             </a>
             <a
               href="#about"
               className="block text-white hover:text-[#E11D48] transition-colors duration-300 font-medium py-2"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              About
+              {t('nav.about')}
             </a>
             <a
               href="#contact"
               className="block text-white hover:text-[#E11D48] transition-colors duration-300 font-medium py-2"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Contact
+              {t('nav.contact')}
             </a>
             <div className="flex items-center space-x-2 pt-4">
               {languages.map((lang) => (
                 <button
-                  key={lang}
+                  key={lang.code}
                   onClick={() => {
-                    setCurrentLang(lang);
+                    handleLanguageChange(lang.code);
                     setIsMobileMenuOpen(false);
                   }}
                   className={`px-4 py-2 text-sm font-medium transition-all duration-300 rounded-sm ${
-                    currentLang === lang
+                    locale === lang.code
                       ? 'bg-[#E11D48] text-white'
                       : 'text-white/70 hover:text-white bg-white/5 hover:bg-white/10'
                   }`}
                 >
-                  {lang}
+                  {lang.label}
                 </button>
               ))}
             </div>
