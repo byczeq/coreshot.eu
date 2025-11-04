@@ -60,18 +60,19 @@ export async function detectLocaleByGeolocation(): Promise<Locale | null> {
 }
 
 export function detectLocaleByBrowser(): Locale {
-  if (typeof window === 'undefined') return 'en';
+  if (typeof window === 'undefined') return 'pl';
 
   const browserLang = navigator.language.toLowerCase();
 
   if (browserLang.startsWith('de')) return 'de';
   if (browserLang.startsWith('pl')) return 'pl';
+  if (browserLang.startsWith('en')) return 'en';
 
-  return 'en';
+  return 'pl';
 }
 
 export function getCurrentLocaleFromUrl(): Locale {
-  if (typeof window === 'undefined') return 'en';
+  if (typeof window === 'undefined') return 'pl';
 
   const pathname = window.location.pathname;
   const match = pathname.match(/^\/(en|de|pl)/);
@@ -80,7 +81,7 @@ export function getCurrentLocaleFromUrl(): Locale {
     return match[1] as Locale;
   }
 
-  return 'en';
+  return 'pl';
 }
 
 export function shouldRedirectToDetectedLocale(): boolean {
