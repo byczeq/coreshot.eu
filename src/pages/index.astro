@@ -9,26 +9,23 @@ import Testimonials from '../components/Testimonials';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 import CustomCursor from '../components/CustomCursor';
-import { useTranslations } from '../i18n/utils';
-
 const locale = 'en';
-const t = useTranslations(locale);
 ---
 
 <Layout title="CoreShot - Precision at Your Core" description="Premium accessories and smart software for shooting ranges across Europe">
-  <StickyHeader client:load locale={locale} t={t} />
+  <StickyHeader client:load locale={locale} />
   <CustomCursor client:load />
   <main class="min-h-screen bg-[#1C2526]">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <InteractiveHero client:load t={t} />
+      <InteractiveHero client:load locale={locale} />
       <AboutSection client:load />
-      <ProductsSection client:load t={t} />
+      <ProductsSection client:load locale={locale} />
     </div>
     <WhyCoreShot client:load />
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <Testimonials client:load />
       <ContactSection client:load />
     </div>
-    <Footer client:load t={t} />
+    <Footer client:load locale={locale} />
   </main>
 </Layout>

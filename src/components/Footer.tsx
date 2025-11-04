@@ -1,8 +1,12 @@
+import { useTranslations } from '../i18n/utils';
+import type { Locale } from '../i18n/translations';
+
 interface FooterProps {
-  t?: (key: string) => string;
+  locale?: string;
 }
 
-export default function Footer({ t = (key) => key }: FooterProps) {
+export default function Footer({ locale = 'en' }: FooterProps) {
+  const t = useTranslations(locale as Locale);
   return (
     <footer className="border-t border-white/10 bg-white/[0.02]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">

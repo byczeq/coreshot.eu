@@ -1,10 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslations } from '../i18n/utils';
+import type { Locale } from '../i18n/translations';
 
 interface InteractiveHeroProps {
-  t?: (key: string) => string;
+  locale?: string;
 }
 
-export default function InteractiveHero({ t = (key) => key }: InteractiveHeroProps) {
+export default function InteractiveHero({ locale = 'en' }: InteractiveHeroProps) {
+  const t = useTranslations(locale as Locale);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef<HTMLDivElement>(null);
   const targetRef = useRef<SVGSVGElement>(null);

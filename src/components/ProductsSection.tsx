@@ -1,8 +1,12 @@
+import { useTranslations } from '../i18n/utils';
+import type { Locale } from '../i18n/translations';
+
 interface ProductsSectionProps {
-  t?: (key: string) => string;
+  locale?: string;
 }
 
-export default function ProductsSection({ t = (key) => key }: ProductsSectionProps) {
+export default function ProductsSection({ locale = 'en' }: ProductsSectionProps) {
+  const t = useTranslations(locale as Locale);
   return (
     <section id="products" className="py-24 relative" aria-labelledby="products-heading">
       <div className="max-w-7xl mx-auto">

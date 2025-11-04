@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
+import { useTranslations } from '../i18n/utils';
+import type { Locale } from '../i18n/translations';
 
 interface StickyHeaderProps {
   locale?: string;
-  t?: (key: string) => string;
 }
 
-export default function StickyHeader({ locale = 'en', t = (key) => key }: StickyHeaderProps) {
+export default function StickyHeader({ locale = 'en' }: StickyHeaderProps) {
+  const t = useTranslations(locale as Locale);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
