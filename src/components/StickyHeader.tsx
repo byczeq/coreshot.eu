@@ -9,7 +9,17 @@ interface StickyHeaderProps {
 
 export default function StickyHeader({ locale = 'en' }: StickyHeaderProps) {
   const t = useTranslations(locale as Locale);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const languages = [
     { code: 'en', label: 'EN' },
@@ -26,53 +36,59 @@ export default function StickyHeader({ locale = 'en' }: StickyHeaderProps) {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#111827] border-b border-[#4B5563]/20">
-      <div className="container mx-auto px-6 lg:px-8">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-[#1C2526]/95 backdrop-blur-md shadow-lg'
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <a
             href={locale === 'en' ? '/' : `/${locale}`}
-            className="text-2xl font-bold text-[#F9FAFB] hover:text-[#DC2626] transition-colors duration-300 tracking-tight"
+            className="text-2xl font-bold text-white hover:text-[#E11D48] transition-colors duration-300"
           >
-            <span className="font-extrabold">C</span>ore<span className="font-extrabold">S</span>hot
+            CoreShot
           </a>
 
           <nav className="hidden md:flex items-center space-x-8">
             <a
               href="#products"
-              className="text-[#F9FAFB] hover:text-[#DC2626] transition-colors duration-300 font-medium text-sm"
+              className="text-white hover:text-[#E11D48] transition-colors duration-300 font-medium"
             >
               {t('nav.products')}
             </a>
             <a
               href="#solutions"
-              className="text-[#F9FAFB] hover:text-[#DC2626] transition-colors duration-300 font-medium text-sm"
+              className="text-white hover:text-[#E11D48] transition-colors duration-300 font-medium"
             >
               {t('nav.solutions')}
             </a>
             <a
               href="#about"
-              className="text-[#F9FAFB] hover:text-[#DC2626] transition-colors duration-300 font-medium text-sm"
+              className="text-white hover:text-[#E11D48] transition-colors duration-300 font-medium"
             >
               {t('nav.about')}
             </a>
             <a
               href="#contact"
-              className="text-[#F9FAFB] hover:text-[#DC2626] transition-colors duration-300 font-medium text-sm"
+              className="text-white hover:text-[#E11D48] transition-colors duration-300 font-medium"
             >
               {t('nav.contact')}
             </a>
           </nav>
 
-          <div className="flex items-center space-x-2">
-            <div className="hidden md:flex items-center space-x-1">
+          <div className="flex items-center space-x-4">
+            <div className="hidden md:flex items-center space-x-2">
               {languages.map((lang) => (
                 <button
                   key={lang.code}
                   onClick={() => handleLanguageChange(lang.code)}
-                  className={`px-3 py-1 text-xs font-semibold transition-all duration-300 rounded-md ${
+                  className={`px-3 py-1 text-sm font-medium transition-all duration-300 rounded-sm ${
                     locale === lang.code
-                      ? 'bg-[#DC2626] text-[#F9FAFB]'
-                      : 'text-[#6B7280] hover:text-[#F9FAFB] hover:bg-[#4B5563]/20'
+                      ? 'bg-[#E11D48] text-white'
+                      : 'text-gray-300 hover:text-white hover:bg-white/10'
                   }`}
                 >
                   {lang.label}
@@ -82,7 +98,7 @@ export default function StickyHeader({ locale = 'en' }: StickyHeaderProps) {
 
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-[#F9FAFB] p-2 hover:bg-[#4B5563]/20 rounded-md transition-colors duration-300"
+              className="md:hidden text-white p-2"
               aria-label="Toggle menu"
             >
               <svg
@@ -90,18 +106,19 @@ export default function StickyHeader({ locale = 'en' }: StickyHeaderProps) {
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
-                strokeWidth={2}
               >
                 {isMobileMenuOpen ? (
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
+                    strokeWidth={2}
                     d="M6 18L18 6M6 6l12 12"
                   />
                 ) : (
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
+                    strokeWidth={2}
                     d="M4 6h16M4 12h16M4 18h16"
                   />
                 )}
@@ -110,60 +127,58 @@ export default function StickyHeader({ locale = 'en' }: StickyHeaderProps) {
           </div>
         </div>
 
-        <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ${
-            isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-          }`}
-        >
-          <nav className="py-4 space-y-4 border-t border-[#4B5563]/20">
-            <a
-              href="#products"
-              className="block text-[#F9FAFB] hover:text-[#DC2626] transition-colors duration-300 font-medium py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {t('nav.products')}
-            </a>
-            <a
-              href="#solutions"
-              className="block text-[#F9FAFB] hover:text-[#DC2626] transition-colors duration-300 font-medium py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {t('nav.solutions')}
-            </a>
-            <a
-              href="#about"
-              className="block text-[#F9FAFB] hover:text-[#DC2626] transition-colors duration-300 font-medium py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {t('nav.about')}
-            </a>
-            <a
-              href="#contact"
-              className="block text-[#F9FAFB] hover:text-[#DC2626] transition-colors duration-300 font-medium py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {t('nav.contact')}
-            </a>
-            <div className="flex items-center space-x-2 pt-4">
-              {languages.map((lang) => (
-                <button
-                  key={lang.code}
-                  onClick={() => {
-                    handleLanguageChange(lang.code);
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className={`px-4 py-2 text-xs font-semibold transition-all duration-300 rounded-md ${
-                    locale === lang.code
-                      ? 'bg-[#DC2626] text-[#F9FAFB]'
-                      : 'text-[#6B7280] hover:text-[#F9FAFB] bg-[#4B5563]/10 hover:bg-[#4B5563]/20'
-                  }`}
-                >
-                  {lang.label}
-                </button>
-              ))}
-            </div>
-          </nav>
-        </div>
+        {isMobileMenuOpen && (
+          <div className="md:hidden py-4 border-t border-white/10">
+            <nav className="space-y-4">
+              <a
+                href="#products"
+                className="block text-white hover:text-[#E11D48] transition-colors duration-300 font-medium"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {t('nav.products')}
+              </a>
+              <a
+                href="#solutions"
+                className="block text-white hover:text-[#E11D48] transition-colors duration-300 font-medium"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {t('nav.solutions')}
+              </a>
+              <a
+                href="#about"
+                className="block text-white hover:text-[#E11D48] transition-colors duration-300 font-medium"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {t('nav.about')}
+              </a>
+              <a
+                href="#contact"
+                className="block text-white hover:text-[#E11D48] transition-colors duration-300 font-medium"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {t('nav.contact')}
+              </a>
+              <div className="flex space-x-2 pt-4">
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => {
+                      handleLanguageChange(lang.code);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className={`px-4 py-2 text-sm font-medium transition-all duration-300 rounded-sm ${
+                      locale === lang.code
+                        ? 'bg-[#E11D48] text-white'
+                        : 'text-gray-300 hover:text-white bg-white/5 hover:bg-white/10'
+                    }`}
+                  >
+                    {lang.label}
+                  </button>
+                ))}
+              </div>
+            </nav>
+          </div>
+        )}
       </div>
     </header>
   );
