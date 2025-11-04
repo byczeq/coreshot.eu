@@ -9,10 +9,12 @@ import Testimonials from '../components/Testimonials';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 import CustomCursor from '../components/CustomCursor';
+import LocaleDetector from '../components/LocaleDetector';
 const locale = 'en';
 ---
 
 <Layout title="CoreShot - Precision at Your Core" description="Premium accessories and smart software for shooting ranges across Europe">
+  <LocaleDetector client:only="react" currentLocale={locale} />
   <StickyHeader client:load locale={locale} />
   <CustomCursor client:load />
   <main class="min-h-screen bg-[#1C2526]">

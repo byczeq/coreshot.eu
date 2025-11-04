@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslations } from '../i18n/utils';
+import { setStoredLocale } from '../utils/localeDetection';
 import type { Locale } from '../i18n/translations';
 
 interface StickyHeaderProps {
@@ -27,6 +28,7 @@ export default function StickyHeader({ locale = 'en' }: StickyHeaderProps) {
   ];
 
   const handleLanguageChange = (langCode: string) => {
+    setStoredLocale(langCode as Locale);
     const currentPath = window.location.pathname;
     const pathWithoutLang = currentPath.replace(/^\/(en|de|pl)/, '');
     const newPath = langCode === 'en' ? pathWithoutLang || '/' : `/${langCode}${pathWithoutLang || '/'}`;
