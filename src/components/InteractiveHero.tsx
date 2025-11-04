@@ -52,10 +52,12 @@ export default function InteractiveHero({ locale = 'en' }: InteractiveHeroProps)
     >
       <div className="absolute inset-0 overflow-hidden">
         <div
-          className="absolute inset-[-20px] bg-cover bg-center bg-no-repeat blur-sm scale-110"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: 'url(/image.png)' }}
         />
-        <div className="absolute inset-0 bg-[#1C2526]/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1C2526]/60 via-[#1C2526]/70 to-[#1C2526]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1C2526] via-transparent to-[#1C2526]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1C2526] via-[#1C2526]/80 to-transparent" />
       </div>
 
       <div className="absolute inset-0 pointer-events-none">
