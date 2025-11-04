@@ -24,7 +24,7 @@ export default function LocaleDetector({ currentLocale }: LocaleDetectorProps) {
       if (detectedLocale !== urlLocale) {
         const currentPath = window.location.pathname;
         const pathWithoutLang = currentPath.replace(/^\/(en|de|pl)/, '');
-        const newPath = detectedLocale === 'en'
+        const newPath = detectedLocale === 'pl'
           ? pathWithoutLang || '/'
           : `/${detectedLocale}${pathWithoutLang || '/'}`;
 

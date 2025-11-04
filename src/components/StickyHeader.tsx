@@ -31,7 +31,7 @@ export default function StickyHeader({ locale = 'en' }: StickyHeaderProps) {
     setStoredLocale(langCode as Locale);
     const currentPath = window.location.pathname;
     const pathWithoutLang = currentPath.replace(/^\/(en|de|pl)/, '');
-    const newPath = langCode === 'en' ? pathWithoutLang || '/' : `/${langCode}${pathWithoutLang || '/'}`;
+    const newPath = langCode === 'pl' ? pathWithoutLang || '/' : `/${langCode}${pathWithoutLang || '/'}`;
     window.location.href = newPath;
   };
 
@@ -46,7 +46,7 @@ export default function StickyHeader({ locale = 'en' }: StickyHeaderProps) {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <a
-            href={locale === 'en' ? '/' : `/${locale}`}
+            href={locale === 'pl' ? '/' : `/${locale}`}
             className="text-2xl font-bold text-white hover:text-[#E11D48] transition-colors duration-300"
           >
             CoreShot
