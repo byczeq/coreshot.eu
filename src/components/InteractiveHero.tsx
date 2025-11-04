@@ -52,7 +52,7 @@ export default function InteractiveHero({ locale = 'en' }: InteractiveHeroProps)
     >
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url(/image copy.png)' }}
+        style={{ backgroundImage: 'url(/image.png)' }}
       >
         <div className="absolute inset-0 bg-[#1C2526]/70" />
       </div>
