@@ -1,28 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
 @import "tailwindcss";
 
 :root {
-  --black: #1C2526;
-  --gray: #6B7280;
-  --red: #E11D48;
+  --primary-bg: #111827;
+  --secondary-bg: #1C2526;
+  --gray-light: #F9FAFB;
+  --gray-medium: #6B7280;
+  --gray-dark: #4B5563;
+  --accent-red: #DC2626;
   --white: #FFFFFF;
 }
 
 @layer base {
   body {
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    cursor: none;
   }
 
   html {
     scroll-behavior: smooth;
   }
 
-  * {
-    cursor: none;
-  }
-
   *:focus-visible {
-    outline: 2px solid var(--red);
+    outline: 2px solid var(--accent-red);
     outline-offset: 2px;
   }
 
@@ -30,7 +29,7 @@
   a:focus-visible,
   input:focus-visible,
   textarea:focus-visible {
-    outline: 2px solid var(--red);
+    outline: 2px solid var(--accent-red);
     outline-offset: 2px;
   }
 }

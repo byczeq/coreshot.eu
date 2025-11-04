@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { useTranslations } from '../i18n/utils';
 import type { Locale } from '../i18n/translations';
 
@@ -8,174 +8,133 @@ interface InteractiveHeroProps {
 
 export default function InteractiveHero({ locale = 'en' }: InteractiveHeroProps) {
   const t = useTranslations(locale as Locale);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const heroRef = useRef<HTMLDivElement>(null);
-  const targetRef = useRef<SVGSVGElement>(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (heroRef.current) {
-        const rect = heroRef.current.getBoundingClientRect();
-        setMousePosition({
-          x: e.clientX - rect.left,
-          y: e.clientY - rect.top,
-        });
-      }
-    };
-
-    const heroElement = heroRef.current;
-    if (heroElement) {
-      heroElement.addEventListener('mousemove', handleMouseMove);
-      return () => heroElement.removeEventListener('mousemove', handleMouseMove);
-    }
-  }, []);
-
-  const calculateTransform = (speed: number) => {
-    if (!heroRef.current) return {};
-    const rect = heroRef.current.getBoundingClientRect();
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const deltaX = (mousePosition.x - centerX) / centerX;
-    const deltaY = (mousePosition.y - centerY) / centerY;
-
-    return {
-      transform: `translate(${deltaX * speed}px, ${deltaY * speed}px)`,
-      transition: 'transform 0.3s ease-out',
-    };
-  };
+  const [variant] = useState<'light' | 'dynamic'>('dynamic');
 
   return (
-    <section
-      ref={heroRef}
-      className="min-h-screen flex flex-col items-center justify-center py-20 text-center relative overflow-hidden"
-      aria-labelledby="hero-heading"
-    >
-      <div className="absolute inset-0 pointer-events-none">
-        <div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#E11D48]/10 rounded-full blur-3xl"
-          style={calculateTransform(15)}
-        />
-        <div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#E11D48]/5 rounded-full blur-3xl"
-          style={calculateTransform(-20)}
-        />
+    <section className="relative min-h-screen flex items-center justify-center pt-20 pb-32 bg-gradient-to-b from-[#111827] to-[#1C2526] overflow-hidden">
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="flex flex-col items-center text-center space-y-12">
+          <div className="relative">
+            <svg
+              width="120"
+              height="120"
+              viewBox="0 0 120 120"
+              className="relative z-10"
+            >
+              <defs>
+                {variant === 'dynamic' && (
+                  <filter id="glow">
+                    <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+                    <feMerge>
+                      <feMergeNode in="coloredBlur"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
+                )}
+              </defs>
+
+              <polygon
+                points="60,10 90,30 90,70 60,90 30,70 30,30"
+                fill="none"
+                stroke="#4B5563"
+                strokeWidth="1.5"
+                opacity="0.6"
+              />
+
+              <line
+                x1="60"
+                y1="20"
+                x2="60"
+                y2="45"
+                stroke="#4B5563"
+                strokeWidth="1.5"
+              />
+              <line
+                x1="60"
+                y1="75"
+                x2="60"
+                y2="100"
+                stroke="#4B5563"
+                strokeWidth="1.5"
+              />
+              <line
+                x1="20"
+                y1="60"
+                x2="45"
+                y2="60"
+                stroke="#4B5563"
+                strokeWidth="1.5"
+              />
+
+              <circle
+                cx="60"
+                cy="60"
+                r="3"
+                fill="#4B5563"
+              />
+
+              <line
+                x1="60"
+                y1="60"
+                x2="135"
+                y2="60"
+                stroke="#DC2626"
+                strokeWidth="2"
+                filter={variant === 'dynamic' ? 'url(#glow)' : undefined}
+                className={variant === 'dynamic' ? 'animate-pulse-trajectory' : ''}
+              />
+
+              <circle
+                cx="135"
+                cy="60"
+                r="2"
+                fill="#DC2626"
+                filter={variant === 'dynamic' ? 'url(#glow)' : undefined}
+              />
+            </svg>
+          </div>
+
+          <div className="space-y-6 max-w-4xl">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#F9FAFB] tracking-tight leading-tight">
+              {t('hero.title')}
+            </h1>
+
+            <p className="text-xl md:text-2xl text-[#6B7280] font-normal">
+              {t('hero.subtitle')}
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center pt-4">
+            <a
+              href="#products"
+              className="px-8 py-4 bg-[#DC2626] text-[#F9FAFB] rounded-lg font-semibold text-sm hover:bg-[#B91C1C] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 min-w-[200px]"
+            >
+              {t('hero.ctaPrimary')}
+            </a>
+            <a
+              href="#contact"
+              className="px-8 py-4 bg-transparent text-[#F9FAFB] border-2 border-[#4B5563] rounded-lg font-semibold text-sm hover:border-[#DC2626] hover:text-[#DC2626] transition-all duration-300 min-w-[200px]"
+            >
+              {t('hero.ctaSecondary')}
+            </a>
+          </div>
+        </div>
       </div>
 
-      <div className="mb-12 relative z-10 animate-float" role="img" aria-label="Precision target icon">
-        <svg
-          ref={targetRef}
-          width="120"
-          height="120"
-          viewBox="0 0 120 120"
-          className="mx-auto"
-          style={calculateTransform(10)}
-        >
-          <circle
-            cx="60"
-            cy="60"
-            r="54"
-            fill="none"
-            stroke="#FFFFFF"
-            strokeWidth="2"
-            opacity="0.3"
-            className="animate-pulse-slow"
-          />
-          <circle cx="60" cy="60" r="3" fill="#FFFFFF" />
-          <line
-            x1="30"
-            y1="60"
-            x2="52"
-            y2="60"
-            stroke="#FFFFFF"
-            strokeWidth="2"
-            className="animate-pulse-slow"
-          />
-          <line
-            x1="68"
-            y1="60"
-            x2="90"
-            y2="60"
-            stroke="#FFFFFF"
-            strokeWidth="2"
-            className="animate-pulse-slow"
-          />
-          <line
-            x1="60"
-            y1="30"
-            x2="60"
-            y2="52"
-            stroke="#FFFFFF"
-            strokeWidth="2"
-            className="animate-pulse-slow"
-          />
-          <line
-            x1="60"
-            y1="68"
-            x2="60"
-            y2="90"
-            stroke="#FFFFFF"
-            strokeWidth="2"
-            className="animate-pulse-slow"
-          />
-          <path
-            d="M 75 60 L 105 45"
-            stroke="#E11D48"
-            strokeWidth="3"
-            strokeLinecap="round"
-            className="animate-glow"
-          />
-        </svg>
-      </div>
+      <style>{`
+        @keyframes pulse-trajectory {
+          0%, 100% {
+            opacity: 0.8;
+          }
+          50% {
+            opacity: 1;
+          }
+        }
 
-      <h1
-        id="hero-heading"
-        className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight animate-fade-in-up"
-        style={{ animationDelay: '0.1s' }}
-      >
-        {t('hero.title')}
-      </h1>
-
-      <p
-        className="text-xl sm:text-2xl text-[#9CA3AF] mb-12 max-w-3xl leading-relaxed animate-fade-in-up"
-        style={{ animationDelay: '0.2s' }}
-      >
-        {t('hero.subtitle')}
-      </p>
-
-      <div
-        className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up"
-        style={{ animationDelay: '0.3s' }}
-      >
-        <a
-          href="#products"
-          className="group px-10 py-4 bg-[#E11D48] text-white rounded-sm font-semibold hover:bg-[#BE123C] transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-[#E11D48]/50 transform hover:-translate-y-1 relative overflow-hidden"
-        >
-          <span className="relative z-10">{t('hero.ctaPrimary')}</span>
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
-        </a>
-        <a
-          href="#contact"
-          className="px-10 py-4 bg-transparent text-white rounded-sm font-semibold hover:bg-white/10 transition-all duration-300 border-2 border-white/30 hover:border-[#E11D48]/50 transform hover:-translate-y-1"
-        >
-          {t('hero.ctaSecondary')}
-        </a>
-      </div>
-
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <svg
-          className="w-6 h-6 text-white/50"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 14l-7 7m0 0l-7-7m7 7V3"
-          />
-        </svg>
-      </div>
+        .animate-pulse-trajectory {
+          animation: pulse-trajectory 2s ease-in-out infinite;
+        }
+      `}</style>
     </section>
   );
 }
