@@ -23,12 +23,14 @@ export default function ContactSection() {
 
     try {
       const locale = window.location.pathname.split('/')[1] || 'pl';
-      const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/subscribe`;
+      const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL || 'https://rrfbgwtakbhqajwgvjbe.supabase.co';
+      const supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJyZmJnd3Rha2JocWFqd2d2amJlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIzMjA5MzIsImV4cCI6MjA3Nzg5NjkzMn0.oFHrWSl2U5-vGAwSyN0iyjBPfRvLP48bD_LpghW_3dA';
+      const apiUrl = `${supabaseUrl}/functions/v1/subscribe`;
 
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+          'Authorization': `Bearer ${supabaseAnonKey}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
