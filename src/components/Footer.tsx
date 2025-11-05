@@ -102,7 +102,7 @@ export default function Footer({ locale = 'en' }: FooterProps) {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="#privacy"
+                  href={`/${locale}/privacy`}
                   className="text-[#9CA3AF] hover:text-[#E11D48] transition-colors duration-300"
                 >
                   {t('footer.privacy')}
