@@ -11,7 +11,7 @@ interface LocaleDetectorProps {
   currentLocale: string;
 }
 
-export default function LocaleDetector({ currentLocale }: LocaleDetectorProps) {
+export default function LocaleDetector({ currentLocale: _currentLocale }: LocaleDetectorProps) {
   useEffect(() => {
     const handleLocaleDetection = async () => {
       if (!shouldRedirectToDetectedLocale()) {
