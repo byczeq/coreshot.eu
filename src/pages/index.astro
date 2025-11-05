@@ -13,7 +13,10 @@ import LocaleDetector from '../components/LocaleDetector';
 const locale = 'pl';
 ---
 
-<Layout title="CoreShot - Precision at Your Core" description="Premium accessories and smart software for shooting ranges across Europe">
+<Layout
+  title="CoreShot - Precision at Your Core"
+  description="Premium accessories and smart software for shooting ranges across Europe"
+>
   <LocaleDetector client:only="react" currentLocale={locale} />
   <StickyHeader client:load locale={locale} />
   <CustomCursor client:load />

@@ -24,9 +24,10 @@ export default function LocaleDetector({ currentLocale: _currentLocale }: Locale
       if (detectedLocale !== urlLocale) {
         const currentPath = window.location.pathname;
         const pathWithoutLang = currentPath.replace(/^\/(en|de|pl)/, '');
-        const newPath = detectedLocale === 'pl'
-          ? pathWithoutLang || '/'
-          : `/${detectedLocale}${pathWithoutLang || '/'}`;
+        const newPath =
+          detectedLocale === 'pl'
+            ? pathWithoutLang || '/'
+            : `/${detectedLocale}${pathWithoutLang || '/'}`;
 
         setStoredLocale(detectedLocale);
         markAsVisited();

@@ -50,7 +50,7 @@ export default [
     },
     plugins: {
       '@typescript-eslint': tsPlugin,
-      'react': reactPlugin,
+      react: reactPlugin,
       'react-hooks': reactHooksPlugin,
     },
     rules: {

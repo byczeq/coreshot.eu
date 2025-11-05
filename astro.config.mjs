@@ -8,7 +8,7 @@ import react from '@astrojs/react';
 // https://astro.build/config
 export default defineConfig({
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
   },
 
   integrations: [react()],
@@ -17,7 +17,7 @@ export default defineConfig({
     defaultLocale: 'pl',
     locales: ['pl', 'en', 'de'],
     routing: {
-      prefixDefaultLocale: false
-    }
-  }
+      prefixDefaultLocale: false,
+    },
+  },
 });

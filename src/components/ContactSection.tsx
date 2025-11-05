@@ -8,9 +8,13 @@ export default function ContactSection() {
     isRangeManager: false,
     newsletterEmail: '',
   });
-  const [subscribeStatus, setSubscribeStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [subscribeStatus, setSubscribeStatus] = useState<'idle' | 'loading' | 'success' | 'error'>(
+    'idle'
+  );
   const [subscribeMessage, setSubscribeMessage] = useState('');
-  const [contactStatus, setContactStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [contactStatus, setContactStatus] = useState<'idle' | 'loading' | 'success' | 'error'>(
+    'idle'
+  );
   const [contactMessage, setContactMessage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -20,14 +24,17 @@ export default function ContactSection() {
 
     try {
       const locale = window.location.pathname.split('/')[1] || 'pl';
-      const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL || 'https://rrfbgwtakbhqajwgvjbe.supabase.co';
-      const supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJyZmJnd3Rha2JocWFqd2d2amJlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIzMjA5MzIsImV4cCI6MjA3Nzg5NjkzMn0.oFHrWSl2U5-vGAwSyN0iyjBPfRvLP48bD_LpghW_3dA';
+      const supabaseUrl =
+        import.meta.env.PUBLIC_SUPABASE_URL || 'https://rrfbgwtakbhqajwgvjbe.supabase.co';
+      const supabaseAnonKey =
+        import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJyZmJnd3Rha2JocWFqd2d2amJlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIzMjA5MzIsImV4cCI6MjA3Nzg5NjkzMn0.oFHrWSl2U5-vGAwSyN0iyjBPfRvLP48bD_LpghW_3dA';
       const apiUrl = `${supabaseUrl}/functions/v1/contact`;
 
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${supabaseAnonKey}`,
+          Authorization: `Bearer ${supabaseAnonKey}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -74,14 +81,17 @@ export default function ContactSection() {
 
     try {
       const locale = window.location.pathname.split('/')[1] || 'pl';
-      const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL || 'https://rrfbgwtakbhqajwgvjbe.supabase.co';
-      const supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJyZmJnd3Rha2JocWFqd2d2amJlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIzMjA5MzIsImV4cCI6MjA3Nzg5NjkzMn0.oFHrWSl2U5-vGAwSyN0iyjBPfRvLP48bD_LpghW_3dA';
+      const supabaseUrl =
+        import.meta.env.PUBLIC_SUPABASE_URL || 'https://rrfbgwtakbhqajwgvjbe.supabase.co';
+      const supabaseAnonKey =
+        import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJyZmJnd3Rha2JocWFqd2d2amJlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIzMjA5MzIsImV4cCI6MjA3Nzg5NjkzMn0.oFHrWSl2U5-vGAwSyN0iyjBPfRvLP48bD_LpghW_3dA';
       const apiUrl = `${supabaseUrl}/functions/v1/subscribe`;
 
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${supabaseAnonKey}`,
+          Authorization: `Bearer ${supabaseAnonKey}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -126,10 +136,16 @@ export default function ContactSection() {
   return (
     <section id="contact" className="py-24 relative" aria-labelledby="contact-heading">
       <div className="max-w-4xl mx-auto">
-        <h2 id="contact-heading" className="text-4xl sm:text-5xl font-bold text-white mb-4 text-center animate-fade-in-up">
+        <h2
+          id="contact-heading"
+          className="text-4xl sm:text-5xl font-bold text-white mb-4 text-center animate-fade-in-up"
+        >
           Ready to Elevate Your Range?
         </h2>
-        <p className="text-xl text-[#9CA3AF] mb-12 text-center animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+        <p
+          className="text-xl text-[#9CA3AF] mb-12 text-center animate-fade-in-up"
+          style={{ animationDelay: '0.1s' }}
+        >
           Get in touch with our team or subscribe to stay updated
         </p>
 
@@ -190,9 +206,7 @@ export default function ContactSection() {
                   type="checkbox"
                   id="isRangeManager"
                   checked={formData.isRangeManager}
-                  onChange={(e) =>
-                    setFormData({ ...formData, isRangeManager: e.target.checked })
-                  }
+                  onChange={(e) => setFormData({ ...formData, isRangeManager: e.target.checked })}
                   className="w-5 h-5 bg-white/5 border border-white/10 rounded text-[#E11D48] focus:ring-[#E11D48] focus:ring-offset-0"
                 />
                 <label htmlFor="isRangeManager" className="ml-3 text-[#9CA3AF]">
@@ -232,18 +246,23 @@ export default function ContactSection() {
               offers delivered straight to your inbox.
             </p>
 
-            <form onSubmit={handleNewsletterSubmit} className="space-y-4" aria-label="Newsletter signup form">
+            <form
+              onSubmit={handleNewsletterSubmit}
+              className="space-y-4"
+              aria-label="Newsletter signup form"
+            >
               <div>
-                <label htmlFor="newsletterEmail" className="block text-sm font-medium text-[#9CA3AF] mb-2">
+                <label
+                  htmlFor="newsletterEmail"
+                  className="block text-sm font-medium text-[#9CA3AF] mb-2"
+                >
                   Email Address
                 </label>
                 <input
                   type="email"
                   id="newsletterEmail"
                   value={formData.newsletterEmail}
-                  onChange={(e) =>
-                    setFormData({ ...formData, newsletterEmail: e.target.value })
-                  }
+                  onChange={(e) => setFormData({ ...formData, newsletterEmail: e.target.value })}
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-sm text-white placeholder-[#6B7280] focus:outline-none focus:border-[#E11D48]/50 transition-colors duration-300"
                   placeholder="your@email.com"
                   required
