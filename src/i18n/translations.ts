@@ -33,10 +33,11 @@ export const translations = {
       },
       software: {
         title: 'Manage Your Range Smarter',
+        subtitle: 'We are working on a solution that will connect data, equipment, and people in one ecosystem. For those who aim higher.',
         feature1: 'Real-time booking and lane management system',
         feature2: 'Member tracking, scoring, and performance analytics',
         feature3: 'Multi-language support and cloud-based accessibility',
-        cta: 'See Demo',
+        cta: 'Join Waitlist →',
       },
     },
     footer: {
@@ -86,10 +87,11 @@ export const translations = {
       },
       software: {
         title: 'Verwalten Sie Ihren Stand intelligenter',
+        subtitle: 'Wir arbeiten an einer Lösung, die Daten, Ausrüstung und Menschen in einem Ökosystem verbindet. Für diejenigen, die höher zielen.',
         feature1: 'Echtzeit-Buchungs- und Bahnverwaltungssystem',
         feature2: 'Mitgliederverfolgung, Bewertung und Leistungsanalyse',
         feature3: 'Mehrsprachige Unterstützung und Cloud-Zugriff',
-        cta: 'Demo ansehen',
+        cta: 'Zur Warteliste →',
       },
     },
     footer: {
@@ -137,11 +139,12 @@ export const translations = {
         cta: 'Zobacz ofertę',
       },
       software: {
-        title: 'Zarządzaj swoją strzelnicą mądrzej',
+        title: 'Precyzja spotyka technologię',
+        subtitle: 'Pracujemy nad rozwiązaniem, które połączy dane, sprzęt i ludzi w jednym ekosystemie. Dla tych, którzy mierzą wyżej.',
         feature1: 'System rezerwacji i zarządzania stanowiskami w czasie rzeczywistym',
         feature2: 'Śledzenie członków, punktacja i analiza wydajności',
         feature3: 'Wsparcie wielojęzyczne i dostęp w chmurze',
-        cta: 'Zobacz demo',
+        cta: 'Dołącz do listy oczekujących →',
       },
     },
     footer: {
