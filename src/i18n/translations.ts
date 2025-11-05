@@ -40,6 +40,30 @@ export const translations = {
         cta: 'Join Waitlist →',
       },
     },
+    whyCoreShot: {
+      title: 'Why CoreShot?',
+      subtitle: 'Discover what sets us apart in the world of modern shooting.',
+      feature1: {
+        title: 'Unmatched Precision',
+        description:
+          'Every product is crafted to the highest quality standards — for maximum accuracy, reliability, and result repeatability.',
+      },
+      feature2: {
+        title: 'European Engineering',
+        description:
+          'Designed and tested in Europe, combining modern technologies with the experience of competitive shooters.',
+      },
+      feature3: {
+        title: 'Made by Enthusiasts',
+        description:
+          'CoreShot is backed by people who understand the real needs of shooters — from equipment to operational methods.',
+      },
+      feature4: {
+        title: 'Future-Proof Technology',
+        description:
+          'Our solutions evolve with your needs, offering durability, compatibility, and regular improvements.',
+      },
+    },
     footer: {
       description:
         'Premium accessories and smart software for precision shooting management across Europe.',
@@ -94,6 +118,30 @@ export const translations = {
         cta: 'Zur Warteliste →',
       },
     },
+    whyCoreShot: {
+      title: 'Warum CoreShot?',
+      subtitle: 'Entdecken Sie, was uns in der Welt des modernen Schießsports auszeichnet.',
+      feature1: {
+        title: 'Kompromisslose Präzision',
+        description:
+          'Jedes Produkt entsteht nach höchsten Qualitätsstandards — für maximale Genauigkeit, Zuverlässigkeit und Wiederholbarkeit der Ergebnisse.',
+      },
+      feature2: {
+        title: 'Europäische Ingenieurskunst',
+        description:
+          'In Europa entwickelt und getestet, verbinden sie moderne Technologien mit der Erfahrung von Sportschützen.',
+      },
+      feature3: {
+        title: 'Von Enthusiasten geschaffen',
+        description:
+          'Hinter CoreShot stehen Menschen, die die realen Bedürfnisse von Schützen verstehen — von der Ausrüstung bis zur Arbeitsweise.',
+      },
+      feature4: {
+        title: 'Zukunftssichere Technologie',
+        description:
+          'Unsere Lösungen entwickeln sich mit Ihren Bedürfnissen weiter und bieten Langlebigkeit, Kompatibilität und regelmäßige Verbesserungen.',
+      },
+    },
     footer: {
       description:
         'Premium-Zubehör und intelligente Software für präzises Schießstandmanagement in ganz Europa.',
@@ -145,6 +193,30 @@ export const translations = {
         feature2: 'Śledzenie członków, punktacja i analiza wydajności',
         feature3: 'Wsparcie wielojęzyczne i dostęp w chmurze',
         cta: 'Dołącz do listy oczekujących →',
+      },
+    },
+    whyCoreShot: {
+      title: 'Dlaczego CoreShot?',
+      subtitle: 'Poznaj to, co wyróżnia nas w świecie nowoczesnego strzelectwa.',
+      feature1: {
+        title: 'Bezkompromisowa precyzja',
+        description:
+          'Każdy produkt powstaje w oparciu o najwyższe standardy jakości — dla maksymalnej dokładności, niezawodności i powtarzalności wyników.',
+      },
+      feature2: {
+        title: 'Europejska inżynieria',
+        description:
+          'Projektowane i testowane w Europie, łączą nowoczesne technologie z doświadczeniem sportowych strzelców.',
+      },
+      feature3: {
+        title: 'Stworzone przez pasjonatów',
+        description:
+          'Za CoreShot stoją ludzie, którzy rozumieją realne potrzeby strzelców — od sprzętu po sposób działania.',
+      },
+      feature4: {
+        title: 'Technologia gotowa na przyszłość',
+        description:
+          'Nasze rozwiązania rozwijają się wraz z Twoimi potrzebami, oferując trwałość, kompatybilność i regularne usprawnienia.',
       },
     },
     footer: {
