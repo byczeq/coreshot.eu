@@ -10,10 +10,61 @@ export default function ContactSection() {
   });
   const [subscribeStatus, setSubscribeStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [subscribeMessage, setSubscribeMessage] = useState('');
+  const [contactStatus, setContactStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [contactMessage, setContactMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    setContactStatus('loading');
+    setContactMessage('');
+
+    try {
+      const locale = window.location.pathname.split('/')[1] || 'pl';
+      const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL || 'https://rrfbgwtakbhqajwgvjbe.supabase.co';
+      const supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJyZmJnd3Rha2JocWFqd2d2amJlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIzMjA5MzIsImV4cCI6MjA3Nzg5NjkzMn0.oFHrWSl2U5-vGAwSyN0iyjBPfRvLP48bD_LpghW_3dA';
+      const apiUrl = `${supabaseUrl}/functions/v1/contact`;
+
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${supabaseAnonKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          locale: locale === 'en' || locale === 'de' ? locale : 'pl',
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
+
+      setContactStatus('success');
+      setContactMessage('Thank you for your message! We will get back to you soon.');
+      setFormData({ ...formData, name: '', email: '', message: '', isRangeManager: false });
+
+      setTimeout(() => {
+        setContactStatus('idle');
+        setContactMessage('');
+      }, 5000);
+    } catch (error) {
+      setContactStatus('error');
+      if (error instanceof Error) {
+        setContactMessage(error.message);
+      } else {
+        setContactMessage('Failed to send message. Please try again.');
+      }
+
+      setTimeout(() => {
+        setContactStatus('idle');
+        setContactMessage('');
+      }, 5000);
+    }
   };
 
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
@@ -151,10 +202,23 @@ export default function ContactSection() {
 
               <button
                 type="submit"
-                className="w-full px-8 py-4 bg-[#E11D48] text-white rounded-sm font-semibold hover:bg-[#BE123C] transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#E11D48]/50 transform hover:-translate-y-0.5"
+                disabled={contactStatus === 'loading'}
+                className="w-full px-8 py-4 bg-[#E11D48] text-white rounded-sm font-semibold hover:bg-[#BE123C] transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#E11D48]/50 transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send Message
+                {contactStatus === 'loading' ? 'Sending...' : 'Send Message'}
               </button>
+
+              {contactMessage && (
+                <div
+                  className={`mt-4 p-3 rounded-sm text-sm ${
+                    contactStatus === 'success'
+                      ? 'bg-green-500/10 border border-green-500/30 text-green-400'
+                      : 'bg-red-500/10 border border-red-500/30 text-red-400'
+                  }`}
+                >
+                  {contactMessage}
+                </div>
+              )}
             </form>
           </div>
 
