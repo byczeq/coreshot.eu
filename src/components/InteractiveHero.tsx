@@ -1,6 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslations } from '../i18n/utils';
+import type { Locale } from '../i18n/translations';
 
-export default function InteractiveHero() {
+interface InteractiveHeroProps {
+  locale?: string;
+}
+
+export default function InteractiveHero({ locale = 'en' }: InteractiveHeroProps) {
+  const t = useTranslations(locale as Locale);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef<HTMLDivElement>(null);
   const targetRef = useRef<SVGSVGElement>(null);
@@ -41,7 +48,18 @@ export default function InteractiveHero() {
     <section
       ref={heroRef}
       className="min-h-screen flex flex-col items-center justify-center py-20 text-center relative overflow-hidden"
+      aria-labelledby="hero-heading"
     >
+      <div className="absolute inset-0 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: 'url(/image.png)' }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1C2526]/60 via-[#1C2526]/70 to-[#1C2526]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1C2526] via-transparent to-[#1C2526]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1C2526] via-[#1C2526]/80 to-transparent" />
+      </div>
+
       <div className="absolute inset-0 pointer-events-none">
         <div
           className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#E11D48]/10 rounded-full blur-3xl"
@@ -53,7 +71,7 @@ export default function InteractiveHero() {
         />
       </div>
 
-      <div className="mb-12 relative z-10 animate-float">
+      <div className="mb-12 relative z-10 animate-float" role="img" aria-label="Precision target icon">
         <svg
           ref={targetRef}
           width="120"
@@ -120,42 +138,36 @@ export default function InteractiveHero() {
       </div>
 
       <h1
+        id="hero-heading"
         className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight animate-fade-in-up"
         style={{ animationDelay: '0.1s' }}
       >
-        <span className="font-extrabold">C</span>ore<span className="font-extrabold">S</span>hot
+        {t('hero.title')}
       </h1>
 
       <p
-        className="text-xl sm:text-2xl text-[#9CA3AF] mb-4 max-w-3xl leading-relaxed animate-fade-in-up"
+        className="text-xl sm:text-2xl text-[#9CA3AF] mb-12 max-w-3xl leading-relaxed animate-fade-in-up"
         style={{ animationDelay: '0.2s' }}
       >
-        Precision Shooting Management
-      </p>
-
-      <p
-        className="text-lg text-[#6B7280] mb-12 max-w-2xl animate-fade-in-up"
-        style={{ animationDelay: '0.3s' }}
-      >
-        Professional solutions for sports shooters, clubs, and range managers across Europe
+        {t('hero.subtitle')}
       </p>
 
       <div
         className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up"
-        style={{ animationDelay: '0.4s' }}
+        style={{ animationDelay: '0.3s' }}
       >
         <a
-          href="#features"
+          href="#products"
           className="group px-10 py-4 bg-[#E11D48] text-white rounded-sm font-semibold hover:bg-[#BE123C] transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-[#E11D48]/50 transform hover:-translate-y-1 relative overflow-hidden"
         >
-          <span className="relative z-10">Explore Features</span>
+          <span className="relative z-10">{t('hero.ctaPrimary')}</span>
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
         </a>
         <a
           href="#contact"
           className="px-10 py-4 bg-transparent text-white rounded-sm font-semibold hover:bg-white/10 transition-all duration-300 border-2 border-white/30 hover:border-[#E11D48]/50 transform hover:-translate-y-1"
         >
-          Get In Touch
+          {t('hero.ctaSecondary')}
         </a>
       </div>
 

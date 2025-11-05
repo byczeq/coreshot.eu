@@ -1,0 +1,33 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StickyHeader from '../../components/StickyHeader';
+import InteractiveHero from '../../components/InteractiveHero';
+import AboutSection from '../../components/AboutSection';
+import ProductsSection from '../../components/ProductsSection';
+import WhyCoreShot from '../../components/WhyCoreShot';
+import Testimonials from '../../components/Testimonials';
+import ContactSection from '../../components/ContactSection';
+import Footer from '../../components/Footer';
+import CustomCursor from '../../components/CustomCursor';
+import LocaleDetector from '../../components/LocaleDetector';
+const locale = 'de';
+---
+
+<Layout title="CoreShot - Präzision im Kern" description="Premium-Zubehör und intelligente Software für Schießstände in ganz Europa">
+  <LocaleDetector client:only="react" currentLocale={locale} />
+  <StickyHeader client:load locale={locale} />
+  <CustomCursor client:load />
+  <main class="min-h-screen bg-[#1C2526]">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <InteractiveHero client:load locale={locale} />
+      <AboutSection client:load />
+      <ProductsSection client:load locale={locale} />
+    </div>
+    <WhyCoreShot client:load />
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <Testimonials client:load />
+      <ContactSection client:load />
+    </div>
+    <Footer client:load locale={locale} />
+  </main>
+</Layout>
