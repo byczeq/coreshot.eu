@@ -30,7 +30,8 @@ export const translations = {
       },
     },
     footer: {
-      description: 'Premium accessories and smart software for precision shooting management across Europe.',
+      description:
+        'Premium accessories and smart software for precision shooting management across Europe.',
       quickLinks: 'Quick Links',
       legal: 'Legal',
       products: 'Products',
@@ -72,7 +73,8 @@ export const translations = {
       },
     },
     footer: {
-      description: 'Premium-Zubehör und intelligente Software für präzises Schießstandmanagement in ganz Europa.',
+      description:
+        'Premium-Zubehör und intelligente Software für präzises Schießstandmanagement in ganz Europa.',
       quickLinks: 'Schnelllinks',
       legal: 'Rechtliches',
       products: 'Produkte',
@@ -114,7 +116,8 @@ export const translations = {
       },
     },
     footer: {
-      description: 'Wysokiej jakości akcesoria i inteligentne oprogramowanie do precyzyjnego zarządzania strzelnicami w całej Europie.',
+      description:
+        'Wysokiej jakości akcesoria i inteligentne oprogramowanie do precyzyjnego zarządzania strzelnicami w całej Europie.',
       quickLinks: 'Szybkie linki',
       legal: 'Prawne',
       products: 'Produkty',

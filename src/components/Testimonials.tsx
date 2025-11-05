@@ -46,22 +46,31 @@ export default function Testimonials() {
       </div>
 
       <div className="max-w-5xl mx-auto relative z-10">
-        <h2 id="testimonials-heading" className="text-4xl sm:text-5xl font-bold text-white mb-4 text-center animate-fade-in-up">
+        <h2
+          id="testimonials-heading"
+          className="text-4xl sm:text-5xl font-bold text-white mb-4 text-center animate-fade-in-up"
+        >
           Trusted Across Europe
         </h2>
-        <p className="text-xl text-[#9CA3AF] mb-16 text-center animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+        <p
+          className="text-xl text-[#9CA3AF] mb-16 text-center animate-fade-in-up"
+          style={{ animationDelay: '0.1s' }}
+        >
           See what our customers have to say
         </p>
 
         <div className="relative">
-          <div className="bg-white/5 backdrop-blur-sm rounded-sm border border-white/10 p-8 md:p-12" role="region" aria-live="polite" aria-atomic="true">
+          <div
+            className="bg-white/5 backdrop-blur-sm rounded-sm border border-white/10 p-8 md:p-12"
+            role="region"
+            aria-live="polite"
+            aria-atomic="true"
+          >
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
                 className={`transition-all duration-500 ${
-                  index === currentIndex
-                    ? 'opacity-100 block'
-                    : 'opacity-0 hidden'
+                  index === currentIndex ? 'opacity-100 block' : 'opacity-0 hidden'
                 }`}
               >
                 <svg
@@ -78,11 +87,7 @@ export default function Testimonials() {
 
                 <div className="flex items-center">
                   <div className="w-14 h-14 bg-[#E11D48]/20 rounded-full flex items-center justify-center mr-4">
-                    <svg
-                      className="w-8 h-8 text-[#E11D48]"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
+                    <svg className="w-8 h-8 text-[#E11D48]" fill="currentColor" viewBox="0 0 20 20">
                       <path
                         fillRule="evenodd"
                         d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
@@ -91,9 +96,7 @@ export default function Testimonials() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-white font-semibold text-lg">
-                      {testimonial.author}
-                    </p>
+                    <p className="text-white font-semibold text-lg">{testimonial.author}</p>
                     <p className="text-[#9CA3AF]">
                       {testimonial.role} • {testimonial.location}
                     </p>
@@ -109,9 +112,7 @@ export default function Testimonials() {
                 key={index}
                 onClick={() => goToSlide(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex
-                    ? 'bg-[#E11D48] w-8'
-                    : 'bg-white/30 hover:bg-white/50'
+                  index === currentIndex ? 'bg-[#E11D48] w-8' : 'bg-white/30 hover:bg-white/50'
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />

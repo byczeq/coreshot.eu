@@ -24,23 +24,22 @@ export default function StickyHeader({ locale = 'en' }: StickyHeaderProps) {
   const languages = [
     { code: 'en', label: 'EN' },
     { code: 'de', label: 'DE' },
-    { code: 'pl', label: 'PL' }
+    { code: 'pl', label: 'PL' },
   ];
 
   const handleLanguageChange = (langCode: string) => {
     setStoredLocale(langCode as Locale);
     const currentPath = window.location.pathname;
     const pathWithoutLang = currentPath.replace(/^\/(en|de|pl)/, '');
-    const newPath = langCode === 'pl' ? pathWithoutLang || '/' : `/${langCode}${pathWithoutLang || '/'}`;
+    const newPath =
+      langCode === 'pl' ? pathWithoutLang || '/' : `/${langCode}${pathWithoutLang || '/'}`;
     window.location.href = newPath;
   };
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-[#1C2526]/95 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
+        isScrolled ? 'bg-[#1C2526]/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -101,12 +100,7 @@ export default function StickyHeader({ locale = 'en' }: StickyHeaderProps) {
               className="md:hidden text-white p-2"
               aria-label="Toggle menu"
             >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {isMobileMenuOpen ? (
                   <path
                     strokeLinecap="round"

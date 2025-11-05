@@ -10,16 +10,24 @@ export default function ProductsSection({ locale = 'en' }: ProductsSectionProps)
   return (
     <section id="products" className="py-24 relative" aria-labelledby="products-heading">
       <div className="max-w-7xl mx-auto">
-        <h2 id="products-heading" className="text-4xl sm:text-5xl font-bold text-white mb-16 text-center animate-fade-in-up">
+        <h2
+          id="products-heading"
+          className="text-4xl sm:text-5xl font-bold text-white mb-16 text-center animate-fade-in-up"
+        >
           {t('products.title')}
         </h2>
 
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
-          <article
-            className="group bg-white/5 backdrop-blur-sm rounded-sm border border-white/10 overflow-hidden hover:border-[#E11D48]/50 transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#E11D48]/20"
-          >
-            <div className="aspect-video bg-gradient-to-br from-[#E11D48]/20 to-[#E11D48]/5 flex items-center justify-center relative overflow-hidden" role="img" aria-label="Shooting accessories product showcase">
-              <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/6069057/pexels-photo-6069057.jpeg?auto=compress&cs=tinysrgb&w=800')] bg-cover bg-center opacity-30" role="presentation" />
+          <article className="group bg-white/5 backdrop-blur-sm rounded-sm border border-white/10 overflow-hidden hover:border-[#E11D48]/50 transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#E11D48]/20">
+            <div
+              className="aspect-video bg-gradient-to-br from-[#E11D48]/20 to-[#E11D48]/5 flex items-center justify-center relative overflow-hidden"
+              role="img"
+              aria-label="Shooting accessories product showcase"
+            >
+              <div
+                className="absolute inset-0 bg-[url('https://images.pexels.com/photos/6069057/pexels-photo-6069057.jpeg?auto=compress&cs=tinysrgb&w=800')] bg-cover bg-center opacity-30"
+                role="presentation"
+              />
               <svg
                 className="w-32 h-32 text-white/80 relative z-10"
                 fill="none"
@@ -94,11 +102,16 @@ export default function ProductsSection({ locale = 'en' }: ProductsSectionProps)
             </div>
           </article>
 
-          <article
-            className="group bg-white/5 backdrop-blur-sm rounded-sm border border-white/10 overflow-hidden hover:border-[#E11D48]/50 transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#E11D48]/20"
-          >
-            <div className="aspect-video bg-gradient-to-br from-[#E11D48]/20 to-[#E11D48]/5 flex items-center justify-center relative overflow-hidden" role="img" aria-label="Range management software interface">
-              <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800')] bg-cover bg-center opacity-20" role="presentation" />
+          <article className="group bg-white/5 backdrop-blur-sm rounded-sm border border-white/10 overflow-hidden hover:border-[#E11D48]/50 transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#E11D48]/20">
+            <div
+              className="aspect-video bg-gradient-to-br from-[#E11D48]/20 to-[#E11D48]/5 flex items-center justify-center relative overflow-hidden"
+              role="img"
+              aria-label="Range management software interface"
+            >
+              <div
+                className="absolute inset-0 bg-[url('https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800')] bg-cover bg-center opacity-20"
+                role="presentation"
+              />
               <svg
                 className="w-32 h-32 text-white/80 relative z-10"
                 fill="none"

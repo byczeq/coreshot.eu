@@ -56,12 +56,7 @@ const features = [
 ];
 
 export default function WhyCoreShot() {
-  const [visibleCards, setVisibleCards] = useState<boolean[]>([
-    false,
-    false,
-    false,
-    false,
-  ]);
+  const [visibleCards, setVisibleCards] = useState<boolean[]>([false, false, false, false]);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -92,12 +87,23 @@ export default function WhyCoreShot() {
   }, []);
 
   return (
-    <section id="solutions" className="py-24 bg-white/[0.02]" ref={sectionRef} aria-labelledby="solutions-heading">
+    <section
+      id="solutions"
+      className="py-24 bg-white/[0.02]"
+      ref={sectionRef}
+      aria-labelledby="solutions-heading"
+    >
       <div className="max-w-7xl mx-auto">
-        <h2 id="solutions-heading" className="text-4xl sm:text-5xl font-bold text-white mb-4 text-center animate-fade-in-up">
+        <h2
+          id="solutions-heading"
+          className="text-4xl sm:text-5xl font-bold text-white mb-4 text-center animate-fade-in-up"
+        >
           Why CoreShot?
         </h2>
-        <p className="text-xl text-[#9CA3AF] mb-16 text-center max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+        <p
+          className="text-xl text-[#9CA3AF] mb-16 text-center max-w-3xl mx-auto animate-fade-in-up"
+          style={{ animationDelay: '0.1s' }}
+        >
           Discover what sets us apart in the world of shooting sports
         </p>
 
@@ -106,9 +112,7 @@ export default function WhyCoreShot() {
             <div
               key={index}
               className={`group bg-white/5 backdrop-blur-sm p-8 rounded-sm border border-white/10 hover:border-[#E11D48]/50 transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#E11D48]/20 ${
-                visibleCards[index]
-                  ? 'opacity-100 translate-y-0'
-                  : 'opacity-0 translate-y-10'
+                visibleCards[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{
                 transition: 'all 0.6s ease-out',

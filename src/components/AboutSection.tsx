@@ -2,7 +2,11 @@ export default function AboutSection() {
   return (
     <section id="about" className="py-24 relative" aria-labelledby="about-heading">
       <div className="max-w-4xl mx-auto text-center">
-        <div className="mb-8 flex justify-center animate-fade-in-up" role="img" aria-label="Precision target icon">
+        <div
+          className="mb-8 flex justify-center animate-fade-in-up"
+          role="img"
+          aria-label="Precision target icon"
+        >
           <div className="w-24 h-24 bg-white/5 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/10">
             <svg width="48" height="48" viewBox="0 0 120 120" className="mx-auto">
               <circle
@@ -34,15 +38,15 @@ export default function AboutSection() {
         <div className="space-y-6 text-lg text-[#9CA3AF] leading-relaxed">
           <p className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             CoreShot was founded by passionate shooters who understand the unique demands of
-            European shooting sports. We bridge the gap between traditional craftsmanship and
-            modern technology, delivering solutions that meet the exacting standards of
-            professional ranges and competitive athletes.
+            European shooting sports. We bridge the gap between traditional craftsmanship and modern
+            technology, delivering solutions that meet the exacting standards of professional ranges
+            and competitive athletes.
           </p>
 
           <p className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-            Our mission is simple: provide premium accessories and intelligent software that
-            enhance precision, streamline operations, and elevate the shooting experience. From
-            the range floor to the back office, CoreShot is your partner in excellence.
+            Our mission is simple: provide premium accessories and intelligent software that enhance
+            precision, streamline operations, and elevate the shooting experience. From the range
+            floor to the back office, CoreShot is your partner in excellence.
           </p>
 
           <p className="animate-fade-in-up" style={{ animationDelay: '0.4s' }}>

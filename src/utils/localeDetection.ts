@@ -40,16 +40,16 @@ export async function detectLocaleByGeolocation(): Promise<Locale | null> {
     const countryCode = data.country_code;
 
     const countryToLocale: Record<string, Locale> = {
-      'DE': 'de',
-      'AT': 'de',
-      'CH': 'de',
-      'PL': 'pl',
-      'GB': 'en',
-      'US': 'en',
-      'CA': 'en',
-      'AU': 'en',
-      'NZ': 'en',
-      'IE': 'en',
+      DE: 'de',
+      AT: 'de',
+      CH: 'de',
+      PL: 'pl',
+      GB: 'en',
+      US: 'en',
+      CA: 'en',
+      AU: 'en',
+      NZ: 'en',
+      IE: 'en',
     };
 
     return countryToLocale[countryCode] || null;

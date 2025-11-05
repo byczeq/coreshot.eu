@@ -11,7 +11,7 @@ interface LocaleDetectorProps {
   currentLocale: string;
 }
 
-export default function LocaleDetector({ currentLocale }: LocaleDetectorProps) {
+export default function LocaleDetector({ currentLocale: _currentLocale }: LocaleDetectorProps) {
   useEffect(() => {
     const handleLocaleDetection = async () => {
       if (!shouldRedirectToDetectedLocale()) {
@@ -24,9 +24,10 @@ export default function LocaleDetector({ currentLocale }: LocaleDetectorProps) {
       if (detectedLocale !== urlLocale) {
         const currentPath = window.location.pathname;
         const pathWithoutLang = currentPath.replace(/^\/(en|de|pl)/, '');
-        const newPath = detectedLocale === 'pl'
-          ? pathWithoutLang || '/'
-          : `/${detectedLocale}${pathWithoutLang || '/'}`;
+        const newPath =
+          detectedLocale === 'pl'
+            ? pathWithoutLang || '/'
+            : `/${detectedLocale}${pathWithoutLang || '/'}`;
 
         setStoredLocale(detectedLocale);
         markAsVisited();

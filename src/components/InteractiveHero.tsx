@@ -71,7 +71,11 @@ export default function InteractiveHero({ locale = 'en' }: InteractiveHeroProps)
         />
       </div>
 
-      <div className="mb-12 relative z-10 animate-float" role="img" aria-label="Precision target icon">
+      <div
+        className="mb-12 relative z-10 animate-float"
+        role="img"
+        aria-label="Precision target icon"
+      >
         <svg
           ref={targetRef}
           width="120"

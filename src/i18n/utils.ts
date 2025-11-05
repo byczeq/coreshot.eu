@@ -7,14 +7,16 @@ export function getLangFromUrl(url: URL): Locale {
 }
 
 export function useTranslations(lang: Locale) {
-  return function t(key: string) {
+  return function t(key: string): string {
     const keys = key.split('.');
-    let value: any = translations[lang];
+    let value: Record<string, unknown> | string = translations[lang];
 
     for (const k of keys) {
-      value = value?.[k];
+      if (typeof value === 'object' && value !== null) {
+        value = value[k] as Record<string, unknown> | string;
+      }
     }
 
-    return value || key;
+    return typeof value === 'string' ? value : key;
   };
 }
