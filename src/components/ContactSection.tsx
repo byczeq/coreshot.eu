@@ -8,15 +8,66 @@ export default function ContactSection() {
     isRangeManager: false,
     newsletterEmail: '',
   });
+  const [subscribeStatus, setSubscribeStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [subscribeMessage, setSubscribeMessage] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
   };
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Newsletter signup:', formData.newsletterEmail);
+    setSubscribeStatus('loading');
+    setSubscribeMessage('');
+
+    try {
+      const locale = window.location.pathname.split('/')[1] || 'pl';
+      const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/subscribe`;
+
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: formData.newsletterEmail,
+          locale: locale === 'en' || locale === 'de' ? locale : 'pl',
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to subscribe');
+      }
+
+      setSubscribeStatus('success');
+      setSubscribeMessage('Thank you for subscribing!');
+      setFormData({ ...formData, newsletterEmail: '' });
+
+      setTimeout(() => {
+        setSubscribeStatus('idle');
+        setSubscribeMessage('');
+      }, 5000);
+    } catch (error) {
+      setSubscribeStatus('error');
+      if (error instanceof Error) {
+        if (error.message.includes('already subscribed')) {
+          setSubscribeMessage('This email is already subscribed.');
+        } else {
+          setSubscribeMessage(error.message);
+        }
+      } else {
+        setSubscribeMessage('Failed to subscribe. Please try again.');
+      }
+
+      setTimeout(() => {
+        setSubscribeStatus('idle');
+        setSubscribeMessage('');
+      }, 5000);
+    }
   };
 
   return (
@@ -135,10 +186,23 @@ export default function ContactSection() {
 
               <button
                 type="submit"
-                className="w-full px-8 py-4 bg-transparent text-white rounded-sm font-semibold hover:bg-white/10 transition-all duration-300 border-2 border-white/30 hover:border-[#E11D48]/50 transform hover:-translate-y-0.5"
+                disabled={subscribeStatus === 'loading'}
+                className="w-full px-8 py-4 bg-transparent text-white rounded-sm font-semibold hover:bg-white/10 transition-all duration-300 border-2 border-white/30 hover:border-[#E11D48]/50 transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Get Updates
+                {subscribeStatus === 'loading' ? 'Subscribing...' : 'Get Updates'}
               </button>
+
+              {subscribeMessage && (
+                <div
+                  className={`mt-4 p-3 rounded-sm text-sm ${
+                    subscribeStatus === 'success'
+                      ? 'bg-green-500/10 border border-green-500/30 text-green-400'
+                      : 'bg-red-500/10 border border-red-500/30 text-red-400'
+                  }`}
+                >
+                  {subscribeMessage}
+                </div>
+              )}
             </form>
 
             <div className="mt-8 pt-8 border-t border-white/10">
