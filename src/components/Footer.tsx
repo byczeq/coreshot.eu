@@ -110,7 +110,7 @@ export default function Footer({ locale = 'en' }: FooterProps) {
               </li>
               <li>
                 <a
-                  href="#terms"
+                  href={`/${locale}/terms`}
                   className="text-[#9CA3AF] hover:text-[#E11D48] transition-colors duration-300"
                 >
                   {t('footer.terms')}
