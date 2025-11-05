@@ -13,6 +13,15 @@ export const translations = {
       ctaSecondary: 'Book a Demo',
       comingSoon: 'Coming soon',
     },
+    about: {
+      title: 'Built for Precision. Designed for Europe.',
+      paragraph1:
+        'CoreShot was founded by passionate shooters who understand the unique demands of European shooting sports. We bridge the gap between traditional craftsmanship and modern technology, delivering solutions that meet the exacting standards of professional ranges and competitive athletes.',
+      paragraph2:
+        'Our mission is simple: provide premium accessories and intelligent software that enhance precision, streamline operations, and elevate the shooting experience. From the range floor to the back office, CoreShot is your partner in excellence.',
+      paragraph3:
+        'With a commitment to innovation, quality, and customer success, we\'re building the future of shooting sports management. Every product we create reflects decades of expertise and a dedication to continuous improvement.',
+    },
     products: {
       title: 'Products & Solutions',
       gear: {
@@ -56,6 +65,15 @@ export const translations = {
       ctaPrimary: 'Produkte erkunden',
       ctaSecondary: 'Demo buchen',
       comingSoon: 'Demnächst',
+    },
+    about: {
+      title: 'Gebaut für Präzision. Entwickelt für Europa.',
+      paragraph1:
+        'CoreShot wurde von leidenschaftlichen Schützen gegründet, die die einzigartigen Anforderungen des europäischen Schießsports verstehen. Wir überbrücken die Lücke zwischen traditionellem Handwerk und moderner Technologie und liefern Lösungen, die den hohen Ansprüchen professioneller Anlagen und Wettkampfsportler gerecht werden.',
+      paragraph2:
+        'Unsere Mission ist einfach: Premium-Zubehör und intelligente Software bereitzustellen, die Präzision verbessern, Abläufe optimieren und das Schießerlebnis verbessern. Vom Standboden bis zum Backoffice ist CoreShot Ihr Partner für Exzellenz.',
+      paragraph3:
+        'Mit unserem Engagement für Innovation, Qualität und Kundenerfolg gestalten wir die Zukunft des Schießsportmanagements. Jedes Produkt, das wir entwickeln, spiegelt jahrzehntelange Expertise und die Hingabe zur kontinuierlichen Verbesserung wider.',
     },
     products: {
       title: 'Produkte & Lösungen',
@@ -101,6 +119,13 @@ export const translations = {
       ctaPrimary: 'Poznaj produkty',
       ctaSecondary: 'Umów demo',
       comingSoon: 'Wkrótce',
+    },
+    about: {
+      title: 'Zaprojektowane z precyzją. Zbudowane dla wydajności.',
+      paragraph1:
+        'W CoreShot łączymy europejską precyzję wykonania z nowoczesną technologią, tworząc inteligentne akcesoria i oprogramowanie dla wymagających strzelców.',
+      paragraph2: 'Naszym celem jest prostota, niezawodność i innowacja w każdym detalu.',
+      paragraph3: 'Bo doskonałość to nie cel — to standard.',
     },
     products: {
       title: 'Produkty i Rozwiązania',

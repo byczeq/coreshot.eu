@@ -1,4 +1,12 @@
-export default function AboutSection() {
+import { useTranslations } from '../i18n/utils';
+import type { Locale } from '../i18n/translations';
+
+interface AboutSectionProps {
+  locale?: string;
+}
+
+export default function AboutSection({ locale = 'en' }: AboutSectionProps) {
+  const t = useTranslations(locale as Locale);
   return (
     <section id="about" className="py-24 relative" aria-labelledby="about-heading">
       <div className="max-w-4xl mx-auto text-center">
@@ -32,27 +40,20 @@ export default function AboutSection() {
           className="text-4xl sm:text-5xl font-bold text-white mb-8 animate-fade-in-up"
           style={{ animationDelay: '0.1s' }}
         >
-          Built for Precision. Designed for Europe.
+          {t('about.title')}
         </h2>
 
         <div className="space-y-6 text-lg text-[#9CA3AF] leading-relaxed">
           <p className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            CoreShot was founded by passionate shooters who understand the unique demands of
-            European shooting sports. We bridge the gap between traditional craftsmanship and modern
-            technology, delivering solutions that meet the exacting standards of professional ranges
-            and competitive athletes.
+            {t('about.paragraph1')}
           </p>
 
           <p className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-            Our mission is simple: provide premium accessories and intelligent software that enhance
-            precision, streamline operations, and elevate the shooting experience. From the range
-            floor to the back office, CoreShot is your partner in excellence.
+            {t('about.paragraph2')}
           </p>
 
           <p className="animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-            With a commitment to innovation, quality, and customer success, we're building the
-            future of shooting sports management. Every product we create reflects decades of
-            expertise and a dedication to continuous improvement.
+            {t('about.paragraph3')}
           </p>
         </div>
 
