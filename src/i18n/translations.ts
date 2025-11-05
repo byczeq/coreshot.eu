@@ -11,6 +11,7 @@ export const translations = {
       subtitle: 'Premium accessories. Smart software.',
       ctaPrimary: 'Explore Products',
       ctaSecondary: 'Book a Demo',
+      comingSoon: 'Coming soon',
     },
     products: {
       title: 'Products & Solutions',
@@ -54,6 +55,7 @@ export const translations = {
       subtitle: 'Premium-Zubehör. Intelligente Software.',
       ctaPrimary: 'Produkte erkunden',
       ctaSecondary: 'Demo buchen',
+      comingSoon: 'Demnächst',
     },
     products: {
       title: 'Produkte & Lösungen',
@@ -98,6 +100,7 @@ export const translations = {
         'Akcesoria i technologie dla strzelców, którzy mierzą wyżej. Wysokiej jakości sprzęt. Inteligentne oprogramowanie.',
       ctaPrimary: 'Poznaj produkty',
       ctaSecondary: 'Umów demo',
+      comingSoon: 'Wkrótce',
     },
     products: {
       title: 'Produkty i Rozwiązania',

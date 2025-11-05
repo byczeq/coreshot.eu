@@ -175,7 +175,7 @@ export default function InteractiveHero({ locale = 'en' }: InteractiveHeroProps)
             {t('hero.ctaSecondary')}
           </button>
           <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-[#1C2526] text-white text-sm rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap border border-white/10">
-            Coming soon
+            {t('hero.comingSoon')}
           </div>
         </div>
       </div>
