@@ -1,8 +1,0 @@
-{
-  "name": "coreshot-eu",
-  "compatibility_date": "2024-10-26",
-  "pages_build_output_dir": "./dist",
-  "observability": {
-    "enabled": true
-  }
-}
