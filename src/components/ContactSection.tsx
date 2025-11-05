@@ -151,7 +151,7 @@ export default function ContactSection() {
 
         <div className="grid md:grid-cols-2 gap-12">
           <div
-            className="bg-white/5 backdrop-blur-sm p-8 rounded-sm border border-white/10 animate-fade-in-up"
+            className="bg-white/5 backdrop-blur-sm p-8 rounded-sm border border-white/10 animate-fade-in-up opacity-60"
             style={{ animationDelay: '0.2s' }}
           >
             <h3 className="text-2xl font-bold text-white mb-6">Send a Message</h3>
@@ -168,6 +168,7 @@ export default function ContactSection() {
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-sm text-white placeholder-[#6B7280] focus:outline-none focus:border-[#E11D48]/50 transition-colors duration-300"
                   placeholder="Your name"
                   required
+                  disabled
                 />
               </div>
 
@@ -183,6 +184,7 @@ export default function ContactSection() {
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-sm text-white placeholder-[#6B7280] focus:outline-none focus:border-[#E11D48]/50 transition-colors duration-300"
                   placeholder="your@email.com"
                   required
+                  disabled
                 />
               </div>
 
@@ -198,6 +200,7 @@ export default function ContactSection() {
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-sm text-white placeholder-[#6B7280] focus:outline-none focus:border-[#E11D48]/50 transition-colors duration-300 resize-none"
                   placeholder="Tell us about your needs..."
                   required
+                  disabled
                 />
               </div>
 
@@ -208,19 +211,26 @@ export default function ContactSection() {
                   checked={formData.isRangeManager}
                   onChange={(e) => setFormData({ ...formData, isRangeManager: e.target.checked })}
                   className="w-5 h-5 bg-white/5 border border-white/10 rounded text-[#E11D48] focus:ring-[#E11D48] focus:ring-offset-0"
+                  disabled
                 />
                 <label htmlFor="isRangeManager" className="ml-3 text-[#9CA3AF]">
                   I manage a range
                 </label>
               </div>
 
-              <button
-                type="submit"
-                disabled={contactStatus === 'loading'}
-                className="w-full px-8 py-4 bg-[#E11D48] text-white rounded-sm font-semibold hover:bg-[#BE123C] transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#E11D48]/50 transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {contactStatus === 'loading' ? 'Sending...' : 'Send Message'}
-              </button>
+              <div className="relative group">
+                <button
+                  type="submit"
+                  disabled
+                  className="w-full px-8 py-4 bg-[#E11D48] text-white rounded-sm font-semibold hover:bg-[#BE123C] transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#E11D48]/50 transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  Send Message
+                </button>
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+                  Contact form temporarily disabled
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-gray-900"></div>
+                </div>
+              </div>
 
               {contactMessage && (
                 <div

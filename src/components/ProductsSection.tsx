@@ -102,7 +102,7 @@ export default function ProductsSection({ locale = 'en' }: ProductsSectionProps)
             </div>
           </article>
 
-          <article className="group bg-white/5 backdrop-blur-sm rounded-sm border border-white/10 overflow-hidden hover:border-[#E11D48]/50 transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#E11D48]/20">
+          <article className="group bg-white/5 backdrop-blur-sm rounded-sm border border-white/10 overflow-hidden opacity-60">
             <div
               className="aspect-video bg-gradient-to-br from-[#E11D48]/20 to-[#E11D48]/5 flex items-center justify-center relative overflow-hidden"
               role="img"
@@ -128,54 +128,13 @@ export default function ProductsSection({ locale = 'en' }: ProductsSectionProps)
             </div>
 
             <div className="p-8">
-              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#E11D48] transition-colors duration-300">
+              <h3 className="text-2xl font-bold text-white mb-4">
                 {t('products.software.title')}
               </h3>
 
-              <ul className="space-y-3 mb-6 text-[#9CA3AF]">
-                <li className="flex items-start">
-                  <svg
-                    className="w-5 h-5 text-[#E11D48] mr-3 mt-0.5 flex-shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>{t('products.software.feature1')}</span>
-                </li>
-                <li className="flex items-start">
-                  <svg
-                    className="w-5 h-5 text-[#E11D48] mr-3 mt-0.5 flex-shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>{t('products.software.feature2')}</span>
-                </li>
-                <li className="flex items-start">
-                  <svg
-                    className="w-5 h-5 text-[#E11D48] mr-3 mt-0.5 flex-shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>{t('products.software.feature3')}</span>
-                </li>
-              </ul>
+              <p className="text-[#9CA3AF] mb-6 leading-relaxed">
+                {t('products.software.subtitle')}
+              </p>
 
               <a
                 href="#contact"
