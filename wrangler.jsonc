@@ -1,14 +1,7 @@
 {
-  "main": "dist/_worker.js/index.js",
   "name": "coreshot-eu",
   "compatibility_date": "2024-10-26",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  "assets": {
-    "binding": "ASSETS",
-    "directory": "./dist"
-  },
+  "pages_build_output_dir": "./dist",
   "observability": {
     "enabled": true
   }
