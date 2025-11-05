@@ -94,7 +94,8 @@ export const translations = {
     },
     hero: {
       title: 'CoreShot: Precyzja w Centrum',
-      subtitle: 'Wysokiej jakości akcesoria. Inteligentne oprogramowanie.',
+      subtitle:
+        'Akcesoria i technologie dla strzelców, którzy mierzą wyżej. Wysokiej jakości sprzęt. Inteligentne oprogramowanie.',
       ctaPrimary: 'Poznaj produkty',
       ctaSecondary: 'Umów demo',
     },
