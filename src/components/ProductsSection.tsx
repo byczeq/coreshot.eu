@@ -20,27 +20,15 @@ export default function ProductsSection({ locale = 'en' }: ProductsSectionProps)
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
           <article className="group bg-white/5 backdrop-blur-sm rounded-sm border border-white/10 overflow-hidden hover:border-[#E11D48]/50 transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#E11D48]/20">
             <div
-              className="aspect-video bg-gradient-to-br from-[#E11D48]/20 to-[#E11D48]/5 flex items-center justify-center relative overflow-hidden"
+              className="aspect-video bg-gradient-to-br from-[#1C2526] to-[#0F172A] flex items-center justify-center relative overflow-hidden"
               role="img"
               aria-label="Shooting accessories product showcase"
             >
-              <div
-                className="absolute inset-0 bg-[url('https://images.pexels.com/photos/6069057/pexels-photo-6069057.jpeg?auto=compress&cs=tinysrgb&w=800')] bg-cover bg-center opacity-30"
-                role="presentation"
+              <img
+                src="/image copy.png"
+                alt="CoreShot precision shooting equipment"
+                className="w-full h-full object-contain p-8"
               />
-              <svg
-                className="w-32 h-32 text-white/80 relative z-10"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
-                />
-              </svg>
             </div>
 
             <div className="p-8">

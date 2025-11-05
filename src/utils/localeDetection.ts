@@ -21,7 +21,7 @@ export function getStoredLocale(): Locale | null {
   if (typeof window === 'undefined') return null;
 
   const stored = localStorage.getItem(LOCALE_STORAGE_KEY);
-  if (stored && ['en', 'de', 'pl'].includes(stored)) {
+  if (stored && ['en', 'de', 'pl', 'fr', 'it'].includes(stored)) {
     return stored as Locale;
   }
   return null;
@@ -44,6 +44,8 @@ export async function detectLocaleByGeolocation(): Promise<Locale | null> {
       AT: 'de',
       CH: 'de',
       PL: 'pl',
+      FR: 'fr',
+      IT: 'it',
       GB: 'en',
       US: 'en',
       CA: 'en',
@@ -66,6 +68,8 @@ export function detectLocaleByBrowser(): Locale {
 
   if (browserLang.startsWith('de')) return 'de';
   if (browserLang.startsWith('pl')) return 'pl';
+  if (browserLang.startsWith('fr')) return 'fr';
+  if (browserLang.startsWith('it')) return 'it';
   if (browserLang.startsWith('en')) return 'en';
 
   return 'pl';
@@ -75,7 +79,7 @@ export function getCurrentLocaleFromUrl(): Locale {
   if (typeof window === 'undefined') return 'pl';
 
   const pathname = window.location.pathname;
-  const match = pathname.match(/^\/(en|de|pl)/);
+  const match = pathname.match(/^\/(en|de|pl|fr|it)/);
 
   if (match) {
     return match[1] as Locale;
