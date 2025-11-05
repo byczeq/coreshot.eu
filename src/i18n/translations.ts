@@ -232,6 +232,158 @@ export const translations = {
       copyright: '© 2025 CoreShot. Wszelkie prawa zastrzeżone.',
     },
   },
+  fr: {
+    nav: {
+      products: 'Produits',
+      solutions: 'Solutions',
+      about: 'À propos',
+      contact: 'Contact',
+    },
+    hero: {
+      title: 'CoreShot: La Précision au Cœur',
+      subtitle: 'Accessoires et technologies pour les tireurs qui visent plus haut. Équipement premium. Logiciel intelligent.',
+      ctaPrimary: 'Explorer les produits',
+      ctaSecondary: 'Réserver une démo',
+      comingSoon: 'Bientôt disponible',
+    },
+    about: {
+      title: 'Conçu avec précision. Construit pour la performance.',
+      paragraph1:
+        'Chez CoreShot, nous combinons la précision européenne avec la technologie moderne, créant des accessoires intelligents et des logiciels pour les tireurs exigeants.',
+      paragraph2: 'Notre objectif est la simplicité, la fiabilité et l\'innovation dans chaque détail.',
+      paragraph3: 'Parce que l\'excellence n\'est pas un objectif — c\'est une norme.',
+    },
+    products: {
+      title: 'Produits & Solutions',
+      gear: {
+        title: 'Équipement CoreShot: Précision et Innovation dans le Tir',
+        feature1: 'Gas Pedal: Poignée de contrôle de gaz ergonomique – légère, réglable, réduit le temps de réaction',
+        feature2: 'Poignée premium pour Beretta 92X Performance – avec angle de palm swell réglable pour un ajustement parfait',
+        feature3: 'Matériaux premium, testés IPSC, conformes UE',
+        cta: 'Voir la gamme',
+      },
+      software: {
+        title: 'La Précision Rencontre la Technologie',
+        subtitle: 'Nous travaillons sur une solution qui connectera les données, l\'équipement et les personnes dans un seul écosystème. Pour ceux qui visent plus haut.',
+        feature1: 'Système de réservation et de gestion des lignes en temps réel',
+        feature2: 'Suivi des membres, notation et analyses de performance',
+        feature3: 'Support multilingue et accessibilité cloud',
+        cta: 'Rejoindre la liste d\'attente →',
+      },
+    },
+    whyCoreShot: {
+      title: 'Pourquoi CoreShot?',
+      subtitle: 'Découvrez ce qui nous distingue dans le monde du tir moderne.',
+      feature1: {
+        title: 'Précision Inégalée',
+        description:
+          'Chaque produit est fabriqué selon les plus hauts standards de qualité — pour une précision, une fiabilité et une répétabilité maximales des résultats.',
+      },
+      feature2: {
+        title: 'Ingénierie Européenne',
+        description:
+          'Conçu et testé en Europe, combinant les technologies modernes avec l\'expérience des tireurs de compétition.',
+      },
+      feature3: {
+        title: 'Créé par des Passionnés',
+        description:
+          'CoreShot est soutenu par des personnes qui comprennent les besoins réels des tireurs — de l\'équipement aux méthodes opérationnelles.',
+      },
+      feature4: {
+        title: 'Technologie Pérenne',
+        description:
+          'Nos solutions évoluent avec vos besoins, offrant durabilité, compatibilité et améliorations régulières.',
+      },
+    },
+    footer: {
+      description:
+        'Accessoires premium et logiciels intelligents pour la gestion de tir de précision à travers l\'Europe.',
+      quickLinks: 'Liens rapides',
+      legal: 'Légal',
+      products: 'Produits',
+      software: 'Logiciel',
+      about: 'À propos',
+      privacy: 'Politique de confidentialité',
+      terms: 'Conditions d\'utilisation',
+      copyright: '© 2025 CoreShot. Tous droits réservés.',
+    },
+  },
+  it: {
+    nav: {
+      products: 'Prodotti',
+      solutions: 'Soluzioni',
+      about: 'Chi siamo',
+      contact: 'Contatto',
+    },
+    hero: {
+      title: 'CoreShot: Precisione al Tuo Centro',
+      subtitle: 'Accessori e tecnologie per tiratori che mirano più in alto. Attrezzatura premium. Software intelligente.',
+      ctaPrimary: 'Esplora i prodotti',
+      ctaSecondary: 'Prenota una demo',
+      comingSoon: 'Prossimamente',
+    },
+    about: {
+      title: 'Progettato con precisione. Costruito per le prestazioni.',
+      paragraph1:
+        'In CoreShot combiniamo la precisione europea con la tecnologia moderna, creando accessori intelligenti e software per tiratori esigenti.',
+      paragraph2: 'Il nostro obiettivo è semplicità, affidabilità e innovazione in ogni dettaglio.',
+      paragraph3: 'Perché l\'eccellenza non è un obiettivo — è uno standard.',
+    },
+    products: {
+      title: 'Prodotti e Soluzioni',
+      gear: {
+        title: 'Attrezzatura CoreShot: Precisione e Innovazione nel Tiro',
+        feature1: 'Gas Pedal: Impugnatura di controllo gas ergonomica – leggera, regolabile, riduce i tempi di reazione',
+        feature2: 'Impugnatura premium per Beretta 92X Performance – con angolo palm swell regolabile per una vestibilità perfetta',
+        feature3: 'Materiali premium, testati IPSC, conformi UE',
+        cta: 'Vedi la gamma',
+      },
+      software: {
+        title: 'La Precisione Incontra la Tecnologia',
+        subtitle: 'Stiamo lavorando a una soluzione che collegherà dati, attrezzature e persone in un unico ecosistema. Per chi mira più in alto.',
+        feature1: 'Sistema di prenotazione e gestione corsie in tempo reale',
+        feature2: 'Tracciamento membri, punteggio e analisi delle prestazioni',
+        feature3: 'Supporto multilingue e accessibilità cloud',
+        cta: 'Unisciti alla lista d\'attesa →',
+      },
+    },
+    whyCoreShot: {
+      title: 'Perché CoreShot?',
+      subtitle: 'Scopri cosa ci distingue nel mondo del tiro moderno.',
+      feature1: {
+        title: 'Precisione Impareggiabile',
+        description:
+          'Ogni prodotto è realizzato secondo i più alti standard di qualità — per massima precisione, affidabilità e ripetibilità dei risultati.',
+      },
+      feature2: {
+        title: 'Ingegneria Europea',
+        description:
+          'Progettato e testato in Europa, combinando tecnologie moderne con l\'esperienza di tiratori agonisti.',
+      },
+      feature3: {
+        title: 'Creato da Appassionati',
+        description:
+          'CoreShot è sostenuto da persone che comprendono le reali esigenze dei tiratori — dall\'attrezzatura ai metodi operativi.',
+      },
+      feature4: {
+        title: 'Tecnologia a Prova di Futuro',
+        description:
+          'Le nostre soluzioni evolvono con le tue esigenze, offrendo durabilità, compatibilità e miglioramenti regolari.',
+      },
+    },
+    footer: {
+      description:
+        'Accessori premium e software intelligenti per la gestione del tiro di precisione in tutta Europa.',
+      quickLinks: 'Link rapidi',
+      legal: 'Legale',
+      products: 'Prodotti',
+      software: 'Software',
+      about: 'Chi siamo',
+      privacy: 'Privacy Policy',
+      terms: 'Termini di servizio',
+      copyright: '© 2025 CoreShot. Tutti i diritti riservati.',
+    },
+  },
 } as const;
 
 export type Locale = keyof typeof translations;
