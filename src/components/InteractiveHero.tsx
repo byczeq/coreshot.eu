@@ -167,12 +167,17 @@ export default function InteractiveHero({ locale = 'en' }: InteractiveHeroProps)
           <span className="relative z-10">{t('hero.ctaPrimary')}</span>
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
         </a>
-        <a
-          href="#contact"
-          className="px-10 py-4 bg-transparent text-white rounded-sm font-semibold hover:bg-white/10 transition-all duration-300 border-2 border-white/30 hover:border-[#E11D48]/50 transform hover:-translate-y-1"
-        >
-          {t('hero.ctaSecondary')}
-        </a>
+        <div className="relative group">
+          <button
+            disabled
+            className="px-10 py-4 bg-transparent text-white/50 rounded-sm font-semibold transition-all duration-300 border-2 border-white/20 cursor-not-allowed"
+          >
+            {t('hero.ctaSecondary')}
+          </button>
+          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-[#1C2526] text-white text-sm rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap border border-white/10">
+            Coming soon
+          </div>
+        </div>
       </div>
 
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
