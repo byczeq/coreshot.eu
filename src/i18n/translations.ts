@@ -132,10 +132,10 @@ export const translations = {
     products: {
       title: 'Produkty i Rozwiązania',
       gear: {
-        title: 'Sprzęt, który trafia w dziesiątkę',
-        feature1: 'Materiały premium zaprojektowane dla trwałości i precyzji',
-        feature2: 'Ergonomiczne projekty testowane przez strzelców sportowych',
-        feature3: 'Zgodne z europejskimi przepisami strzelectwa sportowego',
+        title: 'Sprzęt CoreShot: Precyzja i Innowacja w Strzelectwie',
+        feature1: 'Gas Pedal: Ergonomiczny uchwyt do kontroli gazu – lekki, regulowany, skraca czas reakcji',
+        feature2: 'Wysokiej jakości chwyt do Beretta 92X Performance – z regulowanym kątem palm swell dla idealnego dopasowania',
+        feature3: 'Materiały premium, testowane w IPSC, zgodne z normami UE',
         cta: 'Zobacz ofertę',
       },
       software: {
