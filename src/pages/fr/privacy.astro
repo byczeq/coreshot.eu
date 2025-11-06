@@ -1,84 +1,11 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import LegalLayout from '../../layouts/LegalLayout.astro';
+import { marked } from 'marked';
+import privacyContent from '../../content/legal/privacy-fr.md?raw';
+
+const htmlContent = marked(privacyContent);
 ---
 
-<Layout title="Politique de Confidentialité - CoreShot">
-  <main class="min-h-screen bg-[#0F172A] pt-24 pb-16">
-    <div class="max-w-4xl mx-auto px-4">
-      <article class="prose prose-invert prose-red max-w-none">
-        <h1 class="text-4xl font-bold text-white mb-2">Politique de Confidentialité CoreShot</h1>
-        <p class="text-[#9CA3AF] mb-8">
-          <strong>Date d'Entrée en Vigueur: 5 Novembre 2025</strong><br />
-          <strong>Dernière Mise à Jour: 5 Novembre 2025</strong>
-        </p>
-
-        <hr class="border-white/10 my-8" />
-
-        <section class="mb-12">
-          <h2 class="text-3xl font-bold text-white mb-4">1. Responsable du Traitement</h2>
-          <p class="text-[#E5E7EB]">Le responsable de vos données personnelles est:</p>
-          <p class="text-[#E5E7EB]">
-            <strong>CoreShot Sp. z o.o.</strong><br />
-            TVA: [INSERT VAT] | N° Société: [INSERT REGON]<br />
-            email: <a href="#" class="text-[#E11D48] hover:underline">privacy@coreshot.eu</a>
-          </p>
-        </section>
-
-        <section class="mb-12">
-          <h2 class="text-3xl font-bold text-white mb-4">
-            2. Finalité et Base Légale du Traitement
-          </h2>
-          <p class="text-[#E5E7EB] mb-4">Nous traitons vos données uniquement pour les finalités suivantes:</p>
-          <div class="overflow-x-auto">
-            <table class="w-full border-collapse border border-white/10 text-[#E5E7EB]">
-              <thead>
-                <tr class="bg-white/5">
-                  <th class="border border-white/10 px-4 py-3 text-left">Finalité</th>
-                  <th class="border border-white/10 px-4 py-3 text-left">Base Légale (RGPD)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="border border-white/10 px-4 py-3"
-                    >Exécution des contrats de vente d'accessoires de tir</td
-                  >
-                  <td class="border border-white/10 px-4 py-3">Art. 6(1)(b)</td>
-                </tr>
-                <tr class="bg-white/5">
-                  <td class="border border-white/10 px-4 py-3"
-                    >Gestion de compte dans l'application CoreShot Range Manager</td
-                  >
-                  <td class="border border-white/10 px-4 py-3">Art. 6(1)(b)</td>
-                </tr>
-                <tr>
-                  <td class="border border-white/10 px-4 py-3"
-                    >Marketing direct (newsletter, promotions)</td
-                  >
-                  <td class="border border-white/10 px-4 py-3">Art. 6(1)(a) (consentement)</td>
-                </tr>
-                <tr class="bg-white/5">
-                  <td class="border border-white/10 px-4 py-3"
-                    >Analyse du trafic dans l'application et le site web (Google Analytics, Hotjar)</td
-                  >
-                  <td class="border border-white/10 px-4 py-3"
-                    >Art. 6(1)(f) (intérêt légitime)</td
-                  >
-                </tr>
-                <tr>
-                  <td class="border border-white/10 px-4 py-3">Réclamations légales et défense</td>
-                  <td class="border border-white/10 px-4 py-3">Art. 6(1)(f)</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <hr class="border-white/10 my-8" />
-
-        <p class="text-center text-xl text-white font-semibold">
-          <strong>CoreShot™ – Précision. Technologie. Fiabilité.</strong>
-        </p>
-      </article>
-    </div>
-  </main>
-</Layout>
+<LegalLayout title="Privacy Policy - CoreShot" locale="fr">
+  <Fragment set:html={htmlContent} />
+</LegalLayout>
