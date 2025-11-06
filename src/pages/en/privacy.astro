@@ -1,11 +1,16 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import LegalLayout from '../../layouts/LegalLayout.astro';
+import { marked } from 'marked';
+import privacyContent from '../../content/legal/privacy-en.md?raw';
+
+const htmlContent = marked(privacyContent);
 ---
 
-<Layout title="Privacy Policy - CoreShot">
-  <main class="min-h-screen bg-[#0F172A] pt-24 pb-16">
-    <div class="max-w-4xl mx-auto px-4">
-      <article class="prose prose-invert prose-red max-w-none">
+<LegalLayout title="Privacy Policy - CoreShot" locale="en">
+  <Fragment set:html={htmlContent} />
+</LegalLayout>
+
+<!--
         <h1 class="text-4xl font-bold text-white mb-2">CoreShot Privacy Policy</h1>
         <p class="text-[#9CA3AF] mb-8">
           <strong>Effective Date: November 5, 2025</strong><br />
@@ -237,26 +242,4 @@ import Layout from '../../layouts/Layout.astro';
         <p class="text-center text-xl text-white font-semibold">
           <strong>CoreShot™ – Precision. Technology. Reliability.</strong>
         </p>
-      </article>
-    </div>
-  </main>
-</Layout>
-
-<style>
-  .prose h2 {
-    margin-top: 2rem;
-  }
-
-  .prose h3 {
-    margin-top: 1.5rem;
-  }
-
-  .prose ul,
-  .prose ol {
-    margin-top: 0.5rem;
-  }
-
-  .prose li {
-    margin-top: 0.25rem;
-  }
-</style>
+-->
