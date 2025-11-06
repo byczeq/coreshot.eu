@@ -27,13 +27,34 @@ const { title, description = 'CoreShot Legal Documents', locale = 'en' } = Astro
     />
     <title>{title}</title>
   </head>
-  <body class="bg-[#0F172A]">
+  <body class="bg-[#1C2526]">
     <StickyHeader client:load locale={locale} />
-    <main class="min-h-screen pt-24 pb-16">
-      <div class="max-w-4xl mx-auto px-4">
-        <article class="prose prose-invert prose-red max-w-none markdown-content">
-          <slot />
-        </article>
+    <main class="min-h-screen relative overflow-hidden">
+      <div class="absolute inset-0 overflow-hidden">
+        <div
+          class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style="background-image: url(/image.png)"
+        />
+        <div class="absolute inset-0 bg-gradient-to-b from-[#1C2526]/60 via-[#1C2526]/70 to-[#1C2526]" />
+        <div class="absolute inset-0 bg-gradient-to-r from-[#1C2526] via-transparent to-[#1C2526]" />
+        <div class="absolute inset-0 bg-gradient-to-t from-[#1C2526] via-[#1C2526]/80 to-transparent" />
+      </div>
+
+      <div class="absolute inset-0 pointer-events-none">
+        <div
+          class="absolute top-1/4 left-1/4 w-96 h-96 bg-[#E11D48]/10 rounded-full blur-3xl"
+        />
+        <div
+          class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#E11D48]/5 rounded-full blur-3xl"
+        />
+      </div>
+
+      <div class="relative z-10 pt-24 pb-16">
+        <div class="max-w-4xl mx-auto px-4">
+          <article class="prose prose-invert prose-red max-w-none markdown-content">
+            <slot />
+          </article>
+        </div>
       </div>
     </main>
     <Footer client:load locale={locale} />
