@@ -247,7 +247,7 @@ export default function ContactSection() {
           </div>
 
           <div
-            className="bg-white/5 backdrop-blur-sm p-8 rounded-sm border border-white/10 animate-fade-in-up"
+            className="bg-white/5 backdrop-blur-sm p-8 rounded-sm border border-white/10 animate-fade-in-up opacity-60"
             style={{ animationDelay: '0.3s' }}
           >
             <h3 className="text-2xl font-bold text-white mb-6">Stay Updated</h3>
@@ -276,16 +276,23 @@ export default function ContactSection() {
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-sm text-white placeholder-[#6B7280] focus:outline-none focus:border-[#E11D48]/50 transition-colors duration-300"
                   placeholder="your@email.com"
                   required
+                  disabled
                 />
               </div>
 
-              <button
-                type="submit"
-                disabled={subscribeStatus === 'loading'}
-                className="w-full px-8 py-4 bg-transparent text-white rounded-sm font-semibold hover:bg-white/10 transition-all duration-300 border-2 border-white/30 hover:border-[#E11D48]/50 transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {subscribeStatus === 'loading' ? 'Subscribing...' : 'Get Updates'}
-              </button>
+              <div className="relative group">
+                <button
+                  type="submit"
+                  disabled
+                  className="w-full px-8 py-4 bg-transparent text-white rounded-sm font-semibold hover:bg-white/10 transition-all duration-300 border-2 border-white/30 hover:border-[#E11D48]/50 transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  Get Updates
+                </button>
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+                  Newsletter temporarily disabled
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-gray-900"></div>
+                </div>
+              </div>
 
               {subscribeMessage && (
                 <div
