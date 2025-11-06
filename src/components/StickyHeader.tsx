@@ -11,15 +11,20 @@ export default function StickyHeader({ locale = 'en' }: StickyHeaderProps) {
   const t = useTranslations(locale as Locale);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isHomePage, setIsHomePage] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
+    const path = window.location.pathname;
+    const isHome = path === '/' || path === `/${locale}` || path === `/${locale}/`;
+    setIsHomePage(isHome);
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [locale]);
 
   const languages = [
     { code: 'en', label: 'EN' },
@@ -36,6 +41,11 @@ export default function StickyHeader({ locale = 'en' }: StickyHeaderProps) {
     const newPath =
       langCode === 'pl' ? pathWithoutLang || '/' : `/${langCode}${pathWithoutLang || '/'}`;
     window.location.href = newPath;
+  };
+
+  const getNavHref = (anchor: string) => {
+    const homePath = locale === 'pl' ? '/' : `/${locale}`;
+    return isHomePage ? anchor : `${homePath}${anchor}`;
   };
 
   return (
@@ -55,25 +65,25 @@ export default function StickyHeader({ locale = 'en' }: StickyHeaderProps) {
 
           <nav className="hidden md:flex items-center space-x-8">
             <a
-              href="#about"
+              href={getNavHref('#about')}
               className="text-white font-medium px-4 py-2 rounded-md border-2 border-transparent hover:border-[#E11D48] hover:bg-[#E11D48] hover:text-white hover:shadow-[4px_4px_0px_0px_rgba(225,29,72,0.8)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200"
             >
               {t('nav.about')}
             </a>
             <a
-              href="#products"
+              href={getNavHref('#products')}
               className="text-white font-medium px-4 py-2 rounded-md border-2 border-transparent hover:border-[#E11D48] hover:bg-[#E11D48] hover:text-white hover:shadow-[4px_4px_0px_0px_rgba(225,29,72,0.8)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200"
             >
               {t('nav.products')}
             </a>
             <a
-              href="#solutions"
+              href={getNavHref('#solutions')}
               className="text-white font-medium px-4 py-2 rounded-md border-2 border-transparent hover:border-[#E11D48] hover:bg-[#E11D48] hover:text-white hover:shadow-[4px_4px_0px_0px_rgba(225,29,72,0.8)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200"
             >
               {t('nav.solutions')}
             </a>
             <a
-              href="#contact"
+              href={getNavHref('#contact')}
               className="text-white font-medium px-4 py-2 rounded-md border-2 border-transparent hover:border-[#E11D48] hover:bg-[#E11D48] hover:text-white hover:shadow-[4px_4px_0px_0px_rgba(225,29,72,0.8)] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-200"
             >
               {t('nav.contact')}
@@ -127,28 +137,28 @@ export default function StickyHeader({ locale = 'en' }: StickyHeaderProps) {
           <div className="md:hidden py-4 border-t border-white/10">
             <nav className="space-y-4">
               <a
-                href="#about"
+                href={getNavHref('#about')}
                 className="block text-white hover:text-[#E11D48] transition-colors duration-300 font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t('nav.about')}
               </a>
               <a
-                href="#products"
+                href={getNavHref('#products')}
                 className="block text-white hover:text-[#E11D48] transition-colors duration-300 font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t('nav.products')}
               </a>
               <a
-                href="#solutions"
+                href={getNavHref('#solutions')}
                 className="block text-white hover:text-[#E11D48] transition-colors duration-300 font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t('nav.solutions')}
               </a>
               <a
-                href="#contact"
+                href={getNavHref('#contact')}
                 className="block text-white hover:text-[#E11D48] transition-colors duration-300 font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
