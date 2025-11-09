@@ -7,13 +7,18 @@ interface FooterProps {
 
 export default function Footer({ locale = 'en' }: FooterProps) {
   const t = useTranslations(locale as Locale);
+  const homePath = locale === 'pl' ? '/' : `/${locale}`;
+  const contactPath = locale === 'pl' ? '/contact' : `/${locale}/contact`;
+  const privacyPath = locale === 'pl' ? '/pl/privacy' : `/${locale}/privacy`;
+  const termsPath = locale === 'pl' ? '/pl/terms' : `/${locale}/terms`;
+
   return (
     <footer className="border-t border-white/10 bg-white/[0.02]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div className="md:col-span-2">
             <a
-              href="/"
+              href={homePath}
               className="text-2xl font-bold text-white hover:text-[#E11D48] transition-colors duration-300 inline-block mb-4"
             >
               <span className="font-extrabold">C</span>ore<span className="font-extrabold">S</span>
@@ -27,7 +32,7 @@ export default function Footer({ locale = 'en' }: FooterProps) {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="#products"
+                  href={`${homePath}#products`}
                   className="text-[#9CA3AF] hover:text-[#E11D48] transition-colors duration-300"
                 >
                   {t('footer.products')}
@@ -35,7 +40,7 @@ export default function Footer({ locale = 'en' }: FooterProps) {
               </li>
               <li>
                 <a
-                  href="#solutions"
+                  href={`${homePath}#solutions`}
                   className="text-[#9CA3AF] hover:text-[#E11D48] transition-colors duration-300"
                 >
                   {t('footer.software')}
@@ -43,10 +48,18 @@ export default function Footer({ locale = 'en' }: FooterProps) {
               </li>
               <li>
                 <a
-                  href="#about"
+                  href={`${homePath}#about`}
                   className="text-[#9CA3AF] hover:text-[#E11D48] transition-colors duration-300"
                 >
                   {t('footer.about')}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={contactPath}
+                  className="text-[#9CA3AF] hover:text-[#E11D48] transition-colors duration-300"
+                >
+                  {t('nav.contact')}
                 </a>
               </li>
             </ul>
@@ -57,7 +70,7 @@ export default function Footer({ locale = 'en' }: FooterProps) {
             <ul className="space-y-2">
               <li>
                 <a
-                  href={`/${locale}/privacy`}
+                  href={privacyPath}
                   className="text-[#9CA3AF] hover:text-[#E11D48] transition-colors duration-300"
                 >
                   {t('footer.privacy')}
@@ -65,7 +78,7 @@ export default function Footer({ locale = 'en' }: FooterProps) {
               </li>
               <li>
                 <a
-                  href={`/${locale}/terms`}
+                  href={termsPath}
                   className="text-[#9CA3AF] hover:text-[#E11D48] transition-colors duration-300"
                 >
                   {t('footer.terms')}

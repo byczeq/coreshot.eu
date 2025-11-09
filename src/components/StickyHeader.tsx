@@ -41,6 +41,9 @@ export default function StickyHeader({ locale = 'en' }: StickyHeaderProps) {
   };
 
   const getNavHref = (anchor: string) => {
+    if (anchor === '#contact') {
+      return locale === 'pl' ? '/contact' : `/${locale}/contact`;
+    }
     const homePath = locale === 'pl' ? '/' : `/${locale}`;
     return isHomePage ? anchor : `${homePath}${anchor}`;
   };
