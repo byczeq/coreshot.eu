@@ -1,6 +1,13 @@
 import { useState } from 'react';
+import { useTranslations } from '../i18n/utils';
+import type { Locale } from '../i18n/translations';
 
-export default function ContactSection() {
+interface ContactSectionProps {
+  locale?: string;
+}
+
+export default function ContactSection({ locale = 'en' }: ContactSectionProps) {
+  const t = useTranslations(locale as Locale);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -23,7 +30,6 @@ export default function ContactSection() {
     setContactMessage('');
 
     try {
-      const locale = window.location.pathname.split('/')[1] || 'pl';
       const supabaseUrl =
         import.meta.env.PUBLIC_SUPABASE_URL || 'https://rrfbgwtakbhqajwgvjbe.supabase.co';
       const supabaseAnonKey =
@@ -41,18 +47,18 @@ export default function ContactSection() {
           name: formData.name,
           email: formData.email,
           message: formData.message,
-          locale: locale === 'en' || locale === 'de' ? locale : 'pl',
+          locale: locale,
         }),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to send message');
+        throw new Error(data.error || t('contact.errorMessage'));
       }
 
       setContactStatus('success');
-      setContactMessage('Thank you for your message! We will get back to you soon.');
+      setContactMessage(t('contact.thankYouMessage'));
       setFormData({ ...formData, name: '', email: '', message: '', isRangeManager: false });
 
       setTimeout(() => {
@@ -64,7 +70,7 @@ export default function ContactSection() {
       if (error instanceof Error) {
         setContactMessage(error.message);
       } else {
-        setContactMessage('Failed to send message. Please try again.');
+        setContactMessage(t('contact.errorMessage'));
       }
 
       setTimeout(() => {
@@ -80,7 +86,6 @@ export default function ContactSection() {
     setSubscribeMessage('');
 
     try {
-      const locale = window.location.pathname.split('/')[1] || 'pl';
       const supabaseUrl =
         import.meta.env.PUBLIC_SUPABASE_URL || 'https://rrfbgwtakbhqajwgvjbe.supabase.co';
       const supabaseAnonKey =
@@ -96,18 +101,18 @@ export default function ContactSection() {
         },
         body: JSON.stringify({
           email: formData.newsletterEmail,
-          locale: locale === 'en' || locale === 'de' ? locale : 'pl',
+          locale: locale,
         }),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to subscribe');
+        throw new Error(data.error || t('contact.errorSubscribe'));
       }
 
       setSubscribeStatus('success');
-      setSubscribeMessage('Thank you for subscribing!');
+      setSubscribeMessage(t('contact.thankYouSubscribe'));
       setFormData({ ...formData, newsletterEmail: '' });
 
       setTimeout(() => {
@@ -118,12 +123,12 @@ export default function ContactSection() {
       setSubscribeStatus('error');
       if (error instanceof Error) {
         if (error.message.includes('already subscribed')) {
-          setSubscribeMessage('This email is already subscribed.');
+          setSubscribeMessage(t('contact.alreadySubscribed'));
         } else {
           setSubscribeMessage(error.message);
         }
       } else {
-        setSubscribeMessage('Failed to subscribe. Please try again.');
+        setSubscribeMessage(t('contact.errorSubscribe'));
       }
 
       setTimeout(() => {
@@ -140,13 +145,13 @@ export default function ContactSection() {
           id="contact-heading"
           className="text-4xl sm:text-5xl font-bold text-white mb-4 text-center animate-fade-in-up"
         >
-          Ready to Elevate Your Range?
+          {t('contact.title')}
         </h2>
         <p
           className="text-xl text-[#9CA3AF] mb-12 text-center animate-fade-in-up"
           style={{ animationDelay: '0.1s' }}
         >
-          Get in touch with our team or subscribe to stay updated
+          {t('contact.subtitle')}
         </p>
 
         <div className="grid md:grid-cols-2 gap-12">
@@ -154,11 +159,11 @@ export default function ContactSection() {
             className="bg-white/5 backdrop-blur-sm p-8 rounded-sm border border-white/10 animate-fade-in-up opacity-60"
             style={{ animationDelay: '0.2s' }}
           >
-            <h3 className="text-2xl font-bold text-white mb-6">Send a Message</h3>
+            <h3 className="text-2xl font-bold text-white mb-6">{t('contact.sendMessage')}</h3>
             <form onSubmit={handleSubmit} className="space-y-6" aria-label="Contact form">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-[#9CA3AF] mb-2">
-                  Name
+                  {t('contact.name')}
                 </label>
                 <input
                   type="text"
@@ -166,7 +171,7 @@ export default function ContactSection() {
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-sm text-white placeholder-[#6B7280] focus:outline-none focus:border-[#E11D48]/50 transition-colors duration-300"
-                  placeholder="Your name"
+                  placeholder={t('contact.namePlaceholder')}
                   required
                   disabled
                 />
@@ -174,7 +179,7 @@ export default function ContactSection() {
 
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-[#9CA3AF] mb-2">
-                  Email
+                  {t('contact.email')}
                 </label>
                 <input
                   type="email"
@@ -182,7 +187,7 @@ export default function ContactSection() {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-sm text-white placeholder-[#6B7280] focus:outline-none focus:border-[#E11D48]/50 transition-colors duration-300"
-                  placeholder="your@email.com"
+                  placeholder={t('contact.emailPlaceholder')}
                   required
                   disabled
                 />
@@ -190,7 +195,7 @@ export default function ContactSection() {
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-[#9CA3AF] mb-2">
-                  Message
+                  {t('contact.message')}
                 </label>
                 <textarea
                   id="message"
@@ -198,7 +203,7 @@ export default function ContactSection() {
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   rows={4}
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-sm text-white placeholder-[#6B7280] focus:outline-none focus:border-[#E11D48]/50 transition-colors duration-300 resize-none"
-                  placeholder="Tell us about your needs..."
+                  placeholder={t('contact.messagePlaceholder')}
                   required
                   disabled
                 />
@@ -214,7 +219,7 @@ export default function ContactSection() {
                   disabled
                 />
                 <label htmlFor="isRangeManager" className="ml-3 text-[#9CA3AF]">
-                  I manage a range
+                  {t('contact.isRangeManager')}
                 </label>
               </div>
 
@@ -224,10 +229,10 @@ export default function ContactSection() {
                   disabled
                   className="w-full px-8 py-4 bg-[#E11D48] text-white rounded-sm font-semibold hover:bg-[#BE123C] transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#E11D48]/50 transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {t('contact.sendButton')}
                 </button>
                 <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
-                  Contact form temporarily disabled
+                  {t('contact.contactDisabled')}
                   <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-gray-900"></div>
                 </div>
               </div>
@@ -250,10 +255,9 @@ export default function ContactSection() {
             className="bg-white/5 backdrop-blur-sm p-8 rounded-sm border border-white/10 animate-fade-in-up opacity-60"
             style={{ animationDelay: '0.3s' }}
           >
-            <h3 className="text-2xl font-bold text-white mb-6">Stay Updated</h3>
+            <h3 className="text-2xl font-bold text-white mb-6">{t('contact.stayUpdated')}</h3>
             <p className="text-[#9CA3AF] mb-6 leading-relaxed">
-              Subscribe to our newsletter for product updates, industry insights, and exclusive
-              offers delivered straight to your inbox.
+              {t('contact.newsletterDescription')}
             </p>
 
             <form
@@ -266,7 +270,7 @@ export default function ContactSection() {
                   htmlFor="newsletterEmail"
                   className="block text-sm font-medium text-[#9CA3AF] mb-2"
                 >
-                  Email Address
+                  {t('contact.emailAddress')}
                 </label>
                 <input
                   type="email"
@@ -274,7 +278,7 @@ export default function ContactSection() {
                   value={formData.newsletterEmail}
                   onChange={(e) => setFormData({ ...formData, newsletterEmail: e.target.value })}
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-sm text-white placeholder-[#6B7280] focus:outline-none focus:border-[#E11D48]/50 transition-colors duration-300"
-                  placeholder="your@email.com"
+                  placeholder={t('contact.emailPlaceholder')}
                   required
                   disabled
                 />
@@ -286,10 +290,10 @@ export default function ContactSection() {
                   disabled
                   className="w-full px-8 py-4 bg-transparent text-white rounded-sm font-semibold hover:bg-white/10 transition-all duration-300 border-2 border-white/30 hover:border-[#E11D48]/50 transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Get Updates
+                  {subscribeStatus === 'loading' ? t('contact.subscribing') : t('contact.getUpdates')}
                 </button>
                 <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
-                  Newsletter temporarily disabled
+                  {t('contact.newsletterDisabled')}
                   <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-gray-900"></div>
                 </div>
               </div>
@@ -308,7 +312,7 @@ export default function ContactSection() {
             </form>
 
             <div className="mt-8 pt-8 border-t border-white/10">
-              <p className="text-[#9CA3AF] mb-4">Or reach us directly:</p>
+              <p className="text-[#9CA3AF] mb-4">{t('contact.reachDirectly')}</p>
               <a
                 href="mailto:hello@coreshot.eu"
                 className="flex items-center text-white hover:text-[#E11D48] transition-colors duration-300 group"
