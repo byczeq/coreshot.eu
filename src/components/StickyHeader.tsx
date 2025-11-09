@@ -27,17 +27,14 @@ export default function StickyHeader({ locale = 'en' }: StickyHeaderProps) {
   }, [locale]);
 
   const languages = [
-    { code: 'en', label: 'EN' },
-    { code: 'de', label: 'DE' },
     { code: 'pl', label: 'PL' },
-    { code: 'fr', label: 'FR' },
-    { code: 'it', label: 'IT' },
+    { code: 'en', label: 'EN' },
   ];
 
   const handleLanguageChange = (langCode: string) => {
     setStoredLocale(langCode as Locale);
     const currentPath = window.location.pathname;
-    const pathWithoutLang = currentPath.replace(/^\/(en|de|pl|fr|it)/, '');
+    const pathWithoutLang = currentPath.replace(/^\/(en|pl)/, '');
     const newPath =
       langCode === 'pl' ? pathWithoutLang || '/' : `/${langCode}${pathWithoutLang || '/'}`;
     window.location.href = newPath;
