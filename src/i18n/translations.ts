@@ -76,7 +76,7 @@ export const translations = {
       copyright: '© 2025 CoreShot. Wszelkie prawa zastrzeżone.',
     },
     contact: {
-      title: 'Gotowy na nowy poziom Twojej strzelnicy?',
+      title: 'Gotowy na wyższy poziom?',
       subtitle: 'Skontaktuj się z naszym zespołem lub zapisz się, aby być na bieżąco',
       sendMessage: 'Wyślij wiadomość',
       name: 'Imię',
