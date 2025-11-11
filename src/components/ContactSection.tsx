@@ -14,6 +14,7 @@ export default function ContactSection({ locale = 'en' }: ContactSectionProps) {
     message: '',
     isRangeManager: false,
     newsletterEmail: '',
+    verificationCode: '',
   });
   const [subscribeStatus, setSubscribeStatus] = useState<'idle' | 'loading' | 'success' | 'error'>(
     'idle'
@@ -102,6 +103,7 @@ export default function ContactSection({ locale = 'en' }: ContactSectionProps) {
         body: JSON.stringify({
           email: formData.newsletterEmail,
           locale: locale,
+          verificationCode: formData.verificationCode,
         }),
       });
 
@@ -113,7 +115,7 @@ export default function ContactSection({ locale = 'en' }: ContactSectionProps) {
 
       setSubscribeStatus('success');
       setSubscribeMessage(t('contact.thankYouSubscribe'));
-      setFormData({ ...formData, newsletterEmail: '' });
+      setFormData({ ...formData, newsletterEmail: '', verificationCode: '' });
 
       setTimeout(() => {
         setSubscribeStatus('idle');
@@ -124,6 +126,8 @@ export default function ContactSection({ locale = 'en' }: ContactSectionProps) {
       if (error instanceof Error) {
         if (error.message.includes('already subscribed')) {
           setSubscribeMessage(t('contact.alreadySubscribed'));
+        } else if (error.message.includes('Verification code is required')) {
+          setSubscribeMessage(t('contact.codeRequired'));
         } else {
           setSubscribeMessage(error.message);
         }
@@ -282,6 +286,30 @@ export default function ContactSection({ locale = 'en' }: ContactSectionProps) {
                   required
                   disabled
                 />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="verificationCode"
+                  className="block text-sm font-medium text-[#9CA3AF] mb-2"
+                >
+                  {t('contact.verificationCode')}
+                </label>
+                <input
+                  type="text"
+                  id="verificationCode"
+                  value={formData.verificationCode}
+                  onChange={(e) => setFormData({ ...formData, verificationCode: e.target.value.toUpperCase() })}
+                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-sm text-white placeholder-[#6B7280] focus:outline-none focus:border-[#E11D48]/50 transition-colors duration-300 font-mono tracking-wider"
+                  placeholder={t('contact.verificationCodePlaceholder')}
+                  maxLength={8}
+                  pattern="[A-Z0-9]{8}"
+                  required
+                  disabled
+                />
+                <p className="mt-2 text-xs text-[#9CA3AF]">
+                  {t('contact.verificationCodeHelp')}
+                </p>
               </div>
 
               <div className="relative group">
