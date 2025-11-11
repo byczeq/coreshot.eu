@@ -180,7 +180,7 @@ export const translations = {
       copyright: '© 2025 CoreShot. All rights reserved.',
     },
     contact: {
-      title: 'Ready to Elevate Your Range?',
+      title: 'Ready to Level Up?',
       subtitle: 'Get in touch with our team or subscribe to stay updated',
       sendMessage: 'Send a Message',
       name: 'Name',
