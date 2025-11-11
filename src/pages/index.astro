@@ -5,7 +5,6 @@ import InteractiveHero from '../components/InteractiveHero';
 import AboutSection from '../components/AboutSection';
 import ProductsSection from '../components/ProductsSection';
 import WhyCoreShot from '../components/WhyCoreShot';
-import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 import CustomCursor from '../components/CustomCursor';
 import LocaleDetector from '../components/LocaleDetector';
@@ -26,9 +25,6 @@ const locale = 'pl';
       <ProductsSection client:load locale={locale} />
     </div>
     <WhyCoreShot client:load locale={locale} />
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <ContactSection client:load />
-    </div>
     <Footer client:load locale={locale} />
   </main>
 </Layout>

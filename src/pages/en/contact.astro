@@ -1,0 +1,22 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StickyHeader from '../../components/StickyHeader';
+import ContactSection from '../../components/ContactSection';
+import Footer from '../../components/Footer';
+import CustomCursor from '../../components/CustomCursor';
+const locale = 'en';
+---
+
+<Layout
+  title="Contact - CoreShot"
+  description="Get in touch with CoreShot team"
+>
+  <StickyHeader client:load locale={locale} />
+  <CustomCursor client:load />
+  <main class="min-h-screen bg-[#1C2526] pt-32">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <ContactSection client:load locale={locale} />
+    </div>
+    <Footer client:load locale={locale} />
+  </main>
+</Layout>
