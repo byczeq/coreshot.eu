@@ -4,7 +4,8 @@
       "Bash(npm install)",
       "Bash(npx biome:*)",
       "Bash(npx lefthook:*)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "WebFetch(domain:biomejs.dev)"
     ]
   }
 }
