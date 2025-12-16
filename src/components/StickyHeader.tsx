@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
+import type { Locale } from '../i18n/translations';
 import { useTranslations } from '../i18n/utils';
 import { setStoredLocale } from '../utils/localeDetection';
-import type { Locale } from '../i18n/translations';
 
 interface StickyHeaderProps {
   locale?: string;

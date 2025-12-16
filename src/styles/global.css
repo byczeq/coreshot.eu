@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 :root {
   --black: #1c2526;
@@ -9,12 +9,7 @@
 
 @layer base {
   body {
-    font-family:
-      'Montserrat',
-      -apple-system,
-      BlinkMacSystemFont,
-      'Segoe UI',
-      sans-serif;
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     cursor: none;
   }
 

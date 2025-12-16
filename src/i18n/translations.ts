@@ -25,14 +25,17 @@ export const translations = {
       title: 'Produkty i Rozwiązania',
       gear: {
         title: 'Sprzęt CoreShot: Precyzja i Innowacja w Strzelectwie',
-        feature1: 'Gas Pedal: Ergonomiczny uchwyt do kontroli gazu – lekki, regulowany, skraca czas reakcji',
-        feature2: 'Wysokiej jakości chwyt do Beretta 92X Performance – z regulowanym kątem palm swell dla idealnego dopasowania',
+        feature1:
+          'Gas Pedal: Ergonomiczny uchwyt do kontroli gazu – lekki, regulowany, skraca czas reakcji',
+        feature2:
+          'Wysokiej jakości chwyt do Beretta 92X Performance – z regulowanym kątem palm swell dla idealnego dopasowania',
         feature3: 'Materiały premium, testowane w IPSC, zgodne z normami UE',
         cta: 'Zobacz ofertę',
       },
       software: {
         title: 'Precyzja spotyka technologię',
-        subtitle: 'Pracujemy nad rozwiązaniem, które połączy dane, sprzęt i ludzi w jednym ekosystemie. Dla tych, którzy mierzą wyżej.',
+        subtitle:
+          'Pracujemy nad rozwiązaniem, które połączy dane, sprzęt i ludzi w jednym ekosystemie. Dla tych, którzy mierzą wyżej.',
         feature1: 'System rezerwacji i zarządzania stanowiskami w czasie rzeczywistym',
         feature2: 'Śledzenie członków, punktacja i analiza wydajności',
         feature3: 'Wsparcie wielojęzyczne i dostęp w chmurze',
@@ -89,7 +92,8 @@ export const translations = {
       sendButton: 'Wyślij wiadomość',
       contactDisabled: 'Formularz kontaktowy tymczasowo wyłączony',
       stayUpdated: 'Bądź na bieżąco',
-      newsletterDescription: 'Zapisz się do naszego newslettera, aby otrzymywać aktualizacje produktów, informacje branżowe i ekskluzywne oferty prosto do Twojej skrzynki odbiorczej.',
+      newsletterDescription:
+        'Zapisz się do naszego newslettera, aby otrzymywać aktualizacje produktów, informacje branżowe i ekskluzywne oferty prosto do Twojej skrzynki odbiorczej.',
       emailAddress: 'Adres email',
       verificationCode: 'Kod weryfikacyjny',
       verificationCodePlaceholder: 'Wprowadź kod (np. ABC12345)',
@@ -127,7 +131,7 @@ export const translations = {
       paragraph2:
         'Our mission is simple: provide premium accessories and intelligent software that enhance precision, streamline operations, and elevate the shooting experience. From the range floor to the back office, CoreShot is your partner in excellence.',
       paragraph3:
-        'With a commitment to innovation, quality, and customer success, we\'re building the future of shooting sports management. Every product we create reflects decades of expertise and a dedication to continuous improvement.',
+        "With a commitment to innovation, quality, and customer success, we're building the future of shooting sports management. Every product we create reflects decades of expertise and a dedication to continuous improvement.",
     },
     products: {
       title: 'Products & Solutions',
@@ -140,7 +144,8 @@ export const translations = {
       },
       software: {
         title: 'Manage Your Range Smarter',
-        subtitle: 'We are working on a solution that will connect data, equipment, and people in one ecosystem. For those who aim higher.',
+        subtitle:
+          'We are working on a solution that will connect data, equipment, and people in one ecosystem. For those who aim higher.',
         feature1: 'Real-time booking and lane management system',
         feature2: 'Member tracking, scoring, and performance analytics',
         feature3: 'Multi-language support and cloud-based accessibility',
@@ -197,7 +202,8 @@ export const translations = {
       sendButton: 'Send Message',
       contactDisabled: 'Contact form temporarily disabled',
       stayUpdated: 'Stay Updated',
-      newsletterDescription: 'Subscribe to our newsletter for product updates, industry insights, and exclusive offers delivered straight to your inbox.',
+      newsletterDescription:
+        'Subscribe to our newsletter for product updates, industry insights, and exclusive offers delivered straight to your inbox.',
       emailAddress: 'Email Address',
       verificationCode: 'Verification Code',
       verificationCodePlaceholder: 'Enter code (e.g., ABC12345)',

@@ -1,5 +1,5 @@
-import { useTranslations } from '../i18n/utils';
 import type { Locale } from '../i18n/translations';
+import { useTranslations } from '../i18n/utils';
 
 interface ProductsSectionProps {
   locale?: string;
@@ -116,9 +116,7 @@ export default function ProductsSection({ locale = 'en' }: ProductsSectionProps)
             </div>
 
             <div className="p-8">
-              <h3 className="text-2xl font-bold text-white mb-4">
-                {t('products.software.title')}
-              </h3>
+              <h3 className="text-2xl font-bold text-white mb-4">{t('products.software.title')}</h3>
 
               <p className="text-[#9CA3AF] mb-6 leading-relaxed">
                 {t('products.software.subtitle')}

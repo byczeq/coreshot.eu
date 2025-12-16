@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import {
   detectUserLocale,
   getCurrentLocaleFromUrl,
-  shouldRedirectToDetectedLocale,
   markAsVisited,
   setStoredLocale,
+  shouldRedirectToDetectedLocale,
 } from '../utils/localeDetection';
 
 interface LocaleDetectorProps {

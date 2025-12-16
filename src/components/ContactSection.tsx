@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useTranslations } from '../i18n/utils';
 import type { Locale } from '../i18n/translations';
+import { useTranslations } from '../i18n/utils';
 
 interface ContactSectionProps {
   locale?: string;
@@ -237,7 +237,7 @@ export default function ContactSection({ locale = 'en' }: ContactSectionProps) {
                 </button>
                 <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
                   {t('contact.contactDisabled')}
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-gray-900"></div>
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-gray-900" />
                 </div>
               </div>
 
@@ -299,7 +299,9 @@ export default function ContactSection({ locale = 'en' }: ContactSectionProps) {
                   type="text"
                   id="verificationCode"
                   value={formData.verificationCode}
-                  onChange={(e) => setFormData({ ...formData, verificationCode: e.target.value.toUpperCase() })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, verificationCode: e.target.value.toUpperCase() })
+                  }
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-sm text-white placeholder-[#6B7280] focus:outline-none focus:border-[#E11D48]/50 transition-colors duration-300 font-mono tracking-wider"
                   placeholder={t('contact.verificationCodePlaceholder')}
                   maxLength={8}
@@ -307,9 +309,7 @@ export default function ContactSection({ locale = 'en' }: ContactSectionProps) {
                   required
                   disabled
                 />
-                <p className="mt-2 text-xs text-[#9CA3AF]">
-                  {t('contact.verificationCodeHelp')}
-                </p>
+                <p className="mt-2 text-xs text-[#9CA3AF]">{t('contact.verificationCodeHelp')}</p>
               </div>
 
               <div className="relative group">
@@ -318,11 +318,13 @@ export default function ContactSection({ locale = 'en' }: ContactSectionProps) {
                   disabled
                   className="w-full px-8 py-4 bg-transparent text-white rounded-sm font-semibold hover:bg-white/10 transition-all duration-300 border-2 border-white/30 hover:border-[#E11D48]/50 transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {subscribeStatus === 'loading' ? t('contact.subscribing') : t('contact.getUpdates')}
+                  {subscribeStatus === 'loading'
+                    ? t('contact.subscribing')
+                    : t('contact.getUpdates')}
                 </button>
                 <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
                   {t('contact.newsletterDisabled')}
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-gray-900"></div>
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-gray-900" />
                 </div>
               </div>
 

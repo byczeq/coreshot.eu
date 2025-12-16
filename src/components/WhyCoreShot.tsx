@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { useTranslations } from '../i18n/utils';
 import type { Locale } from '../i18n/translations';
+import { useTranslations } from '../i18n/utils';
 
 interface WhyCoreShotProps {
   locale?: string;
