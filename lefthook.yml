@@ -1,0 +1,15 @@
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      glob: "*.{js,ts,tsx,json,css,md}"
+      run: npx biome format --write {staged_files}
+      stage_fixed: true
+    lint:
+      glob: "*.{js,ts,tsx}"
+      run: npx biome lint {staged_files}
+
+commit-msg:
+  commands:
+    commitlint:
+      run: npx commitlint --edit {1}

@@ -1,5 +1,10 @@
 {
   "permissions": {
-    "allow": ["Bash(npm install)", "Bash(npx biome:*)"]
+    "allow": [
+      "Bash(npm install)",
+      "Bash(npx biome:*)",
+      "Bash(npx lefthook:*)",
+      "Bash(git config:*)"
+    ]
   }
 }
