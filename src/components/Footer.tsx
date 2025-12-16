@@ -9,8 +9,8 @@ export default function Footer({ locale = 'en' }: FooterProps) {
   const t = useTranslations(locale as Locale);
   const homePath = locale === 'pl' ? '/' : `/${locale}`;
   const contactPath = locale === 'pl' ? '/contact' : `/${locale}/contact`;
-  const privacyPath = locale === 'pl' ? '/pl/privacy' : `/${locale}/privacy`;
-  const termsPath = locale === 'pl' ? '/pl/terms' : `/${locale}/terms`;
+  // const privacyPath = locale === 'pl' ? '/pl/privacy' : `/${locale}/privacy`;
+  // const termsPath = locale === 'pl' ? '/pl/terms' : `/${locale}/terms`;
 
   return (
     <footer className="border-t border-white/10 bg-white/[0.02]">
@@ -65,27 +65,27 @@ export default function Footer({ locale = 'en' }: FooterProps) {
             </ul>
           </div>
 
-          <div>
-            <h4 className="text-white font-semibold mb-4">{t('footer.legal')}</h4>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href={privacyPath}
-                  className="text-[#9CA3AF] hover:text-[#E11D48] transition-colors duration-300"
-                >
-                  {t('footer.privacy')}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={termsPath}
-                  className="text-[#9CA3AF] hover:text-[#E11D48] transition-colors duration-300"
-                >
-                  {t('footer.terms')}
-                </a>
-              </li>
-            </ul>
-          </div>
+          {/*<div>*/}
+          {/*  <h4 className="text-white font-semibold mb-4">{t('footer.legal')}</h4>*/}
+          {/*  <ul className="space-y-2">*/}
+          {/*    <li>*/}
+          {/*      <a*/}
+          {/*        href={privacyPath}*/}
+          {/*        className="text-[#9CA3AF] hover:text-[#E11D48] transition-colors duration-300"*/}
+          {/*      >*/}
+          {/*        {t('footer.privacy')}*/}
+          {/*      </a>*/}
+          {/*    </li>*/}
+          {/*    <li>*/}
+          {/*      <a*/}
+          {/*        href={termsPath}*/}
+          {/*        className="text-[#9CA3AF] hover:text-[#E11D48] transition-colors duration-300"*/}
+          {/*      >*/}
+          {/*        {t('footer.terms')}*/}
+          {/*      </a>*/}
+          {/*    </li>*/}
+          {/*  </ul>*/}
+          {/*</div>*/}
         </div>
 
         <div className="pt-8 border-t border-white/10">
