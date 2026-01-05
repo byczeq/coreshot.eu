@@ -20,10 +20,9 @@ export default function Footer({ locale = 'en' }: FooterProps) {
           <div className="md:col-span-2">
             <a
               href={homePath}
-              className="text-2xl font-bold text-white hover:text-[#E11D48] transition-colors duration-300 inline-block mb-4"
+              className="text-2xl font-bold text-white transition-colors duration-300 inline-block mb-4"
             >
-              <span className="font-extrabold">C</span>ore<span className="font-extrabold">S</span>
-              hot
+              Core<span className="text-[#E11D48]">Shot</span>
             </a>
             <p className="text-[#9CA3AF] mb-4 max-w-md">{t('footer.description')}</p>
           </div>
