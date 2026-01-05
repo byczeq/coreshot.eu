@@ -56,11 +56,13 @@ export default function StickyHeader({ locale = 'en' }: StickyHeaderProps) {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <a
-            href={locale === 'pl' ? '/' : `/${locale}`}
-            className="text-2xl font-bold text-white transition-colors duration-300"
-          >
-            Core<span className="text-[#E11D48]">Shot</span>
+          <a href={locale === 'pl' ? '/' : `/${locale}`} className="group text-2xl font-bold">
+            <span className="text-white group-hover:text-[#E11D48] transition-colors duration-300">
+              Core
+            </span>
+            <span className="text-[#E11D48] group-hover:text-white transition-colors duration-300">
+              Shot
+            </span>
           </a>
 
           <nav className="hidden md:flex items-center space-x-8">

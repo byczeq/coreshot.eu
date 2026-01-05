@@ -18,11 +18,13 @@ export default function Footer({ locale = 'en' }: FooterProps) {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div className="md:col-span-2">
-            <a
-              href={homePath}
-              className="text-2xl font-bold text-white transition-colors duration-300 inline-block mb-4"
-            >
-              Core<span className="text-[#E11D48]">Shot</span>
+            <a href={homePath} className="group text-2xl font-bold inline-block mb-4">
+              <span className="text-white group-hover:text-[#E11D48] transition-colors duration-300">
+                Core
+              </span>
+              <span className="text-[#E11D48] group-hover:text-white transition-colors duration-300">
+                Shot
+              </span>
             </a>
             <p className="text-[#9CA3AF] mb-4 max-w-md">{t('footer.description')}</p>
           </div>
