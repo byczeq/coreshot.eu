@@ -9,6 +9,7 @@ export default function Footer({ locale = 'en' }: FooterProps) {
   const t = useTranslations(locale as Locale);
   const homePath = locale === 'pl' ? '/' : `/${locale}`;
   const contactPath = locale === 'pl' ? '/contact' : `/${locale}/contact`;
+  const currentYear = new Date().getFullYear();
   // const privacyPath = locale === 'pl' ? '/pl/privacy' : `/${locale}/privacy`;
   // const termsPath = locale === 'pl' ? '/pl/terms' : `/${locale}/terms`;
 
@@ -91,7 +92,7 @@ export default function Footer({ locale = 'en' }: FooterProps) {
         <div className="pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-[#6B7280] text-sm text-center md:text-left">
-              {t('footer.copyright')}
+              {t('footer.copyright').replace('{year}', String(currentYear))}
             </p>
             <a
               href="mailto:hello@coreshot.eu"

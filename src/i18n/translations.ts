@@ -76,7 +76,7 @@ export const translations = {
       about: 'O nas',
       privacy: 'Polityka prywatności',
       terms: 'Regulamin',
-      copyright: '© 2025 CoreShot. Wszelkie prawa zastrzeżone.',
+      copyright: '© {year} CoreShot. Wszelkie prawa zastrzeżone.',
     },
     contact: {
       title: 'Gotowy na wyższy poziom?',
@@ -186,7 +186,7 @@ export const translations = {
       about: 'About',
       privacy: 'Privacy Policy',
       terms: 'Terms of Service',
-      copyright: '© 2025 CoreShot. All rights reserved.',
+      copyright: '© {year} CoreShot. All rights reserved.',
     },
     contact: {
       title: 'Ready to Level Up?',
