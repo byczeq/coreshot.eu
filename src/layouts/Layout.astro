@@ -7,6 +7,9 @@ interface Props {
 }
 
 const { title, description = 'My amazing landing page' } = Astro.props;
+
+const buildDate = new Date().toISOString();
+const commitHash = import.meta.env.CF_PAGES_COMMIT_SHA || import.meta.env.COMMIT_SHA || 'dev';
 ---
 
 <!doctype html>
@@ -26,5 +29,6 @@ const { title, description = 'My amazing landing page' } = Astro.props;
   </head>
   <body>
     <slot />
+    <Fragment set:html={`<!-- build: ${buildDate} | commit: ${commitHash} -->`} />
   </body>
 </html>

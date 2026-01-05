@@ -10,6 +10,9 @@ interface Props {
 }
 
 const { title, description = 'CoreShot Legal Documents', locale = 'en' } = Astro.props;
+
+const buildDate = new Date().toISOString();
+const commitHash = import.meta.env.CF_PAGES_COMMIT_SHA || import.meta.env.COMMIT_SHA || 'dev';
 ---
 
 <!doctype html>
@@ -57,6 +60,7 @@ const { title, description = 'CoreShot Legal Documents', locale = 'en' } = Astro
       </div>
     </main>
     <Footer client:load locale={locale} />
+    <Fragment set:html={`<!-- build: ${buildDate} | commit: ${commitHash} -->`} />
   </body>
 </html>
 
